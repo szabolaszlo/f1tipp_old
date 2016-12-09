@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Carlos
+ * Date: 2016. 12. 09.
+ * Time: 20:44
+ */
 
 namespace Entity;
 
@@ -6,10 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="`user`")
+ * @ORM\Table(name="`driver`")
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */
-class User
+class Driver
 {
     /**
      * @ORM\Column(name="id", type="integer", length=2, nullable=false)
@@ -24,14 +30,9 @@ class User
     protected $name;
 
     /**
-     * @ORM\Column(name="password", type="string", length=45, nullable=false)
+     * @ORM\Column(name="short", type="string", length=3, nullable=false)
      */
-    protected $password;
-
-    /**
-     * @ORM\Column(name="timestamp", type="integer", length=11, nullable=false)
-     */
-    protected $timestamp;
+    protected $short;
 
     /**
      * @return mixed
@@ -68,32 +69,18 @@ class User
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getShort()
     {
-        return $this->password;
+        return $this->short;
     }
 
     /**
-     * @param mixed $password
+     * @param mixed $short
      */
-    public function setPassword($password)
+    public function setShort($short)
     {
-        $this->password = $password;
+        $this->short = $short;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getTimestamp()
-    {
-        return $this->timestamp;
-    }
-
-    /**
-     * @param mixed $timestamp
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->timestamp = $timestamp;
-    }
+    
 }
