@@ -1,0 +1,17 @@
+{
+  "require": {
+      "doctrine/orm": "2.5.*",
+      "symfony/yaml": "2.*",
+	  "twig/twig": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+      }
+  },
+  "config": {
+	"platform": {
+    "php": "5.6"
+    }
+  }
+}
