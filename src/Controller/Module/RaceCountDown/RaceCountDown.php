@@ -6,7 +6,7 @@
  * Time: 19:40
  */
 
-namespace Controller\Module;
+namespace Controller\Module\RaceCountDown;
 
 use Controller\Controller;
 
@@ -22,6 +22,6 @@ class RaceCountDown extends Controller
     public function indexAction()
     {
         $data = "Visszaszámlámo";
-        return $this->renderer->render('controller/module/race_count_down.tpl', array('data' => $data));
+        return $this->renderer->render('controller/module/race_count_down/race_count_down.tpl', array('data' => $data));
     }
 }

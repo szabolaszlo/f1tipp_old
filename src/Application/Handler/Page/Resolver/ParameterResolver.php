@@ -36,7 +36,7 @@ class ParameterResolver implements IResolver
      */
     public function getPage()
     {
-        return 'Controller\\Page\\' . ucfirst($this->page);
+        return 'Controller\\Page\\' . ucfirst($this->page) . '\\' . ucfirst($this->page) ;
     }
 
     /**

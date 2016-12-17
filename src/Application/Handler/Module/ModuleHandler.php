@@ -25,7 +25,7 @@ class ModuleHandler extends Handler
     /**
      * @var string
      */
-    protected $path = '/src/Controller/Module/';
+    protected $path = '/src/Controller/Module/*';
 
     /**
      * @var string
@@ -37,12 +37,13 @@ class ModuleHandler extends Handler
      */
     public function getModules()
     {
-        $moduleClassFiles = glob($_SERVER['DOCUMENT_ROOT'] . $this->path . '*.php');
+        $moduleDirectories = glob($_SERVER['DOCUMENT_ROOT'] . $this->path, GLOB_ONLYDIR);
 
-        foreach ($moduleClassFiles as $moduleClassFile) {
-            $moduleClassFile = substr(strrchr($moduleClassFile, "/"), 1);
+        foreach ($moduleDirectories as $moduleDirectory) {
+            $moduleClassFile = glob($moduleDirectory . '/*.php');
+            $moduleClassFile = substr(strrchr(reset($moduleClassFile), "/"), 1);
             $moduleClassFile = str_replace('.php', '', $moduleClassFile);
-            $moduleClassFile = $this->nameSpace . $moduleClassFile;
+            $moduleClassFile = $this->nameSpace . $moduleClassFile . '\\' . $moduleClassFile;
 
             /** @var Controller $module */
             $module = new $moduleClassFile(
@@ -53,6 +54,7 @@ class ModuleHandler extends Handler
             );
             $this->modules[$module->getId()] = $module->indexAction();
         }
+
         return $this->modules;
     }
 }

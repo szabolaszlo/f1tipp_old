@@ -6,7 +6,7 @@
  * Time: 21:35
  */
 
-namespace Controller\Page;
+namespace Controller\Page\Error;
 
 use Controller\Controller;
 
@@ -22,6 +22,6 @@ class Error extends Controller
     public function notFoundAction()
     {
         $data = "Az oldal nem található";
-        return $this->renderer->render('controller/page/error.tpl', array('data' => $data));
+        return $this->renderer->render('controller/page/error/error.tpl', array('data' => $data));
     }
 }
