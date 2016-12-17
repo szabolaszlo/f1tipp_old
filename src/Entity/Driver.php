@@ -35,6 +35,11 @@ class Driver
     protected $short;
 
     /**
+     * @ORM\Column(name="point", type="integer", length=3, nullable=false)
+     */
+    protected $point;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -81,6 +86,4 @@ class Driver
     {
         $this->short = $short;
     }
-
-    
 }

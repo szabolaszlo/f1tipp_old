@@ -55,22 +55,6 @@ class Event
     /**
      * @return mixed
      */
-    public function getEventType()
-    {
-        return $this->eventType;
-    }
-
-    /**
-     * @param mixed $eventType
-     */
-    public function setEventType($eventType)
-    {
-        $this->eventType = $eventType;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getEventOrder()
     {
         return $this->eventOrder;
