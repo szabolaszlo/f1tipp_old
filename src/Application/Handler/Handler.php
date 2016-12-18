@@ -11,6 +11,7 @@ namespace Application\Handler;
 use Doctrine\ORM\EntityManagerInterface;
 use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
+use System\Registry\IRegistry;
 
 /**
  * Class Handler
@@ -39,16 +40,28 @@ abstract class Handler
     protected $entityManager;
 
     /**
+     * @var IRegistry
+     */
+    protected $registry;
+
+    /**
      * @param IRequest $request
      * @param ISession $session
      * @param \Twig_Environment $renderer
      * @param $entityManager
+     * @param IRegistry $registry
      */
-    public function setDependency(IRequest $request, ISession $session, \Twig_Environment $renderer, $entityManager)
-    {
+    public function setDependency(
+        IRequest $request,
+        ISession $session,
+        \Twig_Environment $renderer,
+        $entityManager,
+        IRegistry $registry
+    ) {
         $this->request = $request;
         $this->session = $session;
         $this->renderer = $renderer;
         $this->entityManager = $entityManager;
+        $this->registry = $registry;
     }
 }

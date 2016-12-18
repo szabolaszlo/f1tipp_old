@@ -43,7 +43,8 @@ class PageHandler extends Handler
             $this->request,
             $this->session,
             $this->renderer,
-            $this->entityManager
+            $this->entityManager,
+            $this->registry
         );
 
         $action = $this->resolver->getAction();

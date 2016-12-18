@@ -11,6 +11,7 @@ namespace Controller;
 use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Registry\IRegistry;
 
 /**
  * Class Controller
@@ -39,23 +40,35 @@ abstract class Controller
     protected $entityManger;
 
     /**
+     * @var IRegistry
+     */
+    protected $registry;
+
+    /**
      * @var string
      */
     protected $id;
 
     /**
-     * Page constructor.
+     * Controller constructor.
      * @param IRequest $request
      * @param ISession $session
      * @param \Twig_Environment $renderer
      * @param $entityManager
+     * @param IRegistry $registry
      */
-    public function __construct(IRequest $request, ISession $session, \Twig_Environment $renderer, $entityManager)
-    {
+    public function __construct(
+        IRequest $request,
+        ISession $session,
+        \Twig_Environment $renderer,
+        $entityManager,
+        IRegistry $registry
+    ) {
         $this->request = $request;
         $this->session = $session;
         $this->renderer = $renderer;
         $this->entityManger;
+        $this->registry = $registry;
 
         $reflect = new \ReflectionClass($this);
         $this->id = lcfirst($reflect->getShortName());

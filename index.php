@@ -24,8 +24,10 @@ $resolver = new \Application\Handler\Page\Resolver\ParameterResolver();
 
 $renderEngine = getTwig();
 
+$registry = new \System\Registry\Registry($request, $session, $entityManager);
+
 $app = new \Application\Application($pageHandler, $moduleHandler, $renderEngine, $entityManager);
 
-$app->dispatch($request, $session, $response, $resolver);
+$app->dispatch($request, $session, $response, $resolver, $registry);
 
 echo $response->send();

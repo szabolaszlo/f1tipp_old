@@ -8,6 +8,7 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Response;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Registry\IRegistry;
 
 /**
  * Class Application
@@ -65,18 +66,24 @@ class Application
      * @param ISession $session
      * @param Response $response
      * @param $parameterResolver
+     * @param IRegistry $registry
      */
-    public function dispatch(IRequest $request, ISession $session, Response $response, $parameterResolver)
-    {
+    public function dispatch(
+        IRequest $request,
+        ISession $session,
+        Response $response,
+        $parameterResolver,
+        IRegistry $registry
+    ) {
         //page
-        $this->pageHandler->setDependency($request, $session, $this->renderer, $this->entityManager);
+        $this->pageHandler->setDependency($request, $session, $this->renderer, $this->entityManager, $registry);
         $this->pageHandler->setResolver($parameterResolver);
         $page = $this->pageHandler->getPage();
-        
+
         //modules
-        $this->moduleHandler->setDependency($request, $session, $this->renderer, $this->entityManager);
+        $this->moduleHandler->setDependency($request, $session, $this->renderer, $this->entityManager, $registry);
         $modules = $this->moduleHandler->getModules();
-        
+
         //response
         $response->setContent(
             $this->renderer->render(

@@ -50,7 +50,8 @@ class ModuleHandler extends Handler
                 $this->request,
                 $this->session,
                 $this->renderer,
-                $this->entityManager
+                $this->entityManager,
+                $this->registry
             );
             $this->modules[$module->getId()] = $module->indexAction();
         }
