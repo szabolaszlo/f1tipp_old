@@ -12,6 +12,7 @@ namespace System\Registry;
 use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Doctrine\ORM\EntityManagerInterface;
+use System\EventManager\EventManager;
 
 /**
  * Class Registry
@@ -35,6 +36,11 @@ class Registry implements IRegistry
     protected $entityManger;
 
     /**
+     * @var EventManager
+     */
+    protected $eventManager;
+
+    /**
      * Registry constructor.
      * @param IRequest $request
      * @param ISession $session
@@ -44,6 +50,17 @@ class Registry implements IRegistry
     {
         $this->request = $request;
         $this->session = $session;
-        $this->entityManger;
+        $this->entityManger = $entityManager;
+    }
+
+    /**
+     * @return EventManager
+     */
+    public function getEventManager()
+    {
+        if (!$this->eventManager) {
+            $this->eventManager = new EventManager($this->entityManger);
+        }
+        return $this->eventManager;
     }
 }

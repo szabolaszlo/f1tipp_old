@@ -27,9 +27,9 @@ class Result
 
     /**
      * @ORM\OneToOne(targetEntity="Event")
-     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="event", referencedColumnName="id")
      */
-    protected $event_id;
+    protected $event;
 
     /**
      * @ORM\OneToMany(targetEntity="ResultAttribute", mappedBy="result", cascade={"persist","remove"})
@@ -63,17 +63,17 @@ class Result
     /**
      * @return mixed
      */
-    public function getEventId()
+    public function getEvent()
     {
-        return $this->event_id;
+        return $this->event;
     }
 
     /**
-     * @param mixed $event_id
+     * @param mixed $event
      */
-    public function setEventId($event_id)
+    public function setEvent($event)
     {
-        $this->event_id = $event_id;
+        $this->event = $event;
     }
 
     /**

@@ -14,4 +14,5 @@ namespace System\Registry;
  */
 interface IRegistry
 {
+    public function getEventManager();
 }

@@ -20,6 +20,7 @@
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
+            {{modules.qualifyCountDown}}
             {{modules.raceCountDown}}
         </div>
 

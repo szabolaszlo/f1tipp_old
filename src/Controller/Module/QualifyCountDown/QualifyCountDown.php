@@ -6,7 +6,7 @@
  * Time: 19:40
  */
 
-namespace Controller\Module\RaceCountDown;
+namespace Controller\Module\QualifyCountDown;
 
 use Controller\Controller;
 use System\CountDown\CountDown;
@@ -16,7 +16,7 @@ use System\EventManager\EventManager;
  * Class RaceCountDown
  * @package Controller\Module
  */
-class RaceCountDown extends Controller
+class QualifyCountDown extends Controller
 {
     /**
      * @return mixed
@@ -26,7 +26,7 @@ class RaceCountDown extends Controller
         /** @var EventManager $eventManager */
         $eventManager = $this->registry->getEventManager();
 
-        $race = $eventManager->getNextRace();
+        $race = $eventManager->getNextQualify();
 
         $countDown = new CountDown($this->getId(), $race->getDateTime(), $this->renderer);
 
