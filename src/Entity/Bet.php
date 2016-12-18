@@ -38,7 +38,7 @@ class Bet
     protected $event_id;
 
     /**
-     * @ORM\OneToMany(targetEntity="BetAttribute", mappedBy="result", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="BetAttribute", mappedBy="bet", cascade={"persist","remove"})
      */
     protected $attributes;
 
