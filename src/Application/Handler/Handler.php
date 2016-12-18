@@ -43,6 +43,8 @@ abstract class Handler
      * @var IRegistry
      */
     protected $registry;
+    
+    protected $resolver;
 
     /**
      * @param IRequest $request
@@ -50,18 +52,21 @@ abstract class Handler
      * @param \Twig_Environment $renderer
      * @param $entityManager
      * @param IRegistry $registry
+     * @param $resolver
      */
     public function setDependency(
         IRequest $request,
         ISession $session,
         \Twig_Environment $renderer,
         $entityManager,
-        IRegistry $registry
+        IRegistry $registry,
+        $resolver
     ) {
         $this->request = $request;
         $this->session = $session;
         $this->renderer = $renderer;
         $this->entityManager = $entityManager;
         $this->registry = $registry;
+        $this->resolver = $resolver;
     }
 }

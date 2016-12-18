@@ -8,7 +8,7 @@
 namespace Application\Handler\Page;
 
 use Application\Handler\Handler;
-use Application\Handler\Page\Resolver\IResolver;
+use Application\Handler\Page\Resolver\PageParameterResolver;
 use Controller\Controller;
 
 /**
@@ -18,18 +18,10 @@ use Controller\Controller;
 class PageHandler extends Handler
 {
     /**
-     * @var IResolver
+     * @var PageParameterResolver
      */
     protected $resolver;
-
-    /**
-     * @param IResolver $resolver
-     */
-    public function setResolver(IResolver $resolver)
-    {
-        $this->resolver = $resolver;
-    }
-
+    
     /**
      * @return mixed
      */

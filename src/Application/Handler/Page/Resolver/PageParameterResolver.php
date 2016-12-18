@@ -6,9 +6,8 @@ namespace Application\Handler\Page\Resolver;
  * Class ParameterResolver
  * @package Application\Handler\Page\Resolver
  */
-class ParameterResolver implements IResolver
+class PageParameterResolver
 {
-
     /**
      * @var string
      */

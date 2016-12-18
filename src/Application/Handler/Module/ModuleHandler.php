@@ -9,6 +9,7 @@
 namespace Application\Handler\Module;
 
 use Application\Handler\Handler;
+use Application\Handler\Module\Resolver\ModuleParameterResolver;
 use Controller\Controller;
 
 /**
@@ -17,6 +18,11 @@ use Controller\Controller;
  */
 class ModuleHandler extends Handler
 {
+    /**
+     * @var ModuleParameterResolver
+     */
+    protected $resolver;
+    
     /**
      * @var array
      */
@@ -37,6 +43,8 @@ class ModuleHandler extends Handler
      */
     public function getModules()
     {
+        $this->resolver->resolve($this->request->getGet('module', ''));
+
         $moduleDirectories = glob($_SERVER['DOCUMENT_ROOT'] . $this->path, GLOB_ONLYDIR);
 
         foreach ($moduleDirectories as $moduleDirectory) {
@@ -53,7 +61,14 @@ class ModuleHandler extends Handler
                 $this->entityManager,
                 $this->registry
             );
-            $this->modules[$module->getId()] = $module->indexAction();
+
+            if ($this->resolver->getModule() == $module->getId()) {
+                $action = $this->resolver->getAction();
+            } else {
+                $action = 'indexAction';
+            }
+
+            $this->modules[$module->getId()] = $module->$action();
         }
 
         return $this->modules;

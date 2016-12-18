@@ -65,23 +65,38 @@ class Application
      * @param IRequest $request
      * @param ISession $session
      * @param Response $response
-     * @param $parameterResolver
      * @param IRegistry $registry
+     * @param $pageParameterResolver
+     * @param $moduleParameterResolver
      */
     public function dispatch(
         IRequest $request,
         ISession $session,
         Response $response,
-        $parameterResolver,
-        IRegistry $registry
+        IRegistry $registry,
+        $pageParameterResolver,
+        $moduleParameterResolver
     ) {
         //page
-        $this->pageHandler->setDependency($request, $session, $this->renderer, $this->entityManager, $registry);
-        $this->pageHandler->setResolver($parameterResolver);
+        $this->pageHandler->setDependency(
+            $request,
+            $session,
+            $this->renderer,
+            $this->entityManager,
+            $registry,
+            $pageParameterResolver
+        );
         $page = $this->pageHandler->getPage();
 
         //modules
-        $this->moduleHandler->setDependency($request, $session, $this->renderer, $this->entityManager, $registry);
+        $this->moduleHandler->setDependency(
+            $request,
+            $session,
+            $this->renderer,
+            $this->entityManager,
+            $registry,
+            $moduleParameterResolver
+        );
         $modules = $this->moduleHandler->getModules();
 
         //response
