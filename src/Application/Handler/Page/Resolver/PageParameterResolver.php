@@ -19,6 +19,16 @@ class PageParameterResolver
     protected $action = 'notfound';
 
     /**
+     * @var string
+     */
+    protected $defaultPageClass = 'Controller\\Page\\Error\Error';
+
+    /**
+     * @var string
+     */
+    protected $defaultAction = 'notfoundAction';
+
+    /**
      * @param $route
      */
     public function resolve($route)
@@ -44,5 +54,21 @@ class PageParameterResolver
     public function getAction()
     {
         return $this->action . 'Action';
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultPageClass()
+    {
+        return $this->defaultPageClass;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultAction()
+    {
+        return $this->defaultAction;
     }
 }

@@ -22,7 +22,7 @@ class ModuleHandler extends Handler
      * @var ModuleParameterResolver
      */
     protected $resolver;
-    
+
     /**
      * @var array
      */
@@ -53,6 +53,10 @@ class ModuleHandler extends Handler
             $moduleClassFile = str_replace('.php', '', $moduleClassFile);
             $moduleClassFile = $this->nameSpace . $moduleClassFile . '\\' . $moduleClassFile;
 
+            if (!class_exists($moduleClassFile)) {
+                continue;
+            }
+
             /** @var Controller $module */
             $module = new $moduleClassFile(
                 $this->request,
@@ -65,6 +69,10 @@ class ModuleHandler extends Handler
             if ($this->resolver->getModule() == $module->getId()) {
                 $action = $this->resolver->getAction();
             } else {
+                $action = 'indexAction';
+            }
+
+            if (!method_exists($module, $action)) {
                 $action = 'indexAction';
             }
 
