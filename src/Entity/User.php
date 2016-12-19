@@ -24,9 +24,14 @@ class User
     protected $name;
 
     /**
-     * @ORM\Column(name="password", type="string", length=45, nullable=false)
+     * @ORM\Column(name="password", type="string", length=60, nullable=false)
      */
     protected $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserAuthentication", mappedBy="user", cascade={"persist","remove"})
+     */
+    protected $auth;
 
     /**
      * @ORM\Column(name="timestamp", type="integer", length=11, nullable=false)

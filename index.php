@@ -15,7 +15,7 @@ $entityManager = getEntityManager();
 $request = new \Application\HttpProtocol\Request($_POST, $_GET);
 $response = new \Application\HttpProtocol\Response();
 
-$session = new \Application\HttpProtocol\Session($_SESSION);
+$session = new \Application\HttpProtocol\Session();
 
 $pageHandler = new \Application\Handler\Page\PageHandler();
 $moduleHandler = new \Application\Handler\Module\ModuleHandler();
@@ -25,7 +25,9 @@ $moduleResolver = new \Application\Handler\Module\Resolver\ModuleParameterResolv
 
 $renderEngine = getTwig();
 
-$registry = new \System\Registry\Registry($request, $session, $entityManager);
+$cookie = new \Application\HttpProtocol\Cookie();
+
+$registry = new \System\Registry\Registry($request, $session, $entityManager, $cookie);
 
 $app = new \Application\Application($pageHandler, $moduleHandler, $renderEngine, $entityManager);
 

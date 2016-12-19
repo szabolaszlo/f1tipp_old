@@ -26,4 +26,9 @@ interface ISession
      * @return mixed|string
      */
     public function get($key, $default = '');
+
+    /**
+     * @param $key
+     */
+    public function remove($key);
 }

@@ -35,12 +35,7 @@ class Application
      * @var PageHandler
      */
     protected $pageHandler;
-
-    /**
-     * @var string
-     */
-    protected $domain;
-
+    
     /**
      * Application constructor.
      * @param PageHandler $pageHandler
@@ -58,7 +53,6 @@ class Application
         $this->moduleHandler = $moduleHandler;
         $this->renderer = $renderer;
         $this->entityManager = $entityManager;
-        $this->domain = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'];
     }
 
     /**
@@ -104,7 +98,7 @@ class Application
             $this->renderer->render(
                 'index.tpl',
                 array(
-                    'domain' => $this->domain,
+                    'domain' => $registry->getServer()->getDomain(),
                     'page' => $page,
                     'modules' => $modules
                 )

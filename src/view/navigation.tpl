@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <nav class="navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-default navbar-header">
             <button type="button" class="navbar-default navbar-toggle" data-toggle="collapse"
@@ -19,12 +19,19 @@
                     <a href="#">Tippelek</a>
                 </li>
                 <li>
-                    <a href="#">Versenynaptár</a>
+                    <a href="#">Naptár</a>
+                </li>
+                <li>
+                    <a href="#">Szabályzat</a>
+                </li>
+                <li>
+                    <a href="#">Szabályzat</a>
                 </li>
                 <li>
                     <a href="#">Szabályzat</a>
                 </li>
             </ul>
+            {{modules.login|raw}}
         </div>
         <!-- /.navbar-collapse -->
     </div>

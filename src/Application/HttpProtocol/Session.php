@@ -15,26 +15,12 @@ namespace Application\HttpProtocol;
 class Session implements ISession
 {
     /**
-     * @var array
-     */
-    protected $session = array();
-
-    /**
-     * Session constructor.
-     * @param $session
-     */
-    public function __construct($session)
-    {
-        $this->session = $session;
-    }
-
-    /**
      * @param $key
      * @param $value
      */
     public function set($key, $value)
     {
-        $this->session[$key] = $value;
+        $_SESSION[$_SERVER['SERVER_NAME'] . $key] = $value;
     }
 
     /**
@@ -44,6 +30,16 @@ class Session implements ISession
      */
     public function get($key, $default = '')
     {
-        return isset($this->session[$key]) ? $this->session[$key] : $default;
+        return isset($_SESSION[$_SERVER['SERVER_NAME'] . $key])
+            ? $_SESSION[$_SERVER['SERVER_NAME'] . $key]
+            : $default;
+    }
+
+    /**
+     * @param $key
+     */
+    public function remove($key)
+    {
+        unset($_SESSION[$_SERVER['SERVER_NAME'] . $key]);
     }
 }

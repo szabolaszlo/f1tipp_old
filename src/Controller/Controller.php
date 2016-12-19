@@ -67,7 +67,7 @@ abstract class Controller
         $this->request = $request;
         $this->session = $session;
         $this->renderer = $renderer;
-        $this->entityManger;
+        $this->entityManger = $entityManager;
         $this->registry = $registry;
 
         $reflect = new \ReflectionClass($this);

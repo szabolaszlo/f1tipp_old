@@ -25,18 +25,20 @@ Debug::enable();
 function getEntityManager()
 {
     $paths = array(__DIR__ . '/src/Entity');
-    $isDevMode = false;
+    $isDevMode = true;
     // the connection configuration
     $dbParams = array(
         'host' => 'localhost',
         'driver' => 'pdo_mysql',
-        'user' => '',
-        'password' => '',
-        'dbname' => '',
+        'user' => ' ',
+        'password' => ' ',
+        'dbname' => ' ',
+        'charset' => 'UTF8'
     );
     $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
     $driver = new AnnotationDriver(new AnnotationReader(), $paths);
     $cache = new \Doctrine\Common\Cache\FilesystemCache('cache/doctrine');
+    $config->setProxyDir(__DIR__ . '/cache/doctrine');
     $config->setHydrationCacheImpl($cache);
     $config->setMetadataCacheImpl($cache);
     $config->setQueryCacheImpl($cache);
