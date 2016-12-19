@@ -19,7 +19,7 @@
                     <a href="#">Tippelek</a>
                 </li>
                 <li>
-                    <a href="#">Naptár</a>
+                    <a href="?page=calendar/index">Naptár</a>
                 </li>
                 <li>
                     <a href="#">Szabályzat</a>

@@ -27,7 +27,7 @@ class PageHandler extends Handler
      */
     public function getPage()
     {
-        $this->resolver->resolve($this->request->getGet('route', 'error/notfound'));
+        $this->resolver->resolve($this->request->getGet('page', 'error/notfound'));
 
         $pageClassName = $this->resolver->getPage();
         /** @var Controller $page */

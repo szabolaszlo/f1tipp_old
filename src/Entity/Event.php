@@ -99,4 +99,14 @@ class Event
     {
         $this->date_time = $date_time;
     }
+
+    /**
+     * Sorry this WTF,
+     * but Doctrine can't able to access the discriminator column
+     * @return string ('qualify'|'race')
+     */
+    public function getType()
+    {
+        return lcfirst(substr(strrchr(get_class($this), "\\"), 1));
+    }
 }
