@@ -9,10 +9,10 @@
     <title>F1 Tipp</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{domain}}/src/view/css/bootstrap.css" rel="stylesheet">
+    <link href="{{domain}}/src/view/vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="{{domain}}/src/view/css/blog-post.css" rel="stylesheet">
+    <!-- Custom CSS-->
+    <link href="{{domain}}/src/view/custom-bootstrap/custom-bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

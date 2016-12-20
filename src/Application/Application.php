@@ -96,7 +96,7 @@ class Application
         //response
         $response->setContent(
             $this->renderer->render(
-                'index.tpl',
+                'application/index.tpl',
                 array(
                     'domain' => $registry->getServer()->getDomain(),
                     'page' => $page,

@@ -1,20 +1,19 @@
-<!-- Navigation -->
-<nav class="navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-default navbar-header">
-            <button type="button" class="navbar-default navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#f1tipp-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{domain}}/src/view/image/logo.png" height="50" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="{{domain}}/src/view/image/logo.png" height="51" alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="navbar-default nav navbar-nav">
+        <div class="collapse navbar-collapse" id="f1tipp-navbar-collapse">
+            <ul class="nav navbar-nav">
                 <li>
                     <a href="#">Tippelek</a>
                 </li>
@@ -31,7 +30,9 @@
                     <a href="#">Szabályzat</a>
                 </li>
             </ul>
-            {{modules.login|raw}}
+            <ul class="nav navbar-nav navbar-right">
+                <li>{{modules.login|raw}}</li>
+            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>

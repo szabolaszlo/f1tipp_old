@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="hu">
 
-{% include('head.tpl') %}
+{% include('application/head.tpl') %}
 
 <body>
 
-{% include('navigation.tpl') %}
+{% include('application/navigation.tpl') %}
 
 <!-- Page Content -->
 <div class="container">
@@ -42,10 +42,10 @@
 <!-- /.container -->
 
 <!-- jQuery -->
-<script type="text/javascript" src="{{domain}}/src/view/js/jquery.js"></script>
+<script type="text/javascript" src="{{domain}}/src/view/vendor/jquery/jquery-3.1.1.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script type="text/javascript" src="{{domain}}/src/view/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{domain}}/src/view/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
