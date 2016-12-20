@@ -5,7 +5,7 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Entity\Repository\Event")
  * @ORM\Table(name="`event`")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="event_type", type="string", columnDefinition="ENUM('race', 'qualify', 'event')"))

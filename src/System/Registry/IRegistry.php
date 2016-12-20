@@ -14,8 +14,6 @@ namespace System\Registry;
  */
 interface IRegistry
 {
-    public function getEventManager();
-
     public function getCookie();
 
     public function getUserAuth();

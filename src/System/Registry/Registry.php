@@ -14,7 +14,6 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
-use System\EventManager\EventManager;
 use System\UserAuthentication\Authentication;
 
 /**
@@ -37,12 +36,7 @@ class Registry implements IRegistry
      * @var EntityManagerInterface
      */
     protected $entityManger;
-
-    /**
-     * @var EventManager
-     */
-    protected $eventManager;
-
+    
     /**
      * @var ICookie
      */
@@ -90,17 +84,6 @@ class Registry implements IRegistry
             $this->userAuth = new Authentication($this->entityManger, $this->cookie);
         }
         return $this->userAuth;
-    }
-
-    /**
-     * @return EventManager
-     */
-    public function getEventManager()
-    {
-        if (!$this->eventManager) {
-            $this->eventManager = new EventManager($this->entityManger);
-        }
-        return $this->eventManager;
     }
 
     /**

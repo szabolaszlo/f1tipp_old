@@ -9,8 +9,9 @@
 namespace Controller\Module\QualifyCountDown;
 
 use Controller\Controller;
+use Entity\Qualify;
+use Entity\Repository\Event;
 use System\CountDown\CountDown;
-use System\EventManager\EventManager;
 
 /**
  * Class RaceCountDown
@@ -23,19 +24,20 @@ class QualifyCountDown extends Controller
      */
     public function indexAction()
     {
-        /** @var EventManager $eventManager */
-        $eventManager = $this->registry->getEventManager();
+        /** @var Event $repository */
+        $repository = $this->entityManger->getRepository('Entity\Qualify');
+        
+        /** @var Qualify $qualify */
+        $qualify = $repository->getNextEvent();
 
-        $race = $eventManager->getNextQualify();
-
-        $countDown = new CountDown($this->getId(), $race->getDateTime(), $this->renderer);
+        $countDown = new CountDown($this->getId(), $qualify->getDateTime(), $this->renderer);
 
         return $this->renderer->render(
-            'controller/module/race_count_down/race_count_down.tpl',
+            'controller/module/count_down/count_down.tpl',
             array(
                 'id' => $this->getId(),
-                'name' => $race->getName(),
-                'date' => $race->getDateTime()->format('Y-m-d H:i'),
+                'name' => $qualify->getName(),
+                'date' => $qualify->getDateTime()->format('Y-m-d H:i'),
                 'countDown' => $countDown->render()
             )
         );

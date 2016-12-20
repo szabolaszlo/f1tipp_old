@@ -3,7 +3,7 @@
     <a href="?page=calendar/race" class="btn btn-danger {{type == 'Race' ? 'active' : ''}}"role="button">Futamok</a>
     <a href="?page=calendar/index" class="btn btn-danger {{type == 'Event' ? 'active' : ''}}"role="button">Összes</a>
 </div>
-<table class="table">
+<table class="table table-responsive table-hovered">
     <thead>
     <tr>
         <th>Típus</th>
