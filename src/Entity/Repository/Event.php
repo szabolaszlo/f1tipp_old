@@ -31,8 +31,8 @@ class Event extends EntityRepository
         $date = new \DateTime();
         $date->sub(new \DateInterval('P2D'));
 
-        $nextEvent = $this->createQueryBuilder('q')
-            ->where('q.date_time > :time')
+        $nextEvent = $this->createQueryBuilder('e')
+            ->where('e.date_time > :time')
             ->setMaxResults(1)
             ->setParameter('time', $date)
             ->getQuery()
@@ -47,5 +47,36 @@ class Event extends EntityRepository
         $resultCache->save($cacheKey, $nextEvent, strtotime('+2 days', $nextEvent->getDateTime()->getTimeStamp()));
 
         return $nextEvent;
+    }
+
+    /**
+     * @return array|mixed
+     */
+    public function getRemainEvents()
+    {
+        $resultCache = $this->_em->getConfiguration()->getResultCacheImpl();
+        $cacheKey = $this->_entityName . 'Remain';
+
+        if ($resultCache->contains($cacheKey)) {
+            return $resultCache->fetch($cacheKey);
+        }
+
+        $date = new \DateTime();
+        $date->sub(new \DateInterval('PT2H'));
+
+        $remainEvents = $this->createQueryBuilder('e')
+            ->where('e.date_time > :time')
+            ->setParameter('time', $date)
+            ->getQuery()
+            ->getResult();
+
+        if (!empty($remainEvents)) {
+            $resultCache->save(
+                $cacheKey,
+                $remainEvents,
+                strtotime('+2 hours', $remainEvents[0]->getDateTime()->getTimeStamp())
+            );
+        }
+        return $remainEvents;
     }
 }

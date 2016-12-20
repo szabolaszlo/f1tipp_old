@@ -10,6 +10,7 @@
 namespace Controller\Page\Calendar;
 
 use Controller\Controller;
+use Entity\Repository\Event;
 
 /**
  * Class Calendar
@@ -22,7 +23,12 @@ class Calendar extends Controller
      */
     public function indexAction()
     {
-        return $this->action('Event');
+        /** @var Event $repository */
+        $repository = $this->entityManger->getRepository('Entity\Event');
+
+        $remainEvents = $repository->getRemainEvents();
+
+        return $this->render($remainEvents, 'Event');
     }
 
     /**
@@ -30,7 +36,12 @@ class Calendar extends Controller
      */
     public function qualifyAction()
     {
-        return $this->action('Qualify');
+        /** @var Event $repository */
+        $repository = $this->entityManger->getRepository('Entity\Qualify');
+
+        $remainEvents = $repository->getRemainEvents();
+
+        return $this->render($remainEvents, 'Qualify');
     }
 
     /**
@@ -38,29 +49,12 @@ class Calendar extends Controller
      */
     public function raceAction()
     {
-        return $this->action('Race');
-    }
+        /** @var Event $repository */
+        $repository = $this->entityManger->getRepository('Entity\Race');
 
-    /**
-     * @param $type
-     * @return string
-     */
-    protected function action($type)
-    {
-        $events = $this->getEvents($type);
+        $remainEvents = $repository->getRemainEvents();
 
-        return $this->render($events, $type);
-    }
-
-    /**
-     * @param $entity
-     * @return array
-     */
-    protected function getEvents($entity)
-    {
-        return $this->entityManger
-            ->createQuery('SELECT e FROM Entity\\' . $entity . ' e WHERE e.date_time > CURRENT_DATE()')
-            ->getResult();
+        return $this->render($remainEvents, 'Race');
     }
 
     /**
