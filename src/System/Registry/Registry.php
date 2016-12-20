@@ -14,6 +14,9 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Rule\Rule;
+use System\Rule\RuleType\Qualify as QualifyRule;
+use System\Rule\RuleType\Race as RaceRule;
 use System\UserAuthentication\Authentication;
 
 /**
@@ -36,7 +39,7 @@ class Registry implements IRegistry
      * @var EntityManagerInterface
      */
     protected $entityManger;
-    
+
     /**
      * @var ICookie
      */
@@ -51,6 +54,11 @@ class Registry implements IRegistry
      * @var Server
      */
     protected $server;
+
+    /**
+     * @var Rule
+     */
+    protected $rule;
 
     /**
      * Registry constructor.
@@ -95,5 +103,22 @@ class Registry implements IRegistry
             $this->server = new Server();
         }
         return $this->server;
+    }
+
+    /**
+     * @return Rule
+     */
+    public function getRule()
+    {
+        if (!$this->rule) {
+            $ruleTypes = array(
+                'qualify' => new QualifyRule(),
+                'race' => new RaceRule()
+            );
+
+            $this->rule = new Rule($ruleTypes);
+        }
+        
+        return $this->rule;
     }
 }

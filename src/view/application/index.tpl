@@ -15,7 +15,7 @@
 
         <!-- Content Column -->
         <div class="col-lg-8">
-            {{ page }}
+            {{ page.content }}
         </div>
 
         <!-- Sidebar Widgets Column -->

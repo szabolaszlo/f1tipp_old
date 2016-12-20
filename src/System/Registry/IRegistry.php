@@ -7,6 +7,10 @@
  */
 
 namespace System\Registry;
+use Application\HttpProtocol\Server;
+use System\Rule\Rule;
+use System\Rule\RuleType\Qualify as QualifyRule;
+use System\Rule\RuleType\Race as RaceRule;
 
 /**
  * Interface IRegistry
@@ -19,4 +23,6 @@ interface IRegistry
     public function getUserAuth();
 
     public function getServer();
+    
+    public function getRule();
 }

@@ -14,11 +14,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="f1tipp-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Tippelek</a>
+                <li {{page.id == 'betting' ? 'class="active"' : ''}}>
+                    <a href="?page=betting/index">Tippelek</a>
                 </li>
-                <li>
-                    <a href="?page=calendar/index">Naptár</a>
+                <li {{page.id == 'calendar' ? 'class="active"' : ''}}>
+                    <a href="?page=calendar/index">{{page.getId()}}Naptár</a>
                 </li>
                 <li>
                     <a href="#">Szabályzat</a>

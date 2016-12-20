@@ -61,6 +61,6 @@ class PageHandler extends Handler
             $action = $this->resolver->getDefaultAction();
         }
 
-        return $page->$action();
+        return array('id'=> $page->getId(), 'content' => $page->$action());
     }
 }
