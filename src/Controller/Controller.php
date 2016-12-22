@@ -51,24 +51,16 @@ abstract class Controller
 
     /**
      * Controller constructor.
-     * @param IRequest $request
-     * @param ISession $session
-     * @param \Twig_Environment $renderer
-     * @param $entityManager
      * @param IRegistry $registry
      */
-    public function __construct(
-        IRequest $request,
-        ISession $session,
-        \Twig_Environment $renderer,
-        $entityManager,
-        IRegistry $registry
-    ) {
-        $this->request = $request;
-        $this->session = $session;
-        $this->renderer = $renderer;
-        $this->entityManger = $entityManager;
+    public function __construct(IRegistry $registry)
+    {
         $this->registry = $registry;
+
+        $this->request = $this->registry->getRequest();
+        $this->session = $this->registry->getSession();
+        $this->renderer = $this->registry->getRenderer();
+        $this->entityManger = $this->registry->getEntityManger();
 
         $reflect = new \ReflectionClass($this);
         $this->id = lcfirst($reflect->getShortName());

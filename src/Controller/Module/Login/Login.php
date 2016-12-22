@@ -9,9 +9,7 @@
 
 namespace Controller\Module\Login;
 
-use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\IServer;
-use Application\HttpProtocol\ISession;
 use Controller\Controller;
 use Entity\User;
 use System\Registry\IRegistry;
@@ -35,20 +33,11 @@ class Login extends Controller
 
     /**
      * Login constructor.
-     * @param IRequest $request
-     * @param ISession $session
-     * @param \Twig_Environment $renderer
-     * @param $entityManager
      * @param IRegistry $registry
      */
-    public function __construct(
-        IRequest $request,
-        ISession $session,
-        \Twig_Environment $renderer,
-        $entityManager,
-        IRegistry $registry
-    ) {
-        parent::__construct($request, $session, $renderer, $entityManager, $registry);
+    public function __construct(IRegistry $registry)
+    {
+        parent::__construct($registry);
 
         $this->authentication = $this->registry->getUserAuth();
         $this->server = $this->registry->getServer();

@@ -9,7 +9,10 @@
 namespace System\Registry;
 
 use Application\HttpProtocol\ICookie;
+use Application\HttpProtocol\IRequest;
+use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
+use Doctrine\ORM\EntityManagerInterface;
 use System\FormHelper\FormHelper;
 use System\Language\Language;
 use System\Rule\Rule;
@@ -21,6 +24,25 @@ use System\UserAuthentication\Authentication;
  */
 interface IRegistry
 {
+    /**
+     * @return IRequest
+     */
+    public function getRequest();
+
+    /**
+     * @return ISession
+     */
+    public function getSession();
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEntityManger();
+
+    /**
+     * @return \Twig_Environment
+     */
+    public function getRenderer();
+
     /**
      * @return ICookie
      */

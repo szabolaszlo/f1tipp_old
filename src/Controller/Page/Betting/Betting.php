@@ -9,8 +9,6 @@
 
 namespace Controller\Page\Betting;
 
-use Application\HttpProtocol\IRequest;
-use Application\HttpProtocol\ISession;
 use Controller\Controller;
 use Entity\Qualify;
 use Entity\Race;
@@ -57,21 +55,11 @@ class Betting extends Controller
 
     /**
      * Betting constructor.
-     * @param IRequest $request
-     * @param ISession $session
-     * @param \Twig_Environment $renderer
-     * @param $entityManager
      * @param IRegistry $registry
      */
-    public function __construct(
-        IRequest $request,
-        ISession $session,
-        \Twig_Environment $renderer,
-        $entityManager,
-        IRegistry $registry
-    )
+    public function __construct(IRegistry $registry)
     {
-        parent::__construct($request, $session, $renderer, $entityManager, $registry);
+        parent::__construct($registry);
 
         //User
         $this->user = $this->registry->getUserAuth()->getLoggedUser();
@@ -100,6 +88,7 @@ class Betting extends Controller
      */
     public function indexAction()
     {
+        $language = $this->registry->getLanguage()->get('betting_no_login');
 
         return $this->renderer->render(
             'controller/page/betting/betting.tpl',

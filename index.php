@@ -13,24 +13,27 @@ require_once 'bootstrap.php';
 $entityManager = getEntityManager();
 
 $request = new \Application\HttpProtocol\Request($_POST, $_GET);
+
 $response = new \Application\HttpProtocol\Response();
 
 $session = new \Application\HttpProtocol\Session();
 
-$pageHandler = new \Application\Handler\Page\PageHandler();
-$moduleHandler = new \Application\Handler\Module\ModuleHandler();
+$cookie = new \Application\HttpProtocol\Cookie();
+
+$renderEngine = getTwig();
+
+$registry = new \System\Registry\Registry($request, $session, $entityManager, $cookie, $renderEngine);
+
 
 $pageResolver = new \Application\Handler\Page\Resolver\PageParameterResolver();
 $moduleResolver = new \Application\Handler\Module\Resolver\ModuleParameterResolver();
 
-$renderEngine = getTwig();
+$pageHandler = new \Application\Handler\Page\PageHandler($registry, $pageResolver);
+$moduleHandler = new \Application\Handler\Module\ModuleHandler($registry, $moduleResolver);
 
-$cookie = new \Application\HttpProtocol\Cookie();
 
-$registry = new \System\Registry\Registry($request, $session, $entityManager, $cookie, $renderEngine);
+$app = new \Application\Application($pageHandler, $moduleHandler, $registry);
 
-$app = new \Application\Application($pageHandler, $moduleHandler, $renderEngine, $entityManager);
-
-$app->dispatch($request, $session, $response, $registry, $pageResolver, $moduleResolver);
+$app->dispatch($response);
 
 echo $response->send();

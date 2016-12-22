@@ -97,6 +97,38 @@ class Registry implements IRegistry
     }
 
     /**
+     * @return IRequest
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+
+    /**
+     * @return ISession
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @return EntityManagerInterface
+     */
+    public function getEntityManger()
+    {
+        return $this->entityManger;
+    }
+
+    /**
+     * @return \Twig_Environment
+     */
+    public function getRenderer()
+    {
+        return $this->renderer;
+    }
+
+    /**
      * @return ICookie
      */
     public function getCookie()

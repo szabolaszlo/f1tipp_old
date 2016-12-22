@@ -27,7 +27,7 @@ class PageHandler extends Handler
      */
     public function getPage()
     {
-        $this->resolver->resolve($this->request->getGet('page', 'error/notfound'));
+        $this->resolver->resolve($this->registry->getRequest()->getGet('page', 'error/notfound'));
 
         $pageClassName = $this->resolver->getPage();
 
@@ -36,13 +36,7 @@ class PageHandler extends Handler
         }
 
         /** @var Controller $page */
-        $page = new $pageClassName(
-            $this->request,
-            $this->session,
-            $this->renderer,
-            $this->entityManager,
-            $this->registry
-        );
+        $page = new $pageClassName($this->registry);
 
         $action = $this->resolver->getAction();
 
@@ -50,17 +44,11 @@ class PageHandler extends Handler
             $pageClassName = $this->resolver->getDefaultPageClass();
 
             /** @var Controller $page */
-            $page = new $pageClassName(
-                $this->request,
-                $this->session,
-                $this->renderer,
-                $this->entityManager,
-                $this->registry
-            );
+            $page = new $pageClassName($this->registry);
 
             $action = $this->resolver->getDefaultAction();
         }
 
-        return array('id'=> $page->getId(), 'content' => $page->$action());
+        return array('id' => $page->getId(), 'content' => $page->$action());
     }
 }

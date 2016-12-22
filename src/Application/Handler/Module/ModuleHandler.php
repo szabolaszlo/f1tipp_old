@@ -43,7 +43,7 @@ class ModuleHandler extends Handler
      */
     public function getModules()
     {
-        $this->resolver->resolve($this->request->getGet('module', ''));
+        $this->resolver->resolve($this->registry->getRequest()->getGet('module', ''));
 
         $moduleDirectories = glob($_SERVER['DOCUMENT_ROOT'] . $this->path, GLOB_ONLYDIR);
 
@@ -58,13 +58,7 @@ class ModuleHandler extends Handler
             }
 
             /** @var Controller $module */
-            $module = new $moduleClassFile(
-                $this->request,
-                $this->session,
-                $this->renderer,
-                $this->entityManager,
-                $this->registry
-            );
+            $module = new $moduleClassFile($this->registry);
 
             if ($this->resolver->getModule() == $module->getId()) {
                 $action = $this->resolver->getAction();
