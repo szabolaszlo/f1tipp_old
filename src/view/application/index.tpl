@@ -32,7 +32,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; F1 Tipp 2014</p>
+                <p>{{language.get('app_creator')}}</p>
             </div>
         </div>
         <!-- /.row -->

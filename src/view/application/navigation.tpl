@@ -15,19 +15,13 @@
         <div class="collapse navbar-collapse" id="f1tipp-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li {{page.id == 'betting' ? 'class="active"' : ''}}>
-                    <a href="?page=betting/index">Tippelek</a>
+                    <a href="?page=betting/index">{{language.get('nav_bet')}}</a>
                 </li>
                 <li {{page.id == 'calendar' ? 'class="active"' : ''}}>
-                    <a href="?page=calendar/index">{{page.getId()}}Naptár</a>
+                    <a href="?page=calendar/index">{{language.get('nav_calendar')}}</a>
                 </li>
                 <li>
-                    <a href="#">Szabályzat</a>
-                </li>
-                <li>
-                    <a href="#">Szabályzat</a>
-                </li>
-                <li>
-                    <a href="#">Szabályzat</a>
+                    <a href="#">{{language.get('nav_rules')}}</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

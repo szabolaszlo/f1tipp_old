@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>F1 Tipp</title>
+    <title>{{language.get('app_title')}}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{domain}}/src/view/vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">

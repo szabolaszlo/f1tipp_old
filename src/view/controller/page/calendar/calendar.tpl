@@ -1,20 +1,26 @@
 <div style="text-align: center">
-    <a href="?page=calendar/qualify" class="btn btn-danger {{type == 'Qualify' ? 'active' : ''}}" role="button">Időmérők</a>
-    <a href="?page=calendar/race" class="btn btn-danger {{type == 'Race' ? 'active' : ''}}"role="button">Futamok</a>
-    <a href="?page=calendar/index" class="btn btn-danger {{type == 'Event' ? 'active' : ''}}"role="button">Összes</a>
+    <a href="?page=calendar/qualify" class="btn btn-danger {{type == 'Qualify' ? 'active' : ''}}" role="button">
+        {{language.get('general_qualify')}}
+    </a>
+    <a href="?page=calendar/race" class="btn btn-danger {{type == 'Race' ? 'active' : ''}}" role="button">
+        {{language.get('general_races')}}
+    </a>
+    <a href="?page=calendar/index" class="btn btn-danger {{type == 'Event' ? 'active' : ''}}" role="button">
+        {{language.get('general_all')}}
+    </a>
 </div>
 <table class="table table-responsive table-hovered">
     <thead>
     <tr>
-        <th>Típus</th>
-        <th>Esemény</th>
-        <th>Idő</th>
+        <th>{{language.get('calendar_type')}}</th>
+        <th>{{language.get('calendar_event')}}</th>
+        <th>{{language.get('calendar_time')}}</th>
     </tr>
     </thead>
     <tbody>
     {% for event in events %}
     <tr>
-        <td>{{event.getType() == 'race' ? 'Futam' : 'Időmérő'}}</td>
+        <td>{{event.getType() == 'race' ? language.get('general_race') : language.get('general_qualify')}}</td>
         <td>{{event.getName()}}</td>
         <td>{{event.getDateTime()|date("Y. M. d.")}}</td>
     </tr>

@@ -1,1 +1,1 @@
-<h1>{{error}}</h1>
+<h1>{{language.get('error_not_found_page')}}</h1>

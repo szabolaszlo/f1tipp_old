@@ -21,7 +21,6 @@ class Error extends Controller
      */
     public function notFoundAction()
     {
-        $this->data['error'] = "Az oldal nem található";
         return $this->render();
     }
 }

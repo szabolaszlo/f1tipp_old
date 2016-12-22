@@ -62,7 +62,8 @@ class Application
                 array(
                     'domain' => $this->registry->getServer()->getDomain(),
                     'page' => $page,
-                    'modules' => $modules
+                    'modules' => $modules,
+                    'language' => $this->registry->getLanguage()
                 )
             )
         );
