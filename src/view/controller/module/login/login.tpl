@@ -2,7 +2,7 @@
 
     <div class="input-group {{ error.error_user ? 'has-error' : ''}}">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input id="text" type="text" class="form-control" name="user-name" value="{{user}}" placeholder="{{ error.error_user ? language.get('user_fail') ~ ' ' : ''}}{{language.get('user_name')}}">
+        <input id="text" type="text" class="form-control" name="user-name" value="{{userName}}" placeholder="{{ error.error_user ? language.get('user_fail') ~ ' ' : ''}}{{language.get('user_name')}}">
         {{ error.error_user ? '<span class="glyphicon glyphicon-remove form-control-feedback"></span>' : ''}}
     </div>
 
