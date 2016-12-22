@@ -63,24 +63,18 @@ class Login extends Controller
      */
     public function loginAction()
     {
-        $error = array(
+        $this->data['error'] = array(
             'error_user' => $this->session->get('error_user'),
             'error_password' => $this->session->get('error_password')
         );
 
-        $userName = $this->session->get('user_name');
+        $this->data['userName'] = $this->session->get('user_name');
 
         $this->session->remove('error_user');
         $this->session->remove('error_password');
         $this->session->remove('user_name');
 
-        return $this->renderer->render(
-            'controller/module/login/login.tpl',
-            array(
-                'error' => $error,
-                'user' => $userName
-            )
-        );
+        return $this->render();
     }
 
     /**
@@ -89,10 +83,11 @@ class Login extends Controller
      */
     public function loggedAction(User $loggedUser)
     {
-        return $this->renderer->render(
-            'controller/module/login/logged.tpl',
-            array('name' => $loggedUser->getName())
-        );
+        $this->data['name'] = $loggedUser->getName();
+        
+        $this->setTemplate('controller/module/login/logged.tpl');
+        
+        return $this->render();
     }
 
     public function tryLoginAction()

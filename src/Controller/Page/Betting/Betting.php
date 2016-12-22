@@ -88,23 +88,19 @@ class Betting extends Controller
      */
     public function indexAction()
     {
-        $language = $this->registry->getLanguage()->get('betting_no_login');
-
-        return $this->renderer->render(
-            'controller/page/betting/betting.tpl',
-            array(
-                'events' => array(
-                    'qualify' => array(
-                        'event' => $this->qualify,
-                        'eventAttributes' => $this->qualifyAttributes,
-                    ),
-                    'race' => array(
-                        'event' => $this->race,
-                        'eventAttributes' => $this->raceAttributes,
-                    )
-                ),
-                'formHelper' => $this->formHelper,
+        $this->data['events'] = array(
+            'qualify' => array(
+                'event' => $this->qualify,
+                'eventAttributes' => $this->qualifyAttributes,
+            ),
+            'race' => array(
+                'event' => $this->race,
+                'eventAttributes' => $this->raceAttributes,
             )
         );
+        
+        $this->data['formHelper'] = $this->formHelper;
+        
+        return $this->render();
     }
 }

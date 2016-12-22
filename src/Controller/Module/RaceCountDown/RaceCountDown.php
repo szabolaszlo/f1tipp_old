@@ -32,14 +32,13 @@ class RaceCountDown extends Controller
 
         $countDown = new CountDown($this->getId(), $race->getDateTime(), $this->renderer);
 
-        return $this->renderer->render(
-            'controller/module/count_down/count_down.tpl',
-            array(
-                'id' => $this->getId(),
-                'name' => $race->getName(),
-                'date' => $race->getDateTime()->format('Y-m-d H:i'),
-                'countDown' => $countDown->render()
-            )
-        );
+        $this->data['id'] = $this->getId();
+        $this->data['name'] = $race->getName();
+        $this->data['date'] = $race->getDateTime()->format('Y-m-d H:i');
+        $this->data['countDown'] = $countDown->render();
+
+        $this->setTemplate('controller/module/count_down/count_down.tpl');
+
+        return $this->render();
     }
 }

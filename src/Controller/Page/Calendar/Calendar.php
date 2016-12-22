@@ -26,9 +26,11 @@ class Calendar extends Controller
         /** @var Event $repository */
         $repository = $this->entityManger->getRepository('Entity\Event');
 
-        $remainEvents = $repository->getRemainEvents();
+        $this->data['events'] = $repository->getRemainEvents();
 
-        return $this->render($remainEvents, 'Event');
+        $this->data['type'] = 'Event';
+
+        return $this->render();
     }
 
     /**
@@ -39,9 +41,11 @@ class Calendar extends Controller
         /** @var Event $repository */
         $repository = $this->entityManger->getRepository('Entity\Qualify');
 
-        $remainEvents = $repository->getRemainEvents();
+        $this->data['events'] = $repository->getRemainEvents();
 
-        return $this->render($remainEvents, 'Qualify');
+        $this->data['type'] = 'Qualify';
+
+        return $this->render();
     }
 
     /**
@@ -52,24 +56,10 @@ class Calendar extends Controller
         /** @var Event $repository */
         $repository = $this->entityManger->getRepository('Entity\Race');
 
-        $remainEvents = $repository->getRemainEvents();
+        $this->data['events'] = $repository->getRemainEvents();
 
-        return $this->render($remainEvents, 'Race');
-    }
+        $this->data['type'] = 'Race';
 
-    /**
-     * @param $events
-     * @param $type
-     * @return string
-     */
-    protected function render($events, $type)
-    {
-        return $this->renderer->render(
-            'controller/page/calendar/calendar.tpl',
-            array(
-                'events' => $events,
-                'type' => $type
-            )
-        );
+        return $this->render();
     }
 }

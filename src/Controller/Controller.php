@@ -45,6 +45,16 @@ abstract class Controller
     protected $registry;
 
     /**
+     * @var array
+     */
+    protected $data = array();
+
+    /**
+     * @var string
+     */
+    protected $templatePath;
+
+    /**
      * @var string
      */
     protected $id;
@@ -61,6 +71,10 @@ abstract class Controller
         $this->session = $this->registry->getSession();
         $this->renderer = $this->registry->getRenderer();
         $this->entityManger = $this->registry->getEntityManger();
+
+        $this->data['language'] = $this->registry->getLanguage();
+
+        $this->templatePath = strtolower(get_class($this)) . '.tpl';
 
         $reflect = new \ReflectionClass($this);
         $this->id = lcfirst($reflect->getShortName());
@@ -80,5 +94,21 @@ abstract class Controller
     public function indexAction()
     {
         return '';
+    }
+
+    /**
+     * @param $templatePath
+     */
+    public function setTemplate($templatePath)
+    {
+        $this->templatePath = $templatePath;
+    }
+
+    /**
+     * @return string
+     */
+    public function render()
+    {
+        return $this->renderer->render($this->templatePath, $this->data);
     }
 }

@@ -26,20 +26,19 @@ class QualifyCountDown extends Controller
     {
         /** @var Event $repository */
         $repository = $this->entityManger->getRepository('Entity\Qualify');
-        
+
         /** @var Qualify $qualify */
         $qualify = $repository->getNextEvent();
 
         $countDown = new CountDown($this->getId(), $qualify->getDateTime(), $this->renderer);
 
-        return $this->renderer->render(
-            'controller/module/count_down/count_down.tpl',
-            array(
-                'id' => $this->getId(),
-                'name' => $qualify->getName(),
-                'date' => $qualify->getDateTime()->format('Y-m-d H:i'),
-                'countDown' => $countDown->render()
-            )
-        );
+        $this->data['id'] = $this->getId();
+        $this->data['name'] = $qualify->getName();
+        $this->data['date'] = $qualify->getDateTime()->format('Y-m-d H:i');
+        $this->data['countDown'] = $countDown->render();
+        
+        $this->setTemplate('controller/module/count_down/count_down.tpl');
+        
+        return $this->render();
     }
 }
