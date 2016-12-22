@@ -27,7 +27,7 @@ $renderEngine = getTwig();
 
 $cookie = new \Application\HttpProtocol\Cookie();
 
-$registry = new \System\Registry\Registry($request, $session, $entityManager, $cookie);
+$registry = new \System\Registry\Registry($request, $session, $entityManager, $cookie, $renderEngine);
 
 $app = new \Application\Application($pageHandler, $moduleHandler, $renderEngine, $entityManager);
 

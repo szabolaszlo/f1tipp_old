@@ -17,7 +17,7 @@ use System\Rule\RuleType\IRuleType;
  */
 class Rule
 {
-    protected $rules = array();
+    protected $ruleTypes = array();
 
     /**
      * Rule constructor.

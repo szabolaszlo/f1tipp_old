@@ -1,17 +1,17 @@
+{% for event in events %}
 <form class="form-horizontal">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>{{qualify.getName()}}</legend>
+        <legend>{{event.event.getName()}}</legend>
 
         <!-- Select Basic -->
-        {% for qualifyAttribute in qualifyAttributes %}
+        {% for eventAttribute in event.eventAttributes %}
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">{{qualifyAttribute.getId()}}</label>
+            <label class="col-md-4 control-label" for="selectbasic">{{eventAttribute.getId()}}</label>
             <div class="col-md-4">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-                    <option value="1">{{qualifyAttribute.getType()}}</option>
-                    <option value="2">{{qualifyAttribute.getType()}}</option>
+                <select id="selectbasic" name="{{eventAttribute.getId()}}" class="form-control">
+                    {{formHelper.getSelectOption(eventAttribute.getType()).getOptions()|raw}}
                 </select>
             </div>
         </div>
@@ -28,3 +28,4 @@
 
     </fieldset>
 </form>
+{% endfor %}

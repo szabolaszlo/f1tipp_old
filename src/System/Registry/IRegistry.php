@@ -7,10 +7,12 @@
  */
 
 namespace System\Registry;
+
+use Application\HttpProtocol\ICookie;
 use Application\HttpProtocol\Server;
+use System\FormHelper\FormHelper;
 use System\Rule\Rule;
-use System\Rule\RuleType\Qualify as QualifyRule;
-use System\Rule\RuleType\Race as RaceRule;
+use System\UserAuthentication\Authentication;
 
 /**
  * Interface IRegistry
@@ -18,11 +20,28 @@ use System\Rule\RuleType\Race as RaceRule;
  */
 interface IRegistry
 {
+    /**
+     * @return ICookie
+     */
     public function getCookie();
 
+    /**
+     * @return Authentication
+     */
     public function getUserAuth();
 
+    /**
+     * @return Server
+     */
     public function getServer();
-    
+
+    /**
+     * @return Rule
+     */
     public function getRule();
+
+    /**
+     * @return FormHelper
+     */
+    public function getFormHelper();
 }

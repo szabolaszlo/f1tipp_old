@@ -14,6 +14,9 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\FormHelper\FormHelper;
+use System\FormHelper\SelectOption\Driver;
+use System\FormHelper\SelectOption\Question;
 use System\Rule\Rule;
 use System\Rule\RuleType\Qualify as QualifyRule;
 use System\Rule\RuleType\Race as RaceRule;
@@ -61,18 +64,30 @@ class Registry implements IRegistry
     protected $rule;
 
     /**
+     * @var FormHelper
+     */
+    protected $formHelper;
+
+    /**
+     * @var \Twig_Environment
+     */
+    protected $renderer;
+
+    /**
      * Registry constructor.
      * @param IRequest $request
      * @param ISession $session
      * @param $entityManager
      * @param ICookie $cookie
+     * @param $renderer
      */
-    public function __construct(IRequest $request, ISession $session, $entityManager, ICookie $cookie)
+    public function __construct(IRequest $request, ISession $session, $entityManager, ICookie $cookie, $renderer)
     {
         $this->request = $request;
         $this->session = $session;
         $this->entityManger = $entityManager;
         $this->cookie = $cookie;
+        $this->renderer = $renderer;
     }
 
     /**
@@ -118,7 +133,24 @@ class Registry implements IRegistry
 
             $this->rule = new Rule($ruleTypes);
         }
-        
+
         return $this->rule;
+    }
+
+    /**
+     * @return FormHelper
+     */
+    public function getFormHelper()
+    {
+        if (!$this->formHelper) {
+            $optionTypes = array(
+                'driver' => new Driver($this->entityManger, $this->renderer),
+                'question' => new Question($this->entityManger, $this->renderer)
+            );
+
+            $this->formHelper = new FormHelper($optionTypes);
+        }
+
+        return $this->formHelper;
     }
 }

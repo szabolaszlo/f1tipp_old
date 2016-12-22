@@ -114,10 +114,18 @@ class Authentication
         if ($existUserAuth) {
             $date = new \DateTime();
             $date->add(new \DateInterval('P14D'));
-            
+
             $existUserAuth->setTokenExpire($date);
             $this->entityManager->persist($existUserAuth);
             $this->entityManager->flush();
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getActualToken()
+    {
+        return $this->cookie->get(self::TOKEN_NAME);
     }
 }
