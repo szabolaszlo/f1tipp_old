@@ -33,7 +33,10 @@ function getEntityManager()
         'user' => ' ',
         'password' => ' ',
         'dbname' => ' ',
-        'charset' => 'UTF8'
+        'charset' => 'UTF8',
+        'driverOptions' => array(
+            1002 => 'SET NAMES utf8'
+        )
     );
     $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
     $driver = new AnnotationDriver(new AnnotationReader(), $paths);

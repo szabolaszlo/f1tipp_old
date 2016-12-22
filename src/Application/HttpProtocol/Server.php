@@ -24,7 +24,7 @@ class Server
      */
     public function __construct()
     {
-        $this->domain = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'];
+        $this->domain = 'http://' . $_SERVER['SERVER_NAME'];
     }
 
     /**
