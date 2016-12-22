@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use System\FormHelper\FormHelper;
 use System\FormHelper\SelectOption\Driver;
 use System\FormHelper\SelectOption\Question;
+use System\Language\Language;
 use System\Rule\Rule;
 use System\Rule\RuleType\Qualify as QualifyRule;
 use System\Rule\RuleType\Race as RaceRule;
@@ -72,6 +73,11 @@ class Registry implements IRegistry
      * @var \Twig_Environment
      */
     protected $renderer;
+
+    /**
+     * @var Language
+     */
+    protected $language;
 
     /**
      * Registry constructor.
@@ -152,5 +158,17 @@ class Registry implements IRegistry
         }
 
         return $this->formHelper;
+    }
+
+    /**
+     * @return Language
+     */
+    public function getLanguage()
+    {
+        if (!$this->language) {
+            $this->language = new Language('Hungarian');
+        }
+        
+        return $this->language;
     }
 }

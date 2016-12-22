@@ -11,6 +11,7 @@ namespace System\Registry;
 use Application\HttpProtocol\ICookie;
 use Application\HttpProtocol\Server;
 use System\FormHelper\FormHelper;
+use System\Language\Language;
 use System\Rule\Rule;
 use System\UserAuthentication\Authentication;
 
@@ -44,4 +45,9 @@ interface IRegistry
      * @return FormHelper
      */
     public function getFormHelper();
+
+    /**
+     * @return Language
+     */
+    public function getLanguage();
 }
