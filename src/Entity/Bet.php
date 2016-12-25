@@ -26,13 +26,13 @@ class Bet
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user_id;
-    
+
     /**
-     * @ORM\OneToOne(targetEntity="Event")
+     * @ORM\ManyToOne(targetEntity="Event")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
     protected $event_id;
@@ -53,7 +53,7 @@ class Bet
     /**
      * @return mixed
      */
-    public function getUserId()
+    public function getUser()
     {
         return $this->user_id;
     }
@@ -61,7 +61,7 @@ class Bet
     /**
      * @param mixed $user_id
      */
-    public function setUserId($user_id)
+    public function setUser($user_id)
     {
         $this->user_id = $user_id;
     }
@@ -85,7 +85,7 @@ class Bet
     /**
      * @return mixed
      */
-    public function getEventId()
+    public function getEvent()
     {
         return $this->event_id;
     }
@@ -93,7 +93,7 @@ class Bet
     /**
      * @param mixed $event_id
      */
-    public function setEventId($event_id)
+    public function setEvent($event_id)
     {
         $this->event_id = $event_id;
     }
@@ -104,6 +104,22 @@ class Bet
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @param $key
+     * @return bool|BetAttribute
+     */
+    public function getAttributeValueByKey($key)
+    {
+        /** @var BetAttribute $attribute */
+        foreach ($this->attributes as $attribute) {
+            if (str_replace("'", "", $attribute->getKey()) == $key) {
+                return $attribute->getValue();
+            }
+        }
+        
+        return false;
     }
 
     /**

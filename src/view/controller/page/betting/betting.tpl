@@ -1,31 +1,62 @@
-{% for event in events %}
-<form class="form-horizontal">
-    <fieldset>
+{% if error %}
+<div class="alert alert-danger">
+    <strong>{{error}}</strong>
+</div>
+{%endif %}
 
-        <!-- Form Name -->
-        <legend>{{event.event.getName()}}</legend>
+{% if success %}
+<div class="alert alert-success">
+    <strong>{{success}}</strong>
+</div>
+{%endif %}
 
-        <!-- Select Basic -->
-        {% for eventAttribute in event.eventAttributes %}
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">{{eventAttribute.getId()}}</label>
-            <div class="col-md-4">
-                <select id="selectbasic" name="{{eventAttribute.getId()}}" class="form-control">
-                    {{formHelper.getSelectOption(eventAttribute.getType()).getOptions()|raw}}
-                </select>
-            </div>
-        </div>
-        {% endfor %}
+{% if user %}
+<div class="row">
+    {% for event in events %}
+    <div class="col-sm-6">
+        <form class="form-horizontal" method="post" action="?page=betting/save">
+            <fieldset>
 
+                <!-- Form Name -->
+                <legend>{{event.event.getName()}}</legend>
 
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
-            <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
-            </div>
-        </div>
+                <!-- Select Basic -->
+                {% for eventAttribute in event.eventAttributes %}
 
-    </fieldset>
-</form>
-{% endfor %}
+                {% set attrId = eventAttribute.getId() %}
+                {% set attrType = eventAttribute.getType() %}
+                {% set betAttrValue = event.bet ? event.bet.getAttributeValueByKey(attrId) : '' %}
+
+                <div class="form-group">
+                    <label class="col-md-6 control-label"
+                           for="selectbasic">{{language.get('betting_' ~ attrId)}}</label>
+                    <div class="col-md-6">
+                        <select id="selectbasic" name="bet_attr['{{attrId}}']" class="form-control" {{ event.bet ? ' disabled="disabled"' : ''}}>
+                            <option value="">{{language.get('betting_default_option')}}</option>
+                            {{formHelper.getSelectOption(attrType).getOptions(betAttrValue)|raw}}
+                        </select>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <input type="hidden" name="user-token" value="{{userToken}}">
+                <input type="hidden" name="event-id" value="{{event.event.getId}}">
+
+                <!-- Button -->
+                {% if not event.bet %}
+                <div class="form-group center-block">
+                    <div class="col-md-6 center-block">
+                        <button id="singlebutton" name="singlebutton"
+                                class="btn btn-primary">{{language.get('betting_submit_' ~ event.event.getType())}}</button>
+                    </div>
+                </div>
+                {% endif %}
+            </fieldset>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h1>{{language.get('betting_no_login')}}<h1>
+{% endif %}

@@ -10,4 +10,7 @@ require_once 'bootstrap.php';
 
 $entityManager = getEntityManager();
 
+$platform = $entityManager->getConnection()->getDatabasePlatform();
+$platform->registerDoctrineTypeMapping('enum', 'string');
+
 return ConsoleRunner::createHelperSet($entityManager);

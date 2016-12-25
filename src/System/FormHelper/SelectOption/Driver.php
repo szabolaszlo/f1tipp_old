@@ -13,12 +13,13 @@ namespace System\FormHelper\SelectOption;
  * Class Driver
  * @package System\FormHelper\SelectOption
  */
-class Driver extends ASelectOption implements ISelectOption
+class Driver extends ASelectOption
 {
     /**
+     * @param null $selectedValue
      * @return string
      */
-    public function getOptions()
+    public function getOptions($selectedValue = null)
     {
         $drivers = $this->entityManager->getRepository('Entity\Driver')->findBy(array(), array('point' => 'DESC'));
         
@@ -26,6 +27,7 @@ class Driver extends ASelectOption implements ISelectOption
             'system/form_helper/select_options/driver.tpl',
             array(
                 'drivers' => $drivers,
+                'selectedValue' => $selectedValue
             )
         );
     }

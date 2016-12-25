@@ -48,4 +48,12 @@ class Request implements IRequest
     {
         return isset($this->get[$key]) ? $this->get[$key] : $default;
     }
+
+    /**
+     * @return bool
+     */
+    public function isPost()
+    {
+        return (bool)(!empty($this->post));
+    }
 }

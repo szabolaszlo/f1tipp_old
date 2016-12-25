@@ -71,6 +71,19 @@ class Authentication
     }
 
     /**
+     * @param $token
+     * @return bool|User|mixed
+     */
+    public function getUserByToken($token)
+    {
+        if ($token === $this->cookie->get(self::TOKEN_NAME)) {
+            return $this->getLoggedUser();
+        }
+
+        return false;
+    }
+
+    /**
      * @param User $user
      */
     public function setUserToLogged(User $user)

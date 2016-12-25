@@ -27,4 +27,9 @@ interface IRequest
      * @return mixed|string
      */
     public function getGet($key, $default = '');
+
+    /**
+     * @return bool
+     */
+    public function isPost();
 }

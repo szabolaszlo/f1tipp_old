@@ -10,6 +10,9 @@
 namespace Controller\Page\Betting;
 
 use Controller\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
+use Entity\Bet;
+use Entity\BetAttribute;
 use Entity\Qualify;
 use Entity\Race;
 use Entity\Repository\Event;
@@ -23,11 +26,6 @@ use System\Registry\IRegistry;
  */
 class Betting extends Controller
 {
-    /**
-     * @var User
-     */
-    protected $user;
-
     /**
      * @var Qualify
      */
@@ -54,6 +52,26 @@ class Betting extends Controller
     protected $formHelper;
 
     /**
+     * @var User
+     */
+    protected $user;
+
+    /**
+     * @var \Entity\Event
+     */
+    protected $event;
+
+    /**
+     * @var Bet
+     */
+    protected $qualifyBet;
+
+    /**
+     * @var Bet
+     */
+    protected $raceBet;
+
+    /**
      * Betting constructor.
      * @param IRegistry $registry
      */
@@ -62,7 +80,10 @@ class Betting extends Controller
         parent::__construct($registry);
 
         //User
-        $this->user = $this->registry->getUserAuth()->getLoggedUser();
+        $this->data['user'] = $this->user = $this->registry->getUserAuth()->getLoggedUser();
+
+        //UserToken
+        $this->data['userToken'] = $this->registry->getUserAuth()->getActualToken();
 
         //Qualify
         /** @var Event $repository */
@@ -72,6 +93,11 @@ class Betting extends Controller
         //QualifyAttributes
         $this->qualifyAttributes = $this->registry->getRule()->getRuleType('qualify')->getAllAttribute();
 
+        //QualifyBet
+        $this->qualifyBet = $this->entityManger
+            ->getRepository('Entity\Bet')
+            ->findOneBy(array('user_id' => $this->user, 'event_id' => $this->qualify));
+
         //Race
         $repository = $this->entityManger->getRepository('Entity\Race');
         $this->race = $repository->getNextEvent();
@@ -79,7 +105,12 @@ class Betting extends Controller
         //RaceAttributes
         $this->raceAttributes = $this->registry->getRule()->getRuleType('race')->getAllAttribute();
 
-        //SelectOption
+        //RaceBet
+        $this->raceBet = $this->entityManger
+            ->getRepository('Entity\Bet')
+            ->findOneBy(array('user_id' => $this->user, 'event_id' => $this->race));
+
+        //FormHelper
         $this->formHelper = $this->registry->getFormHelper();
     }
 
@@ -88,19 +119,84 @@ class Betting extends Controller
      */
     public function indexAction()
     {
+        $this->data['error'] = $this->session->get('error');
+        $this->session->remove('error');
+
+        $this->data['success'] = $this->session->get('success');
+        $this->session->remove('success');
+
         $this->data['events'] = array(
             'qualify' => array(
                 'event' => $this->qualify,
                 'eventAttributes' => $this->qualifyAttributes,
+                'bet' => $this->qualifyBet
             ),
             'race' => array(
                 'event' => $this->race,
                 'eventAttributes' => $this->raceAttributes,
+                'bet' => $this->raceBet
             )
         );
-        
+
         $this->data['formHelper'] = $this->formHelper;
-        
+
         return $this->render();
+    }
+
+    public function saveAction()
+    {
+        if (!$this->request->isPost()) {
+            $this->redirectWithError();
+        }
+
+        if (!$this->validate()) {
+            $this->redirectWithError();
+        }
+
+        $this->saveEntities();
+
+        $this->session->set('success', $this->registry->getLanguage()->get('betting_success'));
+        $this->registry->getServer()->redirect('page=betting/index');
+    }
+
+    protected function saveEntities()
+    {
+        $betAttributes = new ArrayCollection();
+        $postedBetAttributes = $this->request->getPost('bet_attr', array());
+
+        $bet = new Bet();
+        $bet->setEvent($this->event);
+        $bet->setUser($this->user);
+
+        foreach ($postedBetAttributes as $key => $value) {
+            $attribute = new BetAttribute();
+            $attribute->setBet($bet);
+            $attribute->setKey($key);
+            $attribute->setValue($value);
+
+            $betAttributes->add($attribute);
+        }
+
+        $bet->setAttributes($betAttributes);
+
+        $this->entityManger->persist($bet);
+        $this->entityManger->flush();
+    }
+
+    protected function redirectWithError()
+    {
+        $this->session->set('error', $this->registry->getLanguage()->get('betting_error'));
+        $this->registry->getServer()->redirect('page=betting/index');
+    }
+
+    /**
+     * @return bool
+     */
+    protected function validate()
+    {
+        $this->event = $this->entityManger->getRepository('Entity\Event')->find($this->request->getPost('event-id'));
+        $this->user = $this->registry->getUserAuth()->getUserByToken($this->request->getPost('user-token'));
+
+        return (bool)($this->event && $this->user);
     }
 }

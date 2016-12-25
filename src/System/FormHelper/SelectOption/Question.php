@@ -14,16 +14,22 @@ namespace System\FormHelper\SelectOption;
  */
 class Question extends ASelectOption
 {
-    protected $options = array('Igen', 'Nem');
     /**
+     * @var array
+     */
+    protected $options = array('Igen', 'Nem');
+
+    /**
+     * @param null $selectedValue
      * @return string
      */
-    public function getOptions()
+    public function getOptions($selectedValue = null)
     {
         return $this->renderer->render(
             'system/form_helper/select_options/question.tpl',
             array(
                 'options' => $this->options,
+                'selectedValue' => $selectedValue
             )
         );
     }

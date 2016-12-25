@@ -14,7 +14,8 @@ namespace System\FormHelper\SelectOption;
 interface ISelectOption
 {
     /**
-     * @return string
+     * @param null $selectedValue
+     * @return mixed
      */
-    public function getOptions();
+    public function getOptions($selectedValue = null);
 }

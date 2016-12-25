@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * Class ASelectOption
  * @package System\FormHelper\SelectOption
  */
-abstract class ASelectOption
+abstract class ASelectOption implements ISelectOption
 {
     /**
      * @var EntityManagerInterface
@@ -39,7 +39,8 @@ abstract class ASelectOption
     }
 
     /**
-     * @return string
+     * @param null $selectedValue
+     * @return mixed
      */
-    abstract public function getOptions();
+    abstract public function getOptions($selectedValue = null);
 }

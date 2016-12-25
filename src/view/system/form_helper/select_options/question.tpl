@@ -1,3 +1,5 @@
 {% for option in options %}
-<option value="{{option}}">{{option}}</option>
+<option value="{{option}}" {{selectedValue == option ? ' selected="selected" ' : ''}}>
+    {{option}}
+</option>
 {% endfor %}
