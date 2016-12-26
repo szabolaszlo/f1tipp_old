@@ -14,6 +14,15 @@
     <!-- Custom CSS-->
     <link href="{{domain}}/src/view/custom-bootstrap/custom-bootstrap.css" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/jquery/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/custom-js/custom.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

@@ -31,7 +31,9 @@
                     <label class="col-md-6 control-label"
                            for="selectbasic">{{language.get('betting_' ~ attrId)}}</label>
                     <div class="col-md-6">
-                        <select id="selectbasic" name="bet_attr['{{attrId}}']" class="form-control" {{ event.bet ? ' disabled="disabled"' : ''}}>
+                        <select id="selectbasic" name="bet_attr['{{attrId}}']"
+                                class="form-control event-{{event.event.getId()}}"
+                                {{ event.bet ? ' disabled="disabled"' : ''}}>
                             <option value="">{{language.get('betting_default_option')}}</option>
                             {{formHelper.getSelectOption(attrType).getOptions(betAttrValue)|raw}}
                         </select>
@@ -47,8 +49,10 @@
                 {% if not event.bet %}
                 <div class="form-group center-block">
                     <div class="col-md-6 center-block">
-                        <button id="singlebutton" name="singlebutton"
-                                class="btn btn-primary">{{language.get('betting_submit_' ~ event.event.getType())}}</button>
+                        <button id="event-bet-submit-{{event.event.getId()}}" name="singlebutton"
+                                class="btn btn-primary" disabled="disabled">
+                            {{language.get('betting_submit_' ~ event.event.getType())}}
+                        </button>
                     </div>
                 </div>
                 {% endif %}
@@ -58,5 +62,13 @@
     {% endfor %}
 </div>
 {% else %}
-<h1>{{language.get('betting_no_login')}}<h1>
+<h1>{{language.get('betting_no_login')}}</h1>
 {% endif %}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        {% for event in events %}
+        checkFakeBet('.event-{{event.event.getId()}}', '#event-bet-submit-{{event.event.getId()}}');
+        {% endfor %}
+    });
+</script>
