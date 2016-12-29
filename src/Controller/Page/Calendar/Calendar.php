@@ -24,7 +24,7 @@ class Calendar extends Controller
     public function indexAction()
     {
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Event');
+        $repository = $this->entityManager->getRepository('Entity\Event');
 
         $this->data['events'] = $repository->getRemainEvents();
 
@@ -39,7 +39,7 @@ class Calendar extends Controller
     public function qualifyAction()
     {
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Qualify');
+        $repository = $this->entityManager->getRepository('Entity\Qualify');
 
         $this->data['events'] = $repository->getRemainEvents();
 
@@ -54,7 +54,7 @@ class Calendar extends Controller
     public function raceAction()
     {
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Race');
+        $repository = $this->entityManager->getRepository('Entity\Race');
 
         $this->data['events'] = $repository->getRemainEvents();
 

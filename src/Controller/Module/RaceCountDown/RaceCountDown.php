@@ -25,7 +25,7 @@ class RaceCountDown extends Controller
     public function indexAction()
     {
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Race');
+        $repository = $this->entityManager->getRepository('Entity\Race');
 
         /** @var Race $qualify */
         $race = $repository->getNextEvent();

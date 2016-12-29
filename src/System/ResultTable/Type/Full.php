@@ -69,7 +69,7 @@ class Full implements ITableType
         $this->calculator = $calculator;
         $this->decorator = $decorator;
         
-        $this->entityManager = $this->registry->getEntityManger();
+        $this->entityManager = $this->registry->getEntityManager();
         $this->renderer = $this->registry->getRenderer();
         $this->data['language'] = $this->registry->getLanguage();
     }

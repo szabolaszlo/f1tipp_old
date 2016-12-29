@@ -25,7 +25,7 @@ class QualifyCountDown extends Controller
     public function indexAction()
     {
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Qualify');
+        $repository = $this->entityManager->getRepository('Entity\Qualify');
 
         /** @var Qualify $qualify */
         $qualify = $repository->getNextEvent();

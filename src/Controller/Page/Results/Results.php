@@ -42,7 +42,7 @@ class Results extends Controller
     {
         $this->data['tables'] = array();
 
-        $results = $this->entityManger->getRepository('Entity\Result')->findAll();
+        $results = $this->entityManager->getRepository('Entity\Result')->findAll();
 
         /** @var Result $result */
         foreach ($results as $result) {

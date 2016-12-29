@@ -38,7 +38,7 @@ interface IRegistry
     /**
      * @return EntityManagerInterface
      */
-    public function getEntityManger();
+    public function getEntityManager();
 
     /**
      * @return \Twig_Environment

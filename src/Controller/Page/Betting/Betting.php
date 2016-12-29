@@ -92,26 +92,26 @@ class Betting extends Controller
 
         //Qualify
         /** @var Event $repository */
-        $repository = $this->entityManger->getRepository('Entity\Qualify');
+        $repository = $this->entityManager->getRepository('Entity\Qualify');
         $this->qualify = $repository->getNextEvent();
 
         //QualifyAttributes
         $this->qualifyAttributes = $this->registry->getRule()->getRuleType('qualify')->getAllAttribute();
 
         //QualifyBet
-        $this->qualifyBet = $this->entityManger
+        $this->qualifyBet = $this->entityManager
             ->getRepository('Entity\Bet')
             ->findOneBy(array('user_id' => $this->user, 'event_id' => $this->qualify));
 
         //Race
-        $repository = $this->entityManger->getRepository('Entity\Race');
+        $repository = $this->entityManager->getRepository('Entity\Race');
         $this->race = $repository->getNextEvent();
 
         //RaceAttributes
         $this->raceAttributes = $this->registry->getRule()->getRuleType('race')->getAllAttribute();
 
         //RaceBet
-        $this->raceBet = $this->entityManger
+        $this->raceBet = $this->entityManager
             ->getRepository('Entity\Bet')
             ->findOneBy(array('user_id' => $this->user, 'event_id' => $this->race));
 
@@ -189,8 +189,8 @@ class Betting extends Controller
 
         $bet->setAttributes($betAttributes);
 
-        $this->entityManger->persist($bet);
-        $this->entityManger->flush();
+        $this->entityManager->persist($bet);
+        $this->entityManager->flush();
     }
 
     protected function redirectWithError()
@@ -204,7 +204,7 @@ class Betting extends Controller
      */
     protected function validate()
     {
-        $this->event = $this->entityManger->getRepository('Entity\Event')->find($this->request->getPost('event-id'));
+        $this->event = $this->entityManager->getRepository('Entity\Event')->find($this->request->getPost('event-id'));
         $this->user = $this->registry->getUserAuth()->getUserByToken($this->request->getPost('user-token'));
 
         $justInTime = (bool)($this->now < $this->event->getDateTime());

@@ -37,7 +37,7 @@ abstract class Controller
     /**
      * @var EntityManagerInterface
      */
-    protected $entityManger;
+    protected $entityManager;
 
     /**
      * @var IRegistry
@@ -70,7 +70,7 @@ abstract class Controller
         $this->request = $this->registry->getRequest();
         $this->session = $this->registry->getSession();
         $this->renderer = $this->registry->getRenderer();
-        $this->entityManger = $this->registry->getEntityManger();
+        $this->entityManager = $this->registry->getEntityManager();
 
         $this->data['language'] = $this->registry->getLanguage();
 

@@ -47,7 +47,7 @@ class Registry implements IRegistry
     /**
      * @var EntityManagerInterface
      */
-    protected $entityManger;
+    protected $entityManager;
 
     /**
      * @var ICookie
@@ -106,7 +106,7 @@ class Registry implements IRegistry
     {
         $this->request = $request;
         $this->session = $session;
-        $this->entityManger = $entityManager;
+        $this->entityManager = $entityManager;
         $this->cookie = $cookie;
         $this->renderer = $renderer;
     }
@@ -130,9 +130,9 @@ class Registry implements IRegistry
     /**
      * @return EntityManagerInterface
      */
-    public function getEntityManger()
+    public function getEntityManager()
     {
-        return $this->entityManger;
+        return $this->entityManager;
     }
 
     /**
@@ -157,7 +157,7 @@ class Registry implements IRegistry
     public function getUserAuth()
     {
         if (!$this->userAuth) {
-            $this->userAuth = new Authentication($this->entityManger, $this->cookie);
+            $this->userAuth = new Authentication($this->entityManager, $this->cookie);
         }
         return $this->userAuth;
     }
@@ -197,8 +197,8 @@ class Registry implements IRegistry
     {
         if (!$this->formHelper) {
             $optionTypes = array(
-                'driver' => new Driver($this->entityManger, $this->renderer),
-                'question' => new Question($this->entityManger, $this->renderer)
+                'driver' => new Driver($this->entityManager, $this->renderer),
+                'question' => new Question($this->entityManager, $this->renderer)
             );
 
             $this->formHelper = new FormHelper($optionTypes);

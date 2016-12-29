@@ -93,7 +93,7 @@ class Login extends Controller
     public function tryLoginAction()
     {
         /** @var User $user */
-        $user = $this->entityManger
+        $user = $this->entityManager
             ->getRepository('Entity\User')
             ->findOneBy(array('name' => $this->request->getPost('user-name')));
 
