@@ -13,8 +13,10 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Calculator\ICalculator;
 use System\FormHelper\FormHelper;
 use System\Language\Language;
+use System\ResultTable\ResultTable;
 use System\Rule\Rule;
 use System\UserAuthentication\Authentication;
 
@@ -72,4 +74,14 @@ interface IRegistry
      * @return Language
      */
     public function getLanguage();
+    
+    /**
+     * @return ICalculator
+     */
+    public function getCalculator();
+
+    /**
+     * @return ResultTable
+     */
+    public function getResultTable();
 }

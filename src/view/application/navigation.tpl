@@ -13,9 +13,12 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="f1tipp-navbar-collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-left">
                 <li {{page.id == 'betting' ? 'class="active"' : ''}}>
                     <a href="?page=betting/index">{{language.get('nav_bet')}}</a>
+                </li>
+                <li {{page.id == 'results' ? 'class="active"' : ''}}>
+                    <a href="?page=results/index">{{language.get('nav_results')}}</a>
                 </li>
                 <li {{page.id == 'calendar' ? 'class="active"' : ''}}>
                     <a href="?page=calendar/index">{{language.get('nav_calendar')}}</a>

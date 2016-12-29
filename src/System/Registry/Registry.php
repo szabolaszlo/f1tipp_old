@@ -14,10 +14,15 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Calculator\Calculator;
+use System\Calculator\ICalculator;
 use System\FormHelper\FormHelper;
 use System\FormHelper\SelectOption\Driver;
 use System\FormHelper\SelectOption\Question;
 use System\Language\Language;
+use System\ResultTable\Decorator\BetDecorator;
+use System\ResultTable\ResultTable;
+use System\ResultTable\Type\Full;
 use System\Rule\Rule;
 use System\Rule\RuleType\Qualify as QualifyRule;
 use System\Rule\RuleType\Race as RaceRule;
@@ -78,6 +83,16 @@ class Registry implements IRegistry
      * @var Language
      */
     protected $language;
+
+    /**
+     * @var ICalculator
+     */
+    protected $calculator;
+
+    /**
+     * @var ResultTable
+     */
+    protected $resultTable;
 
     /**
      * Registry constructor.
@@ -202,5 +217,35 @@ class Registry implements IRegistry
         }
         
         return $this->language;
+    }
+
+    /**
+     * @return ICalculator
+     */
+    public function getCalculator()
+    {
+        if (!$this->calculator) {
+            $this->calculator = new Calculator($this);
+        }
+
+        return $this->calculator;
+    }
+
+    /**
+     * @return ResultTable
+     */
+    public function getResultTable()
+    {
+        if (!$this->resultTable) {
+            $decorator = new BetDecorator($this);
+            
+            $tableTypes = array(
+                'full' => new Full($this, $this->getCalculator(), $decorator)
+            );
+
+            $this->resultTable = new ResultTable($tableTypes);
+        }
+
+        return $this->resultTable;
     }
 }

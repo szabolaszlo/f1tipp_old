@@ -6,6 +6,7 @@ $_['app_creator'] = "Készítette: Szabó László 2016";
 
 //Navigation
 $_['nav_bet'] = "Tippelek";
+$_['nav_results'] = "Eredmények";
 $_['nav_calendar'] = "Naptár";
 $_['nav_rules'] = "Szabályzat";
 
@@ -25,6 +26,7 @@ $_['general_races'] = "Futamok";
 $_['general_qualify'] = "Időmérő";
 $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
+$_['general_result'] = "Eredmény";
 
 //Calendar
 $_['calendar_type'] = "Típus";
@@ -46,4 +48,14 @@ $_['betting_p5'] = 'Tipp az ötödik helyezettre:';
 $_['betting_p6'] = 'Tipp az hatodik helyezettre:';
 $_['betting_sc'] = 'Bejön-e a Safety Car?:';
 
+// Result
+$_['result_name'] = 'Név';
+$_['result_point'] = 'Pont';
+$_['result_p1'] = '1.';
+$_['result_p2'] = '2.';
+$_['result_p3'] = '3.';
+$_['result_p4'] = '4.';
+$_['result_p5'] = '5.';
+$_['result_p6'] = '6.';
+$_['result_sc'] = 'SC';
 ?>

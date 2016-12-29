@@ -100,4 +100,36 @@ class Result
         $this->attributes->add($attribute);
         $attribute->setResult($this);
     }
+
+    /**
+     * @param $key
+     * @return bool|mixed
+     */
+    public function getAttributeValueByKey($key)
+    {
+        /** @var ResultAttribute $attribute */
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getKey() == $key) {
+                return $attribute->getValue();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $value
+     * @return bool
+     */
+    public function existAttributeByValue($value)
+    {
+        /** @var ResultAttribute $attribute */
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getValue() == $value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

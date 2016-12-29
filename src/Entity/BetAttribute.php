@@ -25,11 +25,12 @@ class BetAttribute
     protected $id;
     /**
      * @ORM\ManyToOne(targetEntity="Bet", inversedBy="attributes")
-     * @ORM\JoinColumn(name="bet_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="bet_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $bet;
 
     /**
+     * @var string
      * @ORM\Column(name="`key`", type="string", length=16, nullable=false)
      */
     protected $key;
@@ -38,6 +39,16 @@ class BetAttribute
      * @ORM\Column(name="`value`", type="string", length=4, nullable=false)
      */
     protected $value;
+
+    /**
+     * @var int
+     */
+    protected $point = 0;
+
+    /**
+     * @var string
+     */
+    protected $class = '';
 
     /**
      * @return mixed
@@ -72,7 +83,7 @@ class BetAttribute
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getKey()
     {
@@ -101,5 +112,37 @@ class BetAttribute
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * @param int $point
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
+     * @param string $class
+     */
+    public function setClass($class)
+    {
+        $this->class = $class;
     }
 }

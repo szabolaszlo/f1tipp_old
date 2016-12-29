@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Bet
 {
     /**
-     * @ORM\Column(name="id", type="integer", length=2, nullable=false)
+     * @ORM\Column(name="id", type="integer", length=11, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue
      */
@@ -27,13 +27,13 @@ class Bet
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user_id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event")
-     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $event_id;
 
@@ -41,6 +41,11 @@ class Bet
      * @ORM\OneToMany(targetEntity="BetAttribute", mappedBy="bet", cascade={"persist","remove"})
      */
     protected $attributes;
+
+    /**
+     * @var int
+     */
+    protected $point = 0;
 
     /**
      * Result constructor.
@@ -114,7 +119,7 @@ class Bet
     {
         /** @var BetAttribute $attribute */
         foreach ($this->attributes as $attribute) {
-            if (str_replace("'", "", $attribute->getKey()) == $key) {
+            if ($attribute->getKey() == $key) {
                 return $attribute->getValue();
             }
         }
@@ -137,5 +142,21 @@ class Bet
     {
         $this->attributes->add($attribute);
         $attribute->setBet($this);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * @param int $point
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
     }
 }
