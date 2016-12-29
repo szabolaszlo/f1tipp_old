@@ -25,7 +25,7 @@ class ResultAttribute
     protected $id;
     /**
      * @ORM\ManyToOne(targetEntity="Result", inversedBy="attributes")
-     * @ORM\JoinColumn(name="result_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="result_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $result;
 

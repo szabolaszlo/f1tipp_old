@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class UserAuthentication
 {
     /**
-     * @ORM\Column(name="id", type="integer", length=2, nullable=false)
+     * @ORM\Column(name="id", type="integer", length=11, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue
      */
@@ -26,7 +26,7 @@ class UserAuthentication
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="auth")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
 

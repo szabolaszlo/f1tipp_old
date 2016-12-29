@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Event
 {
     /**
-     * @ORM\Column(name="id", type="integer", length=2, nullable=false)
+     * @ORM\Column(name="id", type="integer", length=11, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue
      */
