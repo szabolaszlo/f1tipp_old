@@ -13,6 +13,7 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Cache\Cache;
 use System\Calculator\ICalculator;
 use System\FormHelper\FormHelper;
 use System\Language\Language;
@@ -84,4 +85,9 @@ interface IRegistry
      * @return ResultTable
      */
     public function getResultTable();
+
+    /**
+     * @return Cache
+     */
+    public function getCache();
 }

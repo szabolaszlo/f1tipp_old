@@ -10,6 +10,7 @@ namespace Controller\Page\Results;
 
 use Controller\Controller;
 use Entity\Result;
+use System\Cache\Cache;
 use System\Registry\IRegistry;
 use System\ResultTable\Type\ITableType;
 
@@ -25,6 +26,11 @@ class Results extends Controller
     protected $fullTable;
 
     /**
+     * @var Cache
+     */
+    protected $cache;
+
+    /**
      * Betting constructor.
      * @param IRegistry $registry
      */
@@ -33,6 +39,7 @@ class Results extends Controller
         parent::__construct($registry);
 
         $this->fullTable = $this->registry->getResultTable()->getTableByType('full');
+        $this->cache = $this->registry->getCache();
     }
 
     /**
@@ -40,6 +47,12 @@ class Results extends Controller
      */
     public function indexAction()
     {
+        $cachedContent = $this->cache->getCache($this->getCacheId());
+
+        if ($cachedContent) {
+            return $cachedContent;
+        }
+
         $this->data['tables'] = array();
 
         $results = $this->entityManager->getRepository('Entity\Result')->findAll();
@@ -49,6 +62,18 @@ class Results extends Controller
             $this->data['tables'][] = $this->fullTable->getTable($result->getEvent());
         }
 
-        return $this->render();
+        $renderedContent = $this->render();
+
+        $this->cache->setCache($this->getCacheId(), $renderedContent);
+
+        return $renderedContent;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCacheId()
+    {
+        return 'results.' . count($this->entityManager->getRepository('Entity\Result')->findAll());
     }
 }

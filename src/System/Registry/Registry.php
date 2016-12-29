@@ -14,6 +14,8 @@ use Application\HttpProtocol\IRequest;
 use Application\HttpProtocol\ISession;
 use Application\HttpProtocol\Server;
 use Doctrine\ORM\EntityManagerInterface;
+use System\Cache\Cache;
+use System\Cache\Strategy\File;
 use System\Calculator\Calculator;
 use System\Calculator\ICalculator;
 use System\FormHelper\FormHelper;
@@ -94,6 +96,10 @@ class Registry implements IRegistry
      */
     protected $resultTable;
 
+    /**
+     * @var Cache
+     */
+    protected $cache;
     /**
      * Registry constructor.
      * @param IRequest $request
@@ -247,5 +253,18 @@ class Registry implements IRegistry
         }
 
         return $this->resultTable;
+    }
+
+    /**
+     * @return Cache
+     */
+    public function getCache()
+    {
+        if (!$this->cache) {
+            $fileStrategy = new File();
+            $this->cache = new Cache($fileStrategy);
+        }
+
+        return $this->cache;
     }
 }
