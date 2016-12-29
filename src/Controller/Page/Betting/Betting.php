@@ -72,6 +72,11 @@ class Betting extends Controller
     protected $raceBet;
 
     /**
+     * @var \DateTime
+     */
+    protected $now;
+
+    /**
      * Betting constructor.
      * @param IRegistry $registry
      */
@@ -112,6 +117,9 @@ class Betting extends Controller
 
         //FormHelper
         $this->formHelper = $this->registry->getFormHelper();
+        
+        //Now
+        $this->now = new \DateTime();
     }
 
     /**
@@ -129,12 +137,14 @@ class Betting extends Controller
             'qualify' => array(
                 'event' => $this->qualify,
                 'eventAttributes' => $this->qualifyAttributes,
-                'bet' => $this->qualifyBet
+                'bet' => $this->qualifyBet,
+                'inTime' => (bool)($this->now < $this->qualify->getDateTime())
             ),
             'race' => array(
                 'event' => $this->race,
                 'eventAttributes' => $this->raceAttributes,
-                'bet' => $this->raceBet
+                'bet' => $this->raceBet,
+                'inTime' => (bool)($this->now < $this->race->getDateTime())
             )
         );
 
@@ -197,6 +207,8 @@ class Betting extends Controller
         $this->event = $this->entityManger->getRepository('Entity\Event')->find($this->request->getPost('event-id'));
         $this->user = $this->registry->getUserAuth()->getUserByToken($this->request->getPost('user-token'));
 
-        return (bool)($this->event && $this->user);
+        $justInTime = (bool)($this->now < $this->event->getDateTime());
+
+        return (bool)($this->event && $this->user && $justInTime);
     }
 }

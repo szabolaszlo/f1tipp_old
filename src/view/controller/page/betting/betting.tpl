@@ -20,6 +20,8 @@
                 <!-- Form Name -->
                 <legend>{{event.event.getName()}}</legend>
 
+                {% if event.inTime %}
+
                 <!-- Select Basic -->
                 {% for eventAttribute in event.eventAttributes %}
 
@@ -28,10 +30,10 @@
                 {% set betAttrValue = event.bet ? event.bet.getAttributeValueByKey(attrId) : '' %}
 
                 <div class="form-group">
-                    <label class="col-md-6 control-label"
+                    <label class="col-md-4 control-label"
                            for="selectbasic">{{language.get('betting_' ~ attrId)}}</label>
-                    <div class="col-md-6">
-                        <select id="selectbasic" name="bet_attr['{{attrId}}']"
+                    <div class="col-md-7">
+                        <select id="selectbasic" name="bet_attr[{{attrId}}]"
                                 class="form-control event-{{event.event.getId()}}"
                                 {{ event.bet ? ' disabled="disabled"' : ''}}>
                             <option value="">{{language.get('betting_default_option')}}</option>
@@ -47,14 +49,16 @@
 
                 <!-- Button -->
                 {% if not event.bet %}
-                <div class="form-group center-block">
-                    <div class="col-md-6 center-block">
-                        <button id="event-bet-submit-{{event.event.getId()}}" name="singlebutton"
-                                class="btn btn-primary" disabled="disabled">
-                            {{language.get('betting_submit_' ~ event.event.getType())}}
-                        </button>
-                    </div>
+                <div class="center-block">
+                    <button id="event-bet-submit-{{event.event.getId()}}" name="singlebutton"
+                            class="btn btn-danger center-block" disabled="disabled">
+                        {{language.get('betting_submit_' ~ event.event.getType())}}
+                    </button>
                 </div>
+                {% endif %}
+
+                {% else %}
+                <h3>{{language.get('betting_time_out')}}</h3>
                 {% endif %}
             </fieldset>
         </form>
@@ -62,7 +66,7 @@
     {% endfor %}
 </div>
 {% else %}
-<h1>{{language.get('betting_no_login')}}</h1>
+<h3>{{language.get('betting_no_login')}}</h3>
 {% endif %}
 
 <script type="text/javascript">

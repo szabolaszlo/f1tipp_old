@@ -35,17 +35,18 @@ $_['calendar_time'] = "Idő";
 
 // Betting
 $_['betting_no_login'] = 'Kérlek jelentkezz be, ha tippelni szeretnél!';
+$_['betting_time_out'] = 'Sajnos lejárt a tippelési időszak, legközelebb legyél gyorsabb!';
 $_['betting_error'] = 'Érvénytelen adatok, kérlek próbáld újra! Előfordulhat, hogy lejárt a bejelentezésed';
 $_['betting_success'] = 'Tipped sikeresen rögzítve!';
 $_['betting_default_option'] = 'Tippelj, Mákolj!';
 $_['betting_submit_qualify'] = 'Időmérő Tipp Rögzítése';
 $_['betting_submit_race'] = 'Futam Tipp Rögzítése';
-$_['betting_p1'] = 'Tipp az első helyezettre:';
-$_['betting_p2'] = 'Tipp az második helyezettre:';
-$_['betting_p3'] = 'Tipp az haramdik helyezettre:';
-$_['betting_p4'] = 'Tipp az negyedik helyezettre:';
-$_['betting_p5'] = 'Tipp az ötödik helyezettre:';
-$_['betting_p6'] = 'Tipp az hatodik helyezettre:';
+$_['betting_p1'] = '1. :';
+$_['betting_p2'] = '2. :';
+$_['betting_p3'] = '3. :';
+$_['betting_p4'] = '4. :';
+$_['betting_p5'] = '5. :';
+$_['betting_p6'] = '6. :';
 $_['betting_sc'] = 'Bejön-e a Safety Car?:';
 
 // Result
