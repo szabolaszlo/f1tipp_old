@@ -16,7 +16,7 @@
             <td class="text-left bg-grey"><strong>{{bet.getUser().getName()}}</strong></td>
             <td class="text-center bg-grey"><strong>{{bet.getPoint()}}</strong></td>
             {% for betAttribute in bet.getAttributes() %}
-            <td class="text-center {{betAttribute.getClass()}}">{{betAttribute.getValue()}}</td>
+            <td class="text-center {{betAttribute.getClass() ? betAttribute.getClass() : 'bg-white'}}">{{betAttribute.getValue()}}</td>
             {% endfor %}
         </tr>
         {% endfor %}

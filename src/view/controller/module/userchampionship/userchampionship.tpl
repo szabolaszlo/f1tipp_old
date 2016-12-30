@@ -18,7 +18,7 @@
                 {% for id, recordType in recordTypes %}
                 {% if recordType is not empty %}
                 <tr>
-                    <td class="text-center" colspan="3">{{language.get('user_schampionship_best_of_'~id)}}</td>
+                    <td class="text-center bg-danger" colspan="3"><strong>{{language.get('user_schampionship_best_of_'~id)}}</strong></td>
                 </tr>
                 {% for record in recordType %}
                 <tr>
