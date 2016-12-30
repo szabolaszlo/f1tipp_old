@@ -59,4 +59,10 @@ $_['result_p4'] = '4.';
 $_['result_p5'] = '5.';
 $_['result_p6'] = '6.';
 $_['result_sc'] = 'SC';
+
+// User Championship
+$_['user_schampionship_title'] = 'Egyéni Pontverseny';
+$_['user_schampionship_best_of_race'] = 'Futamok Legjobbja:';
+$_['user_schampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
+
 ?>

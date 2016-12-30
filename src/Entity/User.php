@@ -39,6 +39,16 @@ class User
     protected $timestamp;
 
     /**
+     * @var int
+     */
+    protected $point = 0;
+
+    /**
+     * @var string
+     */
+    protected $pointDifference = '';
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -100,5 +110,37 @@ class User
     public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * @param int $point
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPointDifference()
+    {
+        return $this->pointDifference;
+    }
+
+    /**
+     * @param string $pointDifference
+     */
+    public function setPointDifference($pointDifference)
+    {
+        $this->pointDifference = $pointDifference;
     }
 }

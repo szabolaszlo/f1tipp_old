@@ -8,9 +8,12 @@
 
 namespace System\Calculator;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Entity\Bet;
 use Entity\BetAttribute;
 use Entity\Result;
+use Entity\User;
+use System\Calculator\RecordCollector\RecordCollector;
 use System\Registry\IRegistry;
 use System\Rule\Attribute\Attribute;
 use System\Rule\RuleType\IRuleType;
@@ -37,12 +40,24 @@ class Calculator implements ICalculator
     protected $betFullPoints = 0;
 
     /**
+     * @var EntityManagerInterface
+     */
+    protected $entityManager;
+
+    /**
+     * @var RecordCollector
+     */
+    protected $recordCollector;
+
+    /**
      * Calculator constructor.
      * @param IRegistry $registry
      */
     public function __construct(IRegistry $registry)
     {
         $this->registry = $registry;
+        $this->entityManager = $this->registry->getEntityManager();
+        $this->recordCollector = new RecordCollector();
     }
 
     /**
@@ -94,5 +109,45 @@ class Calculator implements ICalculator
             $betAttribute->setPoint($ruleAttribute->getLowPoint());
             $this->betFullPoints += $ruleAttribute->getLowPoint();
         }
+    }
+
+    /**
+     * @param User $user
+     */
+    public function calculateUserPoints(User $user)
+    {
+        $userPoints = 0;
+
+        $results = $this->entityManager->getRepository('Entity\Result')->findAll();
+
+        /** @var Result $result */
+        foreach ($results as $result) {
+            $bets = $this->entityManager
+                ->getRepository('Entity\Bet')
+                ->findBy(
+                    array(
+                        'event_id' => $result->getEvent(),
+                        'user_id' => $user
+                    )
+                );
+
+            /** @var Bet $bet */
+            foreach ($bets as $bet) {
+                $this->calculateBetPoints($bet, $result);
+                $this->recordCollector->addRecord($bet, $result);
+                $userPoints += $bet->getPoint();
+            }
+        }
+
+        $user->setPoint($userPoints);
+    }
+
+    /**
+     * @param $type
+     * @return array|mixed
+     */
+    public function getRecordsByType($type)
+    {
+        return $this->recordCollector->getRecordsByType($type);
     }
 }

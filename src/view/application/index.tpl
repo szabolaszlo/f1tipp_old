@@ -22,6 +22,7 @@
         <div class="col-md-4">
             {{modules.qualifyCountDown}}
             {{modules.raceCountDown}}
+            {{modules.userChampionship}}
         </div>
 
     </div>

@@ -10,6 +10,7 @@ namespace System\Calculator;
 
 use Entity\Bet;
 use Entity\Result;
+use Entity\User;
 
 /**
  * Interface ICalculator
@@ -22,4 +23,15 @@ interface ICalculator
      * @param Result $result
      */
     public function calculateBetPoints(Bet $bet, Result $result);
+
+    /**
+     * @param User $user
+     */
+    public function calculateUserPoints(User $user);
+
+    /**
+     * @param $type
+     * @return array|mixed
+     */
+    public function getRecordsByType($type);
 }
