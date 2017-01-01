@@ -43,7 +43,7 @@ class Actual extends Controller
             $this->data['tables'][$id] = $this->registry->getResultTable()->getTable($user, $event);
         }
 
-        sort($this->data['tables']);
+        ksort($this->data['tables']);
 
         return $this->render();
     }

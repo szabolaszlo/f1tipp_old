@@ -37,7 +37,7 @@ $_['calendar_time'] = "Idő";
 // Betting
 $_['betting_no_login'] = 'Kérlek jelentkezz be, ha tippelni szeretnél!';
 $_['betting_time_out'] = 'Sajnos lejárt a tippelési időszak, legközelebb legyél gyorsabb!';
-$_['betting_error'] = 'Érvénytelen adatok, kérlek próbáld újra! Előfordulhat, hogy lejárt a bejelentezésed';
+$_['betting_error'] = 'Érvénytelen adatok, kérlek próbáld újra! Előfordulhat, hogy lejárt a bejelentezésed / tippelési időszak!';
 $_['betting_success'] = 'Tipped sikeresen rögzítve!';
 $_['betting_default_option'] = 'Tippelj, Mákolj!';
 $_['betting_submit_qualify'] = 'Időmérő Tipp Rögzítése';
@@ -61,6 +61,7 @@ $_['result_p5'] = '5.';
 $_['result_p6'] = '6.';
 $_['result_sc'] = 'SC';
 $_['result_betting_user'] = 'Ők már leadták a tippjüket:';
+$_['result_betting_nobody'] = 'Még senki sem tippelt.';
 
 // User Championship
 $_['user_schampionship_title'] = 'Egyéni Pontverseny';
