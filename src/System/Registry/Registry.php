@@ -25,6 +25,8 @@ use System\Language\Language;
 use System\ResultTable\Decorator\BetDecorator;
 use System\ResultTable\ResultTable;
 use System\ResultTable\Type\Full;
+use System\ResultTable\Type\OnlyBets;
+use System\ResultTable\Type\OnlyUsers;
 use System\Rule\Rule;
 use System\Rule\RuleType\Qualify as QualifyRule;
 use System\Rule\RuleType\Race as RaceRule;
@@ -246,10 +248,12 @@ class Registry implements IRegistry
             $decorator = new BetDecorator($this);
             
             $tableTypes = array(
-                'full' => new Full($this, $this->getCalculator(), $decorator)
+                'full' => new Full($this, $this->getCalculator(), $decorator),
+                'only_users' => new OnlyUsers($this),
+                'only_bets' => new OnlyBets($this)
             );
 
-            $this->resultTable = new ResultTable($tableTypes);
+            $this->resultTable = new ResultTable($this, $tableTypes);
         }
 
         return $this->resultTable;

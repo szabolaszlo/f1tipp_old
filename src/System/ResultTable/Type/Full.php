@@ -8,11 +8,9 @@
 
 namespace System\ResultTable\Type;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Entity\Bet;
 use Entity\Event;
 use System\Calculator\ICalculator;
-use System\Language\Language;
 use System\Registry\IRegistry;
 use System\ResultTable\Decorator\IDecorator;
 
@@ -20,23 +18,8 @@ use System\ResultTable\Decorator\IDecorator;
  * Class Full
  * @package System\ResultTable\Type
  */
-class Full implements ITableType
+class Full extends ATableType
 {
-    /**
-     * @var IRegistry
-     */
-    protected $registry;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $entityManager;
-
-    /**
-     * @var \Twig_Environment
-     */
-    protected $renderer;
-
     /**
      * @var ICalculator
      */
@@ -46,17 +29,7 @@ class Full implements ITableType
      * @var IDecorator
      */
     protected $decorator;
-
-    /**
-     * @var Language
-     */
-    protected $language;
-
-    /**
-     * @var array
-     */
-    protected $data = array();
-
+    
     /**
      * Full constructor.
      * @param IRegistry $registry
@@ -65,15 +38,17 @@ class Full implements ITableType
      */
     public function __construct(IRegistry $registry, ICalculator $calculator, IDecorator $decorator)
     {
+        parent::__construct($registry);
+        
         $this->registry = $registry;
         $this->calculator = $calculator;
         $this->decorator = $decorator;
-        
+
         $this->entityManager = $this->registry->getEntityManager();
         $this->renderer = $this->registry->getRenderer();
         $this->data['language'] = $this->registry->getLanguage();
     }
-
+    
     /**
      * @param Event $event
      * @return string
@@ -102,14 +77,5 @@ class Full implements ITableType
         $this->data['bets'] = $bets;
 
         return $this->render();
-    }
-
-    /**
-     * @return string
-     */
-    protected function render()
-    {
-        $templatePath = strtolower(get_class($this)) . '.tpl';
-        return $this->renderer->render($templatePath, $this->data);
     }
 }

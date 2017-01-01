@@ -12,7 +12,6 @@ use Controller\Controller;
 use Entity\Result;
 use System\Cache\Cache;
 use System\Registry\IRegistry;
-use System\ResultTable\Type\ITableType;
 
 /**
  * Class Results
@@ -20,11 +19,6 @@ use System\ResultTable\Type\ITableType;
  */
 class Results extends Controller
 {
-    /**
-     * @var ITableType
-     */
-    protected $fullTable;
-
     /**
      * @var Cache
      */
@@ -38,7 +32,6 @@ class Results extends Controller
     {
         parent::__construct($registry);
 
-        $this->fullTable = $this->registry->getResultTable()->getTableByType('full');
         $this->cache = $this->registry->getCache();
     }
 
@@ -59,7 +52,7 @@ class Results extends Controller
 
         /** @var Result $result */
         foreach ($results as $result) {
-            $this->data['tables'][] = $this->fullTable->getTable($result->getEvent());
+            $this->data['tables'][] = $this->registry->getResultTable()->getTableByType('full', $result->getEvent());
         }
 
         $renderedContent = $this->render();

@@ -17,6 +17,9 @@
                 <li {{page.id == 'betting' ? 'class="active"' : ''}}>
                     <a href="?page=betting/index">{{language.get('nav_bet')}}</a>
                 </li>
+                <li {{page.id == 'actual' ? 'class="active"' : ''}}>
+                    <a href="?page=actual/index">{{language.get('nav_actual')}}</a>
+                </li>
                 <li {{page.id == 'results' ? 'class="active"' : ''}}>
                     <a href="?page=results/index">{{language.get('nav_results')}}</a>
                 </li>

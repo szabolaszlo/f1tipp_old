@@ -9,6 +9,7 @@ $_['nav_bet'] = "Tippelek";
 $_['nav_results'] = "Eredmények";
 $_['nav_calendar'] = "Naptár";
 $_['nav_rules'] = "Szabályzat";
+$_['nav_actual'] = "Aktuális";
 
 //Error
 $_['error_not_found_page'] = "Az oldal nem található";
@@ -59,10 +60,12 @@ $_['result_p4'] = '4.';
 $_['result_p5'] = '5.';
 $_['result_p6'] = '6.';
 $_['result_sc'] = 'SC';
+$_['result_betting_user'] = 'Ők már leadták a tippjüket:';
 
 // User Championship
 $_['user_schampionship_title'] = 'Egyéni Pontverseny';
 $_['user_schampionship_best_of_race'] = 'Futamok Legjobbja:';
 $_['user_schampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
+
 
 ?>
