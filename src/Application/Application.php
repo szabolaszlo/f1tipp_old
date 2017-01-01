@@ -63,7 +63,8 @@ class Application
                     'domain' => $this->registry->getServer()->getDomain(),
                     'page' => $page,
                     'modules' => $modules,
-                    'language' => $this->registry->getLanguage()
+                    'language' => $this->registry->getLanguage(),
+                    'isAdmin' => $this->registry->getUserAuth()->isAdmin()
                 )
             )
         );

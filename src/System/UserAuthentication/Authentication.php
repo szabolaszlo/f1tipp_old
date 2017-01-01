@@ -141,4 +141,13 @@ class Authentication
     {
         return $this->cookie->get(self::TOKEN_NAME);
     }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        $user = $this->getLoggedUser();
+        return (bool)($user && $user->getIsAdmin());
+    }
 }

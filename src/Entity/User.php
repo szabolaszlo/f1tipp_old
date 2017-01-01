@@ -39,6 +39,11 @@ class User
     protected $timestamp;
 
     /**
+     * @ORM\Column(name="admin", type="boolean", length=1, nullable=true)
+     */
+    protected $isAdmin;
+
+    /**
      * @var int
      */
     protected $point = 0;
@@ -142,5 +147,21 @@ class User
     public function setPointDifference($pointDifference)
     {
         $this->pointDifference = $pointDifference;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @param mixed $isAdmin
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
     }
 }

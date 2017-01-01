@@ -10,6 +10,8 @@ $_['nav_results'] = "Eredmények";
 $_['nav_calendar'] = "Naptár";
 $_['nav_rules'] = "Szabályzat";
 $_['nav_actual'] = "Aktuális";
+$_['nav_admin'] = "Admin";
+$_['nav_admin_result'] = "Eredmény Feltöltés";
 
 //Error
 $_['error_not_found_page'] = "Az oldal nem található";
