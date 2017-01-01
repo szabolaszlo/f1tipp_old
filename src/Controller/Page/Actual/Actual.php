@@ -9,6 +9,7 @@
 namespace Controller\Page\Actual;
 
 use Controller\Controller;
+use Entity\Event;
 use Entity\Result;
 
 /**
@@ -33,16 +34,16 @@ class Actual extends Controller
 
         $this->data['tables'] = array();
 
-        foreach ($events as $key => $event) {
-            /** @var Result $result */
-            $result = $this->entityManager
-                ->getRepository('Entity\Result')
-                ->findOneBy(array('event' => $event));
+        $now = new \DateTime();
 
-            $id = $result ? $result->getId() : $key;
+        /** @var Event $event */
+        foreach ($events as $event) {
+            $id = abs($now->getTimestamp() - $event->getDateTime()->getTimeStamp());
 
             $this->data['tables'][$id] = $this->registry->getResultTable()->getTable($user, $event);
         }
+
+        sort($this->data['tables']);
 
         return $this->render();
     }
