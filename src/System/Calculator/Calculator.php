@@ -133,7 +133,9 @@ class Calculator implements ICalculator
 
             /** @var Bet $bet */
             foreach ($bets as $bet) {
-                $this->calculateBetPoints($bet, $result);
+                if (!$bet->getPoint()) {
+                    $this->calculateBetPoints($bet, $result);
+                }
                 $this->recordCollector->addRecord($bet, $result);
                 $userPoints += $bet->getPoint();
             }
