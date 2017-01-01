@@ -27,7 +27,7 @@ class PageHandler extends Handler
      */
     public function getPage()
     {
-        $this->resolver->resolve($this->registry->getRequest()->getGet('page', 'error/notfound'));
+        $this->resolver->resolve($this->registry->getRequest()->getGet('page', 'actual/index'));
 
         $pageClassName = $this->resolver->getPage();
 

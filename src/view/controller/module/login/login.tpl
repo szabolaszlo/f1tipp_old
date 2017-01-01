@@ -1,4 +1,4 @@
-<form id="signin" class="navbar-form navbar-right" role="form" method="post" action="?module=login/tryLogin">
+<form id="signin" class="navbar-form navbar-right" role="form" method="post" action="?module=login/tryLogin&{{actualPage}}">
 
     <div class="input-group {{ error.error_user ? 'has-error' : ''}}">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

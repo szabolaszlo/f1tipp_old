@@ -41,6 +41,8 @@ class Login extends Controller
 
         $this->authentication = $this->registry->getUserAuth();
         $this->server = $this->registry->getServer();
+
+        $this->data['actualPage'] = 'page=' . $this->registry->getRequest()->getGet('page', 'actual/index');
     }
 
     /**
@@ -84,9 +86,9 @@ class Login extends Controller
     public function loggedAction(User $loggedUser)
     {
         $this->data['name'] = $loggedUser->getName();
-        
+
         $this->setTemplate('controller/module/login/logged.tpl');
-        
+
         return $this->render();
     }
 
@@ -99,7 +101,7 @@ class Login extends Controller
 
         if (!$user) {
             $this->session->set('error_user', true);
-            $this->server->redirect('module=login/login');
+            $this->server->redirect('module=login/login&' . $this->data['actualPage']);
         }
 
         $storedPassword = $user->getPassword();
@@ -107,17 +109,17 @@ class Login extends Controller
         if (!password_verify($this->request->getPost('password'), $storedPassword)) {
             $this->session->set('user_name', $user->getName());
             $this->session->set('error_password', true);
-            $this->server->redirect('module=login/login');
+            $this->server->redirect('module=login/login&' . $this->data['actualPage']);
         }
 
         $this->authentication->setUserToLogged($user);
 
-        $this->server->redirect();
+        $this->server->redirect($this->data['actualPage']);
     }
 
     public function logoutAction()
     {
         $this->authentication->destroyToken();
-        $this->server->redirect();
+        $this->server->redirect($this->data['actualPage']);
     }
 }
