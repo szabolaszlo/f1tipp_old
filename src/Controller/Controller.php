@@ -74,7 +74,7 @@ abstract class Controller
 
         $this->data['language'] = $this->registry->getLanguage();
 
-        $this->templatePath = strtolower(get_class($this)) . '.tpl';
+        $this->templatePath = $this->generateTemplatePath();
 
         $reflect = new \ReflectionClass($this);
         $this->id = lcfirst($reflect->getShortName());
@@ -93,7 +93,7 @@ abstract class Controller
      */
     public function indexAction()
     {
-        return '';
+        return $this->render();
     }
 
     /**
@@ -102,6 +102,15 @@ abstract class Controller
     public function setTemplate($templatePath)
     {
         $this->templatePath = $templatePath;
+    }
+
+    /**
+     * @return string
+     */
+    protected function generateTemplatePath()
+    {
+        $path = $result = preg_replace('/\B([A-Z])/', '_$1', get_class($this));
+        return strtolower($path) . '.tpl';
     }
 
     /**

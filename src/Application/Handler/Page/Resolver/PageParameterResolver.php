@@ -16,6 +16,11 @@ class PageParameterResolver
     /**
      * @var string
      */
+    protected $pageType = '';
+
+    /**
+     * @var string
+     */
     protected $action = 'notfound';
 
     /**
@@ -34,18 +39,26 @@ class PageParameterResolver
     public function resolve($route)
     {
         $route = explode('/', $route);
-        if (isset($route[1])) {
-            $this->page = $route[0];
+
+        if (count($route) == 2) {
+            $this->page = $this->pageType = $route[0];
             $this->action = $route[1];
         }
+
+        if (count($route) == 3) {
+            $this->pageType = $route[0];
+            $this->page = $route[1];
+            $this->action = $route[2];
+        }
     }
+
 
     /**
      * @return string
      */
     public function getPage()
     {
-        return 'Controller\\Page\\' . ucfirst($this->page) . '\\' . ucfirst($this->page) ;
+        return 'Controller\\Page\\' . $this->formatName($this->pageType) . '\\' . $this->formatName($this->page);
     }
 
     /**
@@ -70,5 +83,18 @@ class PageParameterResolver
     public function getDefaultAction()
     {
         return $this->defaultAction;
+    }
+
+    /**
+     * @param $string
+     * @return mixed|string
+     */
+    public function formatName($string)
+    {
+        $string = str_replace("_", " ", $string);
+        $string = ucwords($string);
+        $string = str_replace(" ", "", $string);
+
+        return $string;
     }
 }
