@@ -152,16 +152,8 @@ class User
     /**
      * @return mixed
      */
-    public function getIsAdmin()
+    public function isAdmin()
     {
         return $this->isAdmin;
-    }
-
-    /**
-     * @param mixed $isAdmin
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->isAdmin = $isAdmin;
     }
 }

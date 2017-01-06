@@ -30,10 +30,10 @@
                     <a href="#">{{language.get('nav_rules')}}</a>
                 </li>
                 {% if isAdmin %}
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{language.get('nav_admin')}}<span class="caret"></span></a>
+                <li class="dropdown {{page.id == 'admin' ? 'active ' : ''}}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">{{language.get('nav_admin')}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">{{language.get('nav_admin_result')}}</a></li>
+                        <li><a href="?page=admin/result_upload/index">{{language.get('nav_admin_result')}}</a></li>
                     </ul>
                 </li>
                 {% endif %}

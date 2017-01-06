@@ -148,6 +148,6 @@ class Authentication
     public function isAdmin()
     {
         $user = $this->getLoggedUser();
-        return (bool)($user && $user->getIsAdmin());
+        return (bool)($user && $user->isAdmin());
     }
 }

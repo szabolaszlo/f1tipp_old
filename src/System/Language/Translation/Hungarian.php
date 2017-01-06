@@ -70,5 +70,10 @@ $_['user_schampionship_title'] = 'Egyéni Pontverseny';
 $_['user_schampionship_best_of_race'] = 'Futamok Legjobbja:';
 $_['user_schampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
 
-
+// Admin
+$_['admin_result_upload_success'] = 'Sikeres eredmény feltöltés !';
+$_['admin_no_permisson_or_data_error'] = 'Nincs jogosultságod az oldalhoz, vagy hibás adatok!';
+$_['admin_result_upload_submit_qualify'] = 'Időmérő Eredmény Rögzítése';
+$_['admin_result_upload_submit_race'] = 'Futam Eredmény Rögzítése';
+$_['admin_result_upload_default_option'] = 'Add meg az eredményt';
 ?>
