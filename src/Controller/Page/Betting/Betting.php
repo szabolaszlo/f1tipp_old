@@ -133,6 +133,9 @@ class Betting extends Controller
         $this->data['success'] = $this->session->get('success');
         $this->session->remove('success');
 
+        $this->data['token'] = md5(time());
+        $this->session->set('token', $this->data['token']);
+
         $this->data['events'] = array(
             'qualify' => array(
                 'event' => $this->qualify,
@@ -208,6 +211,12 @@ class Betting extends Controller
         $this->user = $this->registry->getUserAuth()->getUserByToken($this->request->getPost('user-token'));
 
         $justInTime = (bool)($this->now < $this->event->getDateTime());
+
+        if ($this->request->getPost('token', 'notEqual') != $this->session->get('token')) {
+            $this->registry->getServer()->redirect('page=betting/index');
+        }
+
+        $this->session->remove('token');
 
         return (bool)($this->event && $this->user && $justInTime);
     }

@@ -46,6 +46,7 @@
 
                 <input type="hidden" name="user-token" value="{{userToken}}">
                 <input type="hidden" name="event-id" value="{{event.event.getId}}">
+                <input type="hidden" name="token" value="{{token}}">
 
                 <!-- Button -->
                 {% if not event.bet %}
