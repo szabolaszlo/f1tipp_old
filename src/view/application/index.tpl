@@ -23,6 +23,7 @@
             {{modules.qualifyCountDown}}
             {{modules.raceCountDown}}
             {{modules.userChampionship}}
+            {{modules.messageWall}}
         </div>
 
     </div>

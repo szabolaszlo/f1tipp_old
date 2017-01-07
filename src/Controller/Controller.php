@@ -77,7 +77,7 @@ abstract class Controller
         $this->templatePath = $this->generateTemplatePath();
 
         $reflect = new \ReflectionClass($this);
-        $this->id = lcfirst($reflect->getShortName());
+        $this->id = $this->data['id'] = lcfirst($reflect->getShortName());
     }
 
     /**

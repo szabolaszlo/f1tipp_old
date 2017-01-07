@@ -76,4 +76,9 @@ $_['admin_no_permisson_or_data_error'] = 'Nincs jogosultságod az oldalhoz, vagy
 $_['admin_result_upload_submit_qualify'] = 'Időmérő Eredmény Rögzítése';
 $_['admin_result_upload_submit_race'] = 'Futam Eredmény Rögzítése';
 $_['admin_result_upload_default_option'] = 'Add meg az eredményt';
+
+// MessageWall
+$_['message_wall_title'] = 'Üzenőfal';
+$_['message_wall_submit'] = 'Beleugatok';
+
 ?>

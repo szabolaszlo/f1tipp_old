@@ -30,12 +30,13 @@ table caption {
     background-color: #e74c3c;
     border-color: #c0392b;
 }
+
 .navbar .navbar-brand {
-    float:left;
-    height:50px;
-    padding:0px 0px;
-    font-size:18px;
-    line-height:0px;
+    float: left;
+    height: 50px;
+    padding: 0px 0px;
+    font-size: 18px;
+    line-height: 0px;
     color: #ecf0f1;
 }
 
@@ -43,45 +44,56 @@ table caption {
 .navbar .navbar-brand:focus {
     color: #ffbbbc;
 }
+
 .navbar .navbar-text {
     color: #ecf0f1;
 }
+
 .navbar .navbar-nav > li > a {
     color: #ecf0f1;
 }
+
 .navbar .navbar-nav > li > a:hover,
 .navbar .navbar-nav > li > a:focus {
     color: #ffbbbc;
 }
+
 .navbar .navbar-nav > .active > a,
 .navbar .navbar-nav > .active > a:hover,
 .navbar .navbar-nav > .active > a:focus {
     color: #ffbbbc;
     background-color: #c0392b;
 }
+
 .navbar .navbar-nav > .open > a,
 .navbar .navbar-nav > .open > a:hover,
 .navbar .navbar-nav > .open > a:focus {
     color: #ffbbbc;
     background-color: #c0392b;
 }
+
 .navbar .navbar-toggle {
     border-color: #c0392b;
 }
+
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
     background-color: #c0392b;
 }
+
 .navbar .navbar-toggle .icon-bar {
     background-color: #ecf0f1;
 }
+
 .navbar .navbar-collapse,
 .navbar .navbar-form {
     border-color: #ecf0f1;
 }
+
 .navbar .navbar-link {
     color: #ecf0f1;
 }
+
 .navbar .navbar-link:hover {
     color: #ffbbbc;
 }
@@ -90,10 +102,12 @@ table caption {
     .navbar .navbar-nav .open .dropdown-menu > li > a {
         color: #ecf0f1;
     }
+
     .navbar .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #ffbbbc;
     }
+
     .navbar .navbar-nav .open .dropdown-menu > .active > a,
     .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
     .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
@@ -102,3 +116,13 @@ table caption {
     }
 }
 
+a.glyphicon {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: #c0392b;
+}
+
+a:hover.glyphicon {
+    color: #e74c3c;
+    cursor: pointer;
+}
