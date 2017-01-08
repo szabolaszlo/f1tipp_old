@@ -23,9 +23,11 @@ class PageHandler extends Handler
     protected $resolver;
 
     /**
-     * @return mixed
+     * @param array $moduleInPage
+     * @param array $modules
+     * @return array
      */
-    public function getPage()
+    public function getPage($moduleInPage = array(), $modules = array())
     {
         $this->resolver->resolve($this->registry->getRequest()->getGet('page', 'actual/index'));
 
@@ -38,6 +40,14 @@ class PageHandler extends Handler
         /** @var Controller $page */
         $page = new $pageClassName($this->registry);
 
+        if (array_key_exists($page->getId(), $moduleInPage)) {
+            $pageModules = array();
+            foreach ($moduleInPage[$page->getId()] as $moduleId) {
+                $pageModules[$moduleId] = $modules[$moduleId];
+            }
+            $page->setModules($pageModules);
+        }
+        
         $action = $this->resolver->getAction();
 
         if (!method_exists($page, $action)) {

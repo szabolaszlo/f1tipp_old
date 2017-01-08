@@ -29,6 +29,13 @@ class Application
     protected $registry;
 
     /**
+     * @var array
+     */
+    protected $moduleInPage = array(
+        'actual' => array('messageWall')
+    );
+
+    /**
      * Application constructor.
      * @param PageHandler $pageHandler
      * @param ModuleHandler $moduleHandler
@@ -49,11 +56,11 @@ class Application
      */
     public function dispatch(Response $response)
     {
-        //page
-        $page = $this->pageHandler->getPage();
-
         //modules
         $modules = $this->moduleHandler->getModules();
+
+        //page
+        $page = $this->pageHandler->getPage($this->moduleInPage, $modules);
 
         //response
         $response->setContent(

@@ -23,7 +23,9 @@
             {{modules.qualifyCountDown}}
             {{modules.raceCountDown}}
             {{modules.userChampionship}}
+            {% if page.id != 'actual' %}
             {{modules.messageWall}}
+            {% endif %}
         </div>
 
     </div>

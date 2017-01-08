@@ -130,4 +130,12 @@ abstract class Controller
     {
         return $this->renderer->render($this->templatePath, $this->data);
     }
+
+    /**
+     * @param $modules
+     */
+    public function setModules($modules)
+    {
+        $this->data['modules'] = $modules;
+    }
 }
