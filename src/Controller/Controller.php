@@ -72,12 +72,14 @@ abstract class Controller
         $this->renderer = $this->registry->getRenderer();
         $this->entityManager = $this->registry->getEntityManager();
 
-        $this->data['language'] = $this->registry->getLanguage();
-
         $this->templatePath = $this->generateTemplatePath();
 
         $reflect = new \ReflectionClass($this);
-        $this->id = $this->data['id'] = lcfirst($reflect->getShortName());
+        $this->id = lcfirst($reflect->getShortName());
+
+        $this->data['language'] = $this->registry->getLanguage();
+        $this->data['id'] = $this->id;
+        $this->data['visibility'] = $this->session->get($this->id . 'Status', 'block');
     }
 
     /**
@@ -109,8 +111,16 @@ abstract class Controller
      */
     protected function generateTemplatePath()
     {
-        $path = $result = preg_replace('/\B([A-Z])/', '_$1', get_class($this));
+        $path = preg_replace('/\B([A-Z])/', '_$1', get_class($this));
         return strtolower($path) . '.tpl';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return (bool)($this->session->get($this->id . 'Status') !== 'off');
     }
 
     /**

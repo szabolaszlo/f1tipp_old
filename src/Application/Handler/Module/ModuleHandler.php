@@ -70,7 +70,9 @@ class ModuleHandler extends Handler
                 $action = 'indexAction';
             }
 
-            $this->modules[$module->getId()] = $module->$action();
+            if ($module->isEnabled()) {
+                $this->modules[$module->getId()] = $module->$action();
+            }
         }
 
         return $this->modules;

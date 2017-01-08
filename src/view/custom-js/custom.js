@@ -39,21 +39,23 @@ function checkFakeBet(selectClass, submitId) {
 }
 
 $(document).ready(function () {
+
     // Toggle modules
     $(".toggle").click(function () {
+
         var toggleClassName = $(this).attr('id');
+        var display = ($(".toggle-able-" + toggleClassName).css('display') == 'block') ? 'none' : 'block';
         $(".toggle-able-" + toggleClassName).toggle('medium');
         $(this).toggleClass('glyphicon-minus-sign').toggleClass('glyphicon-plus-sign');
-        $.ajax({
-            method: "POST",
-            url: "/src/Ajax/SetSessionVariable.php",
-            data: { name: "John", location: "Boston" }
-        });
+
+        $.post("/src/Ajax/SetSessionVariable.php", {key: toggleClassName + 'Status', value: display});
     });
 
     // Remove modules
     $(".remove").click(function () {
         var removeClassName = $(this).attr('id');
         $(".remove-able-" + removeClassName).hide('medium');
+
+        $.post("/src/Ajax/SetSessionVariable.php", {key: removeClassName + 'Status', value: 'off'});
     });
 });

@@ -66,9 +66,9 @@ $_['result_betting_user'] = 'Ők már leadták a tippjüket:';
 $_['result_betting_nobody'] = 'Még senki sem tippelt.';
 
 // User Championship
-$_['user_schampionship_title'] = 'Egyéni Pontverseny';
-$_['user_schampionship_best_of_race'] = 'Futamok Legjobbja:';
-$_['user_schampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
+$_['userChampionship_title'] = 'Egyéni Pontverseny';
+$_['userChampionship_best_of_race'] = 'Futamok Legjobbja:';
+$_['userChampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
 
 // Admin
 $_['admin_result_upload_success'] = 'Sikeres eredmény feltöltés !';
@@ -78,7 +78,7 @@ $_['admin_result_upload_submit_race'] = 'Futam Eredmény Rögzítése';
 $_['admin_result_upload_default_option'] = 'Add meg az eredményt';
 
 // MessageWall
-$_['message_wall_title'] = 'Üzenőfal';
-$_['message_wall_submit'] = 'Beleugatok';
+$_['messageWall_title'] = 'Üzenőfal';
+$_['messageWall_submit'] = 'Beleugatok';
 
 ?>

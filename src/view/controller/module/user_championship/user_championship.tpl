@@ -1,5 +1,4 @@
-<div class="panel panel-danger center-block">
-    <div class="panel-heading text-center">{{language.get('user_schampionship_title')}}</div>
+{% extends 'controller/module/base_module.tpl' %} {% block body_content %}
     <div class="panel-body center-block">
         <div class="table-responsive center-block">
             <table class="table table-condensed">
@@ -15,10 +14,10 @@
             </table>
             <table class="table table-condensed">
                 <tbody>
-                {% for id, recordType in recordTypes %}
+                {% for typeKey, recordType in recordTypes %}
                 {% if recordType is not empty %}
                 <tr>
-                    <td class="text-center bg-danger" colspan="3"><strong>{{language.get('user_schampionship_best_of_'~id)}}</strong></td>
+                    <td class="text-center bg-danger" colspan="3"><strong>{{language.get(id ~ '_best_of_' ~ typeKey)}}</strong></td>
                 </tr>
                 {% for record in recordType %}
                 <tr>
@@ -34,4 +33,4 @@
         </div>
 
     </div>
-</div>
+{% endblock %}
