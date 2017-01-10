@@ -26,7 +26,7 @@ interface IRequest
      * @param string $default
      * @return mixed|string
      */
-    public function getGet($key, $default = '');
+    public function getQuery($key, $default = '');
 
     /**
      * @return bool

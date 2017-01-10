@@ -43,7 +43,7 @@ class ModuleHandler extends Handler
      */
     public function getModules()
     {
-        $this->resolver->resolve($this->registry->getRequest()->getGet('module', ''));
+        $this->resolver->resolve($this->registry->getRequest()->getQuery('module', ''));
 
         $moduleDirectories = glob($_SERVER['DOCUMENT_ROOT'] . $this->path, GLOB_ONLYDIR);
 
@@ -76,5 +76,40 @@ class ModuleHandler extends Handler
         }
 
         return $this->modules;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getModule()
+    {
+        $moduleContent = '';
+        
+        $this->resolver->resolve($this->registry->getRequest()->getQuery('module', ''));
+
+        $moduleClass = $this->resolver->getModuleClass();
+
+        if (!class_exists($moduleClass)) {
+            return $moduleContent;
+        }
+
+        /** @var Controller $module */
+        $module = new $moduleClass($this->registry);
+
+        if ($this->resolver->getModule() == $module->getId()) {
+            $action = $this->resolver->getAction();
+        } else {
+            $action = 'indexAction';
+        }
+
+        if (!method_exists($module, $action)) {
+            $action = 'indexAction';
+        }
+
+        if ($module->isEnabled()) {
+            $moduleContent = $module->$action();
+        }
+        
+        return $moduleContent;
     }
 }

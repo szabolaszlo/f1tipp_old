@@ -29,7 +29,7 @@ class PageHandler extends Handler
      */
     public function getPage($moduleInPage = array(), $modules = array())
     {
-        $this->resolver->resolve($this->registry->getRequest()->getGet('page', 'actual/index'));
+        $this->resolver->resolve($this->registry->getRequest()->getQuery('page', 'actual/index'));
 
         $pageClassName = $this->resolver->getPage();
 

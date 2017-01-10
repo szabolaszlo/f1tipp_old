@@ -76,4 +76,37 @@ class Application
             )
         );
     }
+
+    /**
+     * @param Response $response
+     */
+    public function dispatchAjax(Response $response)
+    {
+        $page = '';
+        $module = '';
+
+        //module
+        if ($this->registry->getRequest()->getQuery('module', false)) {
+            $module = $this->moduleHandler->getModule();
+        }
+
+        //page
+        if ($this->registry->getRequest()->getQuery('page', false)) {
+            $page = $this->pageHandler->getPage($this->moduleInPage, array($module));
+        }
+
+        //response
+        $response->setContent(
+            $this->registry->getRenderer()->render(
+                'application/ajax.tpl',
+                array(
+                    'domain' => $this->registry->getServer()->getDomain(),
+                    'page' => $page,
+                    'module' => $module,
+                    'language' => $this->registry->getLanguage(),
+                    'isAdmin' => $this->registry->getUserAuth()->isAdmin()
+                )
+            )
+        );
+    }
 }

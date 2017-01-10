@@ -34,6 +34,10 @@ $moduleHandler = new \Application\Handler\Module\ModuleHandler($registry, $modul
 
 $app = new \Application\Application($pageHandler, $moduleHandler, $registry);
 
-$app->dispatch($response);
+if ($request->getQuery('ajax', false)) {
+    $app->dispatchAjax($response);
+} else {
+    $app->dispatch($response);
+}
 
 echo $response->send();

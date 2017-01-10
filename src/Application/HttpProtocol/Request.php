@@ -44,7 +44,7 @@ class Request implements IRequest
      * @param string $default
      * @return mixed|string
      */
-    public function getGet($key, $default = '')
+    public function getQuery($key, $default = '')
     {
         return isset($this->get[$key]) ? $this->get[$key] : $default;
     }

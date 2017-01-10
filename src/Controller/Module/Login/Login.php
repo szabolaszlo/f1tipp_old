@@ -42,7 +42,7 @@ class Login extends Controller
         $this->authentication = $this->registry->getUserAuth();
         $this->server = $this->registry->getServer();
 
-        $this->data['actualPage'] = 'page=' . $this->registry->getRequest()->getGet('page', 'actual/index');
+        $this->data['actualPage'] = 'page=' . $this->registry->getRequest()->getQuery('page', 'actual/index');
     }
 
     /**
