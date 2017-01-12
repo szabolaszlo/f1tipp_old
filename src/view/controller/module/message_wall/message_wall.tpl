@@ -1,15 +1,8 @@
 {% extends 'controller/module/base_module.tpl' %} {% block body_content %}
-<div class="panel-body" style="max-height: 150px;overflow-y: scroll;">
-    {% for message in messages %}
-    {% set userName = message.getUser().getName() %}
-    <strong>{{userName}}: </strong>{{message.getContent()}} - {{message.getDateTime()|date('h:i')}}
-    <br>
-    {% endfor %}
-</div>
-<form class="form-inline">
-    <div class="form-group container-fluid ">
-        <input type="text" class="form-control">
-        <button type="submit" class="btn btn-danger">{{language.get(id ~ '_submit')}}</button>
+    <div id="messages-list" class="panel-body" style="max-height: 150px;overflow-y: scroll;">
+        {% include('controller/module/message_wall/messages.tpl') %}
     </div>
-</form>
+    <div id="messages-send-form-div" class="bg-danger" style="padding: 5px">
+        {% include('controller/module/message_wall/form.tpl') %}
+    </div>
 {% endblock %}

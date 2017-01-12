@@ -80,5 +80,7 @@ $_['admin_result_upload_default_option'] = 'Add meg az eredményt';
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';
 $_['messageWall_submit'] = 'Beleugatok';
+$_['messageWall_not_logged_in'] = 'Nem vagy bejelentkezve!';
+$_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
 
 ?>

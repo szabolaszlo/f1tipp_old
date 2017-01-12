@@ -96,11 +96,7 @@ class ModuleHandler extends Handler
         /** @var Controller $module */
         $module = new $moduleClass($this->registry);
 
-        if ($this->resolver->getModule() == $module->getId()) {
-            $action = $this->resolver->getAction();
-        } else {
-            $action = 'indexAction';
-        }
+        $action = $this->resolver->getAction();
 
         if (!method_exists($module, $action)) {
             $action = 'indexAction';

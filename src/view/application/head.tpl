@@ -17,6 +17,9 @@
     <!-- jQuery -->
     <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/jquery/jquery-3.1.1.min.js"></script>
 
+    <!-- jQuery Form-->
+    <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/jquery/jquery.form.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
