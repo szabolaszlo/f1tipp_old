@@ -19,5 +19,9 @@
             $('#messages-list').load('?module=message_wall/messages&ajax=true');
             $('#messages-send-form-div').load('?module=message_wall/form&ajax=true');
         });
+
+        setInterval(function () {
+            $('#messages-list').load('?module=message_wall/messages&ajax=true');
+        }, 15000);
     });
 </script>
