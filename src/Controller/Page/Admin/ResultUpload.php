@@ -59,7 +59,7 @@ class ResultUpload extends Controller
         }
 
         $this->data['token'] = md5(time());
-        $this->session->set('token', $this->data['token']);
+        $this->session->set('ResultToken', $this->data['token']);
 
         $eventId = $this->session->get('eventId', $this->getNextEventId());
 
@@ -133,11 +133,11 @@ class ResultUpload extends Controller
             return false;
         }
 
-        if ($this->request->getPost('token', 'notEqual') != $this->session->get('token')) {
+        if ($this->request->getPost('token', 'notEqual') != $this->session->get('ResultToken')) {
             $this->registry->getServer()->redirect('page=admin/result_upload/index');
         }
 
-        $this->session->remove('token');
+        $this->session->remove('ResultToken');
         return true;
     }
 
