@@ -5,7 +5,7 @@
                 <tbody>
                 {% for user in users %}
                 <tr>
-                    <td class="user-activity user-{{ user.getName() }}"></td>
+                    <td class="user-activity user-{{ user.getName() }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="Online" style="color: transparent; font-size: 1.1em;"></span></td>
                     <td><strong>{{user.getName()}}</strong></td>
                     <td><strong>{{user.getPoint()}}</strong></td>
                     <td>{{user.getPointDifference()}}</td>

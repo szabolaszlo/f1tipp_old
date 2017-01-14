@@ -6,13 +6,13 @@
  * Date: 2016. 12. 18.
  * Time: 17:18
  */
-namespace System\CountDown;
+namespace System\CountDownScript;
 
 /**
- * Class CountDown
- * @package System\CountDown
+ * Class CountDownScript
+ * @package System\CountDownScript
  */
-class CountDown
+class CountDownScript
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ class CountDown
     protected $renderer;
 
     /**
-     * CountDown constructor.
+     * CountDownScript constructor.
      * @param $id
      * @param $dateTime
      * @param $renderer

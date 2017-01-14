@@ -18,9 +18,9 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>{{event.event.getName()}}</legend>
+                <legend>{{event.event.getName()}} - {{ language.get('general_' ~ event.event.getType) }}</legend>
 
-                {% if event.inTime %}
+                {% if event.inTime or event.bet %}
 
                 <!-- Select Basic -->
                 {% for eventAttribute in event.eventAttributes %}

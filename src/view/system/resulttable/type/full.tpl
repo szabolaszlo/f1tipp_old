@@ -10,7 +10,7 @@
         </tr>
         </thead>
         <tbody>
-        <caption><strong>{{result.getEvent().getName()}}</strong></caption>
+        <caption><strong>{{result.getEvent().getName()}} - {{ language.get('general_' ~ result.getEvent().getType) }}</strong></caption>
         {% for bet in bets %}
         <tr>
             <td class="text-left bg-grey"><strong>{{bet.getUser().getName()}}</strong></td>

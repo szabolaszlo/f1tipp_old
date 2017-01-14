@@ -6,7 +6,7 @@
         </tr>
         </thead>
         <tbody>
-        <caption><strong>{{event.getName()}}</strong></caption>
+        <caption><strong>{{event.getName()}} - {{ language.get('general_' ~ event.getType) }}</strong></caption>
         <tr>
             {% if bets|length %}
             <td class="text-left bg-grey">

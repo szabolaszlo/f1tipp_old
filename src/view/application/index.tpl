@@ -20,8 +20,7 @@
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
-            {{modules.qualifyCountDown}}
-            {{modules.raceCountDown}}
+            {{modules.countDown}}
             {{modules.userChampionship}}
             {% if page.id != 'actual' %}
             {{modules.messageWall}}
