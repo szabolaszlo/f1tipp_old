@@ -26,6 +26,7 @@
             {% if page.id != 'actual' %}
             {{modules.messageWall}}
             {% endif %}
+            {{modules.userActivity}}
         </div>
 
     </div>

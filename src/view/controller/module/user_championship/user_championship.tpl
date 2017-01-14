@@ -5,6 +5,7 @@
                 <tbody>
                 {% for user in users %}
                 <tr>
+                    <td class="user-activity user-{{ user.getName() }}"></td>
                     <td><strong>{{user.getName()}}</strong></td>
                     <td><strong>{{user.getPoint()}}</strong></td>
                     <td>{{user.getPointDifference()}}</td>
