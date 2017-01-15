@@ -14,7 +14,7 @@
     <div class="row">
 
         <!-- Content Column -->
-        <div class="col-lg-8">
+        <div class="col-md-8">
             {{ page.content }}
         </div>
 
