@@ -14,9 +14,9 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Symfony\Component\Debug\Debug;
+//use Symfony\Component\Debug\Debug;
 
-Debug::enable();
+//Debug::enable();
 
 /**
  * @return EntityManager
@@ -25,7 +25,7 @@ Debug::enable();
 function getEntityManager()
 {
     $paths = array(__DIR__ . '/src/Entity');
-    $isDevMode = true;
+    $isDevMode = false;
     // the connection configuration
     $dbParams = array(
         'host' => 'localhost',
@@ -46,6 +46,7 @@ function getEntityManager()
     $config->setMetadataCacheImpl($cache);
     $config->setQueryCacheImpl($cache);
     $config->setResultCacheImpl($cache);
+    $config->setAutoGenerateProxyClasses(2);
 
     $config2 = new \Doctrine\ORM\Cache\RegionsConfiguration();
     $factory = new \Doctrine\ORM\Cache\DefaultCacheFactory($config2, $cache);
