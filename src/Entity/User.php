@@ -34,6 +34,11 @@ class User
     protected $auth;
 
     /**
+     * @ORM\OneToMany(targetEntity="Trophy", mappedBy="user", cascade={"persist","remove"})
+     */
+    protected $trophies;
+
+    /**
      * @ORM\Column(name="timestamp", type="integer", length=11, nullable=false)
      */
     protected $timestamp;
@@ -155,5 +160,13 @@ class User
     public function isAdmin()
     {
         return $this->isAdmin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTrophies()
+    {
+        return $this->trophies;
     }
 }

@@ -43,7 +43,7 @@ class PageHandler extends Handler
         if (array_key_exists($page->getId(), $moduleInPage)) {
             $pageModules = array();
             foreach ($moduleInPage[$page->getId()] as $moduleId) {
-                $pageModules[$moduleId] = $modules[$moduleId];
+                $pageModules[$moduleId] = isset($modules[$moduleId]) ? $modules[$moduleId] : '';
             }
             $page->setModules($pageModules);
         }

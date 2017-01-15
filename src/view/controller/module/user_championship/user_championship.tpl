@@ -4,30 +4,46 @@
             <table class="table table-condensed">
                 <tbody>
                 {% for user in users %}
-                <tr>
-                    <td class="user-activity user-{{ user.getName() }}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="Online" style="color: transparent; font-size: 1.1em;"></span></td>
-                    <td><strong>{{user.getName()}}</strong></td>
-                    <td><strong>{{user.getPoint()}}</strong></td>
-                    <td>{{user.getPointDifference()}}</td>
-                </tr>
+                    {% set trophies = user.getTrophies %}
+                    <tr>
+                        <td class="user-activity user-{{ user.getName() }}">
+                            <span class="glyphicon glyphicon-eye-open"
+                                  aria-hidden="true" title="Online"
+                                  style="color: transparent; font-size: 1.1em;">
+                            </span>
+                        </td>
+                        <td><strong>{{ user.getName() }}</strong></td>
+                        <td>
+                            {% for trophy in trophies %}
+                                <span title="{{ language.get('trophy_type_' ~ trophy.getType()) }}">
+                                    <img src="{{ domain }}/src/view/image/trophy_{{ trophy.getType() }}.png"
+                                         height="18">
+                                </span>
+                            {% endfor %}
+                        </td>
+                        <td><strong>{{ user.getPoint() }}</strong></td>
+                        <td>{{ user.getPointDifference() }}</td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>
             <table class="table table-condensed">
                 <tbody>
                 {% for typeKey, recordType in recordTypes %}
-                {% if recordType is not empty %}
-                <tr>
-                    <td class="text-center bg-danger" colspan="3"><strong>{{language.get(id ~ '_best_of_' ~ typeKey)}}</strong></td>
-                </tr>
-                {% for record in recordType %}
-                <tr>
-                    <td><strong>{{record.getUserName()}}</strong></td>
-                    <td><strong>{{record.getPoint()}}</strong></td>
-                    <td><strong>{{record.getTimes() > 1 ? ' X' ~ record.getTimes() : ''}}</strong></td>
-                </tr>
-                {% endfor %}
-                {% endif %}
+                    {% if recordType is not empty %}
+                        <tr>
+                            <td class="text-center bg-danger" colspan="3">
+                                <strong>{{ language.get(id ~ '_best_of_' ~ typeKey) }}</strong>
+                            </td>
+                        </tr>
+                        {% for record in recordType %}
+                            <tr>
+                                <td><strong>{{ record.getUserName() }}</strong></td>
+                                <td><strong>{{ record.getPoint() }}</strong></td>
+                                <td><strong>{{ record.getTimes() > 1 ? ' X' ~ record.getTimes() : '' }}</strong></td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 {% endfor %}
                 </tbody>
             </table>

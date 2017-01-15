@@ -83,4 +83,8 @@ $_['messageWall_submit'] = 'Beleugatok';
 $_['messageWall_not_logged_in'] = 'Nem vagy bejelentkezve!';
 $_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
 
+// Trophy
+$_['trophy_type_gold'] = 'VB Arany - Első Hely';
+$_['trophy_type_silver'] = 'VB Ezüst - Második Hely';
+$_['trophy_type_bronze'] = 'VB Bronz - Harmadik Hely';
 ?>
