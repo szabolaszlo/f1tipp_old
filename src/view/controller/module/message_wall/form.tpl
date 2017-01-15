@@ -1,10 +1,8 @@
 <form id="message-send" class="form-inline" method="post" action="?module=message_wall/save&ajax=true">
-    <input title="" type="text" class="form-control" name="message" placeholder="{{ placeholder }}"
-           style="width: 70%;">
-    <div class="pull-right">
-        <button id="message-submit" type="submit" class="btn btn-danger">{{ language.get(id ~ '_submit') }}</button>
-        <img id="loading" src="/src/view/image/ajax-loader.gif" style="display: none;">
-    </div>
+    <input type="text" class="form-group" name="message" placeholder="{{ placeholder }}" style="width: 65%">
+    <button id="message-submit" type="submit"
+            class="btn btn-danger form-group">{{ language.get(id ~ '_submit') }}</button>
+    <img id="loading" src="/src/view/image/ajax-loader.gif" style="display: none;">
     <input type="hidden" name="user-token" value="{{ userToken }}">
     <input type="hidden" name="token" value="{{ token }}">
 </form>

@@ -12,5 +12,5 @@
         {{ error.error_password ? '<span class="glyphicon glyphicon-remove form-control-feedback"></span>' : ''}}
     </div>
 
-    <button type="submit" class="btn btn-primary">{{language.get('user_login')}}</button>
+    <button type="submit" class="btn btn-default">{{language.get('user_login')}}</button>
 </form>
