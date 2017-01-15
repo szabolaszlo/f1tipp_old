@@ -2,7 +2,7 @@
     <input type="text" class="form-group" name="message" placeholder="{{ placeholder }}" style="width: 65%">
     <button id="message-submit" type="submit"
             class="btn btn-danger form-group">{{ language.get(id ~ '_submit') }}</button>
-    <img id="loading" src="/src/view/image/ajax-loader.gif" style="display: none;">
+    <img id="loading" src="/src/view/image/ajax-loader.gif" height="34" style="display: none;">
     <input type="hidden" name="user-token" value="{{ userToken }}">
     <input type="hidden" name="token" value="{{ token }}">
 </form>
