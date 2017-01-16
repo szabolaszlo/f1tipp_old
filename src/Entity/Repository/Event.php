@@ -44,7 +44,9 @@ class Event extends EntityRepository
 
         $nextEvent = reset($nextEvent);
 
-        $resultCache->save($cacheKey, $nextEvent, strtotime('+2 days', $nextEvent->getDateTime()->getTimeStamp()));
+        $lifeTime = strtotime('+2 days', $nextEvent->getDateTime()->getTimeStamp()) - time();
+
+        $resultCache->save($cacheKey, $nextEvent, $lifeTime);
 
         return $nextEvent;
     }
