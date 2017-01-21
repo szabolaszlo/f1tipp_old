@@ -26,6 +26,7 @@
             {{modules.messageWall}}
             {% endif %}
             {{modules.userActivity}}
+            {{modules.tableRefresh}}
         </div>
 
     </div>

@@ -24,4 +24,6 @@
             </tbody>
         </table>
     </div>
+    <input type="hidden" id="event-table-bet-numbers" value="{{ bets|length }}">
+    <input type="hidden" id="event-table-event-id" value="{{ event.getId() }}">
 </div>
