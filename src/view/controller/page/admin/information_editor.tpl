@@ -25,12 +25,6 @@
                     </tr>
                 {% endfor %}
             </table>
-            <div class="center-block" style="padding: 15px;">
-                <a href="?page=admin/information_editor/update" style="text-decoration: none"> <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                                                                          class="btn btn-danger center-block submit">
-                        {{ language.get('admin_information_editor_new') }}
-                    </button></a>
-            </div>
         {% endif %}
         {% if information %}
             <form class="form-horizontal" style="padding: 30px;" method="post"
@@ -51,6 +45,15 @@
                     </div>
                 </fieldset>
             </form>
+        {% else %}
+            <div class="center-block" style="padding: 15px;">
+                <a href="?page=admin/information_editor/update" style="text-decoration: none">
+                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                            class="btn btn-danger center-block submit">
+                        {{ language.get('admin_information_editor_new') }}
+                    </button>
+                </a>
+            </div>
         {% endif %}
     {% endif %}
 </div>
