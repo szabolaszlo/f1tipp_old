@@ -3,7 +3,7 @@
       "doctrine/orm": "2.5.*",
       "symfony/yaml": "2.*",
 	  "twig/twig": "~1.0",
-      "ckeditor/ckeditor": "4.*"
+      "ckeditor/ckeditor": "dev-full/latest"
   },
   "autoload": {
     "psr-4": {
