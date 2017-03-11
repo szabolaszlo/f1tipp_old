@@ -2,7 +2,8 @@
   "require": {
       "doctrine/orm": "2.5.*",
       "symfony/yaml": "2.*",
-	  "twig/twig": "~1.0"
+	  "twig/twig": "~1.0",
+      "ckeditor/ckeditor": "4.*"
   },
   "autoload": {
     "psr-4": {

@@ -12,6 +12,7 @@ $_['nav_rules'] = "Szabályzat";
 $_['nav_actual'] = "Aktuális";
 $_['nav_admin'] = "Admin";
 $_['nav_admin_result'] = "Eredmény Feltöltés";
+$_['nav_admin_information_editor'] = "Szövegek Szerkesztése";
 
 //Error
 $_['error_not_found_page'] = "Az oldal nem található";
@@ -76,6 +77,13 @@ $_['admin_no_permisson_or_data_error'] = 'Nincs jogosultságod az oldalhoz, vagy
 $_['admin_result_upload_submit_qualify'] = 'Időmérő Eredmény Rögzítése';
 $_['admin_result_upload_submit_race'] = 'Futam Eredmény Rögzítése';
 $_['admin_result_upload_default_option'] = 'Add meg az eredményt';
+
+//Admin Information Editor
+$_['admin_information_editor_information_title'] = 'Szöveges tartalom címe:';
+$_['admin_information_editor_information_content'] = 'Szöveges tartalom szerkesztése:';
+$_['admin_information_editor_save'] = 'Mentés';
+$_['admin_information_editor_success'] = 'Sikeres Mentés';
+$_['admin_information_editor_new'] = 'Új Létrehozása';
 
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';

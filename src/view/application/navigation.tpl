@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="{{domain}}/src/view/image/logo.png" height="51" alt=""></a>
+            <a class="navbar-brand" href=""><img src="{{domain}}/src/view/image/logo.png" height="51" alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="f1tipp-navbar-collapse">
@@ -30,13 +30,14 @@
                     <a href="?page=calendar/index">{{language.get('nav_calendar')}}</a>
                 </li>
                 <li>
-                    <a href="#">{{language.get('nav_rules')}}</a>
+                    <a href="?page=information/index&information_id=1">{{language.get('nav_rules')}}</a>
                 </li>
                 {% if isAdmin %}
                 <li class="dropdown {{page.id == 'admin' ? 'active ' : ''}}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">{{language.get('nav_admin')}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="?page=admin/result_upload/index">{{language.get('nav_admin_result')}}</a></li>
+                        <li><a href="?page=admin/information_editor/index">{{language.get('nav_admin_information_editor')}}</a></li>
                     </ul>
                 </li>
                 {% endif %}

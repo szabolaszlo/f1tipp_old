@@ -22,7 +22,7 @@ class Language
     /**
      * @var string
      */
-    protected $path = __DIR__ . '/Translation/';
+    protected $path;
 
     /**
      * Language constructor.
@@ -30,6 +30,8 @@ class Language
      */
     public function __construct($language)
     {
+        $this->path = __DIR__ . '/Translation/';
+
         $_ = array();
         
         ob_start();
