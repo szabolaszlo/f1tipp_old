@@ -17,6 +17,8 @@ use Entity\Message;
  */
 class MessageWall extends Controller
 {
+    const MESSAGE_COUNT = 100;
+
     /**
      * @return mixed
      */
@@ -27,7 +29,7 @@ class MessageWall extends Controller
 
         $this->data['messages'] = $this->entityManager
             ->getRepository('Entity\Message')
-            ->findBy(array(), array('id' => 'DESC'), 50);
+            ->findBy(array(), array('id' => 'DESC'), self::MESSAGE_COUNT);
 
         $this->data['userToken'] = $this->registry->getUserAuth()->getActualToken();
 
@@ -59,7 +61,7 @@ class MessageWall extends Controller
     {
         $this->data['messages'] = $this->entityManager
             ->getRepository('Entity\Message')
-            ->findBy(array(), array('id' => 'DESC'), 50);
+            ->findBy(array(), array('id' => 'DESC'), self::MESSAGE_COUNT);
 
         $this->setTemplate('controller/module/message_wall/messages.tpl');
 
