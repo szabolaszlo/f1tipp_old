@@ -67,6 +67,48 @@ class InformationEditor extends Controller
     }
 
     /**
+     * @return string
+     */
+    public function removeNewsAction()
+    {
+        return $this->saveNews(false);
+    }
+
+    /**
+     * @return string
+     */
+    public function addNewsAction()
+    {
+        return $this->saveNews(true);
+    }
+
+    /**
+     * @param $isNews
+     * @return string
+     */
+    protected function saveNews($isNews)
+    {
+        $informationId = (int)$this->request->getQuery('information_id', 0);
+
+        /** @var Information $information */
+        $information = $this->entityManager
+            ->getRepository('Entity\Information')
+            ->find($informationId);
+
+        if (!$this->registry->getUserAuth()->isAdmin() || !$information) {
+            $this->data['error'] = $this->registry->getLanguage()->get('admin_no_permisson_or_data_error');
+            return $this->render();
+        }
+
+        $information->setNews($isNews);
+        $this->entityManager->persist($information);
+        $this->entityManager->flush();
+
+        $this->session->set('success', $this->registry->getLanguage()->get('admin_information_editor_success'));
+        $this->registry->getServer()->redirect('page=admin/information_editor/index');
+    }
+
+    /**
      * @param $informationId
      */
     protected function save($informationId)

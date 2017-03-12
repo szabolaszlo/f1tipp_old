@@ -14,6 +14,10 @@ $dir = __DIR__ . '/../../cache/twig';
 
 rrmdir($dir);
 
+$dir = __DIR__ . '/../../cache/doctrine';
+
+rrmdir($dir);
+
 /**
  * @param $dir
  */

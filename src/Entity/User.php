@@ -2,6 +2,7 @@
 
 namespace Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,6 +40,11 @@ class User
     protected $trophies;
 
     /**
+     * @ORM\OneToMany(targetEntity="UserSkippedNews", mappedBy="user", cascade={"persist","remove"})
+     */
+    protected $skippedNews;
+
+    /**
      * @ORM\Column(name="timestamp", type="integer", length=11, nullable=false)
      */
     protected $timestamp;
@@ -57,6 +63,14 @@ class User
      * @var string
      */
     protected $pointDifference = '';
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->skippedNews = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -168,5 +182,19 @@ class User
     public function getTrophies()
     {
         return $this->trophies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkippedNews()
+    {
+        $skippedInformation = new ArrayCollection();
+
+        /** @var UserSkippedNews $skipped */
+        foreach ($this->skippedNews as $skipped) {
+            $skippedInformation->add($skipped->getInformation());
+        }
+        return $skippedInformation;
     }
 }

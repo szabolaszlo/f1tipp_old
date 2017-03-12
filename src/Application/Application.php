@@ -32,7 +32,7 @@ class Application
      * @var array
      */
     protected $moduleInPage = array(
-        'actual' => array('messageWall')
+        'actual' => array('messageWall', 'news')
     );
 
     /**

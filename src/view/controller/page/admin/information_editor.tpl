@@ -17,11 +17,35 @@
     {% if not error %}
         {% if informations %}
             <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ language.get('admin_information_editor_information_title') }}</th>
+                    <th class="text-center">{{ language.get('admin_information_editor_news') }}</th>
+                    <th class="text-center">{{ language.get('admin_information_editor_edit') }}</th>
+                </tr>
+                </thead>
                 {% for information in informations %}
                     <tr>
                         <td>{{ information.getTitle() }}</td>
-                        <td><a href="?page=admin/information_editor/update&information_id={{ information.getId() }}"
-                               class="text-right glyphicon glyphicon-pencil remove" aria-hidden=true></a></td>
+                        <td class="text-center">
+                            {% if information.getNews() %}
+                                <a href="?page=admin/information_editor/removeNews&information_id={{ information.getId() }}"
+                                   class="text-right glyphicon glyphicon-eye-open remove"
+                                   aria-hidden=true title="{{ language.get('admin_information_editor_edit') }}">
+                                </a>
+                            {% else %}
+                                <a href="?page=admin/information_editor/addNews&information_id={{ information.getId() }}"
+                                   class="text-right glyphicon glyphicon-eye-close remove"
+                                   aria-hidden=true title="{{ language.get('admin_information_editor_edit') }}">
+                                </a>
+                            {% endif %}
+                        </td>
+                        <td class="text-center"><a href="?page=admin/information_editor/update&information_id={{ information.getId() }}"
+                               class="text-right glyphicon glyphicon-pencil remove"
+                               aria-hidden=true title="{{ language.get('admin_information_editor_edit') }}">
+                            </a>
+                        </td>
+
                     </tr>
                 {% endfor %}
             </table>

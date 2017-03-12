@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Carlos
- * Date: 2017. 01. 14.
- * Time: 22:06
+ * Date: 2017. 03. 12.
+ * Time: 16:12
  */
 
 namespace Entity;
@@ -12,10 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="`trophy`")
+ * @ORM\Table(name="`user_skipped_news`")
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */
-class Trophy
+class UserSkippedNews
 {
     /**
      * @ORM\Column(name="id", type="integer", length=11, nullable=false)
@@ -25,15 +25,16 @@ class Trophy
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="trophies")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="skippedNews")
      * @ORM\JoinColumn(name="user", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
 
     /**
-     * @ORM\Column(name="type", type="string", length=45, nullable=false)
+     * @ORM\ManyToOne(targetEntity="Information")
+     * @ORM\JoinColumn(name="information", referencedColumnName="id", onDelete="CASCADE")
      */
-    protected $type;
+    protected $information;
 
     /**
      * @return mixed
@@ -70,16 +71,16 @@ class Trophy
     /**
      * @return mixed
      */
-    public function getType()
+    public function getInformation()
     {
-        return $this->type;
+        return $this->information;
     }
 
     /**
-     * @param mixed $type
+     * @param mixed $information
      */
-    public function setType($type)
+    public function setInformation($information)
     {
-        $this->type = $type;
+        $this->information = $information;
     }
 }

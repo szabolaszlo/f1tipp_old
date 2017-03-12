@@ -84,6 +84,9 @@ $_['admin_information_editor_information_content'] = 'Szöveges tartalom szerkes
 $_['admin_information_editor_save'] = 'Mentés';
 $_['admin_information_editor_success'] = 'Sikeres Mentés';
 $_['admin_information_editor_new'] = 'Új Létrehozása';
+$_['admin_information_editor_news'] = 'Látható-e a hírek modulban';
+$_['admin_information_editor_edit'] = 'Szerkesztés';
+$_['news_submit'] = 'Oksa, értem!';
 
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';

@@ -17,7 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Information
 {
-
     /**
      * @ORM\Column(name="id", type="integer", length=11, nullable=false)
      * @ORM\Id
@@ -34,6 +33,11 @@ class Information
      * @ORM\Column(name="content", type="text", nullable=true)
      */
     protected $content;
+
+    /**
+     * @ORM\Column(name="news", type="boolean", nullable=true)
+     */
+    protected $news;
 
     /**
      * @return mixed
@@ -81,5 +85,21 @@ class Information
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+
+    /**
+     * @param mixed $news
+     */
+    public function setNews($news)
+    {
+        $this->news = $news;
     }
 }
