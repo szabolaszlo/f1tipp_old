@@ -21,8 +21,10 @@ class Driver extends ASelectOption
      */
     public function getOptions($selectedValue = null)
     {
-        $drivers = $this->entityManager->getRepository('Entity\Driver')->findBy(array(), array('point' => 'DESC'));
-        
+        $drivers = $this->entityManager
+            ->getRepository('Entity\Driver')
+            ->findBy(array('status' => '1'), array('point' => 'DESC'));
+
         return $this->renderer->render(
             'system/form_helper/select_options/driver.tpl',
             array(

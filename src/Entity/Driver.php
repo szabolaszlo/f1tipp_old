@@ -40,6 +40,11 @@ class Driver
     protected $point;
 
     /**
+     * @ORM\Column(name="status", type="boolean", nullable=true)
+     */
+    protected $status;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -85,5 +90,37 @@ class Driver
     public function setShort($short)
     {
         $this->short = $short;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * @param mixed $point
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 }

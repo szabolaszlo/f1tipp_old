@@ -38,6 +38,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="?page=admin/result_upload/index">{{language.get('nav_admin_result')}}</a></li>
                         <li><a href="?page=admin/information_editor/index">{{language.get('nav_admin_information_editor')}}</a></li>
+                        <li><a href="?page=admin/driver_editor/index">{{language.get('admin_driver_editor')}}</a></li>
                     </ul>
                 </li>
                 {% endif %}

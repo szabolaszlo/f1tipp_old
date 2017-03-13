@@ -88,6 +88,13 @@ $_['admin_information_editor_news'] = 'Látható-e a hírek modulban';
 $_['admin_information_editor_edit'] = 'Szerkesztés';
 $_['news_submit'] = 'Oksa, értem!';
 
+//Admin Driver Editor
+$_['admin_driver_editor'] = 'Pilóta szerkesztő';
+$_['admin_driver_editor_driver_name'] = 'Név';
+$_['admin_driver_editor_driver_short'] = 'Azonosító';
+$_['admin_driver_editor_driver_point'] = 'Pont';
+$_['admin_driver_editor_driver_status'] = 'Státusz';
+
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';
 $_['messageWall_submit'] = 'Beleugatok';
