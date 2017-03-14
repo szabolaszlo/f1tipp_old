@@ -17,6 +17,8 @@ use Entity\Driver;
  */
 class DriverEditor extends Controller
 {
+    const DRIVER_JSON_PATH = "http://ergast.com/api/f1/current/driverStandings.json";
+
     /**
      * @return mixed
      */
@@ -88,5 +90,39 @@ class DriverEditor extends Controller
         $this->data['drivers'] = array(new Driver());
         
         return $this->render();
+    }
+
+    /**
+     * @return string
+     */
+    public function syncPointsAction()
+    {
+        if (!$this->registry->getUserAuth()->isAdmin()) {
+            $this->data['error'] = $this->registry->getLanguage()->get('admin_no_permisson_or_data_error');
+            return $this->render();
+        }
+
+        $response = json_decode(file_get_contents(self::DRIVER_JSON_PATH), true);
+
+        $standings = $response['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'];
+
+        foreach ($standings as $standing) {
+            $point = $standing['points'];
+            $driverShort = $standing['Driver']['code'];
+
+            $driverEntity = $this->entityManager
+                ->getRepository('Entity\Driver')
+                ->findOneBy(array('short' => $driverShort));
+
+            if ($driverEntity) {
+                $driverEntity->setPoint($point);
+                $this->entityManager->persist($driverEntity);
+            }
+        }
+
+        $this->entityManager->flush();
+
+        $this->session->set('success', $this->registry->getLanguage()->get('admin_driver_editor_sync_success'));
+        $this->registry->getServer()->redirect('page=admin/driver_editor/index');
     }
 }

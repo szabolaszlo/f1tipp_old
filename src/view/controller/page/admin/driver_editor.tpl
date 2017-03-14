@@ -16,6 +16,14 @@
 
     {% if not error %}
         {% if drivers %}
+            <div class="center-block" style="padding: 15px;">
+                <a href="?page=admin/driver_editor/syncPoints" style="text-decoration: none">
+                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                            class="btn btn-danger center-block submit">
+                        {{ language.get('admin_driver_editor_sync') }}
+                    </button>
+                </a>
+            </div>
             <form class="form-horizontal" style="padding: 30px;" method="post"
                   action="?page=admin/driver_editor/update">
                 <div class="table-responsive">
