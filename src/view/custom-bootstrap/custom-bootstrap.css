@@ -116,6 +116,11 @@ table caption {
     }
 }
 
+.navbar-fixed-top .navbar-collapse,
+.navbar-fixed-bottom .navbar-collapse {
+    max-height: 440px;
+}
+
 a.glyphicon {
     text-decoration: none;
     font-size: 1.5em;
