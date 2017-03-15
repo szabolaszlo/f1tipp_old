@@ -33,6 +33,10 @@ class DriverEditor extends Controller
             ->getRepository('Entity\Driver')
             ->findBy(array(), array('point' => 'DESC'));
 
+        $this->data['enabledDrivers'] = count($this->entityManager
+            ->getRepository('Entity\Driver')
+            ->findBy(array('status' => true)));
+
         $this->data['success'] = $this->session->get('success');
         $this->session->remove('success');
 

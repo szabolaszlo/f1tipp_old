@@ -94,8 +94,10 @@ $_['admin_driver_editor_driver_name'] = 'Név';
 $_['admin_driver_editor_driver_short'] = 'Azonosító';
 $_['admin_driver_editor_driver_point'] = 'Pont';
 $_['admin_driver_editor_driver_status'] = 'Státusz';
-$_['admin_driver_editor_sync'] = 'Pontok Szinkronizálása (Ergast API-ból leszedi az aktuális pontokat)';
-$_['admin_driver_editor_sync_success'] = 'Sikeres szinkron, új pontok elmentve, csekkold.';
+$_['admin_driver_editor_sync'] = 'Pontok Szinkronizálása';
+$_['admin_driver_editor_sync_success'] = 'Sikeres szinkron, új pontok elmentve, csekkold';
+$_['admin_driver_editor_enabeld_driver'] = 'Engedélyezett Pilóták:';
+
 
 
 // MessageWall
