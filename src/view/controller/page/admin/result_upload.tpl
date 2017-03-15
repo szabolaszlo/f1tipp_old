@@ -47,7 +47,7 @@
                         <input type="hidden" name="token" value="{{ token }}">
 
                         <!-- Button -->
-                        <div class="center-block">
+                        <div class="center-block" style="padding: 15px">
                             <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
                                     class="btn btn-danger center-block submit" disabled="disabled">
                                 {{ language.get('admin_result_upload_submit_' ~ event.getType()) }}

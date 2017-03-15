@@ -55,7 +55,7 @@
 
                                 <!-- Button -->
                                 {% if not event.bet %}
-                                    <div class="center-block">
+                                    <div class="center-block" style="padding: 15px">
                                         <button id="event-bet-submit-{{ event.event.getId() }}" name="singlebutton"
                                                 class="btn btn-danger center-block" disabled="disabled">
                                             {{ language.get('betting_submit_' ~ event.event.getType()) }}
