@@ -77,7 +77,7 @@ class BetDecorator implements IDecorator
      */
     protected function decorateLowPoint(BetAttribute $betAttribute, Attribute $ruleAttribute)
     {
-        if ($betAttribute->getPoint() == $ruleAttribute->getLowPoint()) {
+        if ($betAttribute->getPoint() == $ruleAttribute->getLowPoint() && $betAttribute->getPoint() != 0) {
             $betAttribute->setClass(self::LOW_CLASS);
         }
     }
