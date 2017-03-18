@@ -25,7 +25,8 @@ class ClearCache extends Controller
     protected $acceptedCacheDirs = array(
         'doctrine',
         'app',
-        'twig'
+        'twig',
+        ''
     );
 
     /**
@@ -60,7 +61,7 @@ class ClearCache extends Controller
      */
     public function clearAction()
     {
-        $dir = $this->request->getQuery('dir');
+        $dir = (string)$this->request->getQuery('dir', '');
 
         if (in_array($dir, $this->acceptedCacheDirs) && $this->registry->getUserAuth()->isAdmin()) {
             $this->rrmdir($this->cacheDir . $dir);

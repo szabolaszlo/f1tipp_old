@@ -25,6 +25,9 @@
         <a href="?page=admin/clear_cache/clear&dir=app" class="btn btn-danger" role="button">
             {{ language.get('admin_cache_app') }}
         </a>
+        <a href="?page=admin/clear_cache/clear" class="btn btn-danger" role="button">
+            {{ language.get('admin_cache_all') }}
+        </a>
     </div>
     {% endif %}
 </div>
