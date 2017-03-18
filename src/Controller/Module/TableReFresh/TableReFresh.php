@@ -18,9 +18,9 @@ use Entity\Event;
 class TableRefresh extends Controller
 {
 
-    public function isNeedRefreshAction()
+    public function isNeedRefreshEventTableAction()
     {
-        $eventId = $this->request->getPost('eventId', 0);
+        $eventId = (int)$this->request->getPost('eventId', 0);
 
         $postedNumberOfBets = $this->request->getPost('numberOfBets', 0);
 
@@ -32,6 +32,15 @@ class TableRefresh extends Controller
             : array();
 
         if ((count($bets) + count($result)) > $postedNumberOfBets) {
+            echo true;
+        }
+    }
+
+    public function isNeedRefreshResultTableAction()
+    {
+        $resultsCount = (int)$this->request->getPost('resultsCount', 0);
+
+        if (count($this->entityManager->getRepository('Entity\Result')->findAll()) > $resultsCount) {
             echo true;
         }
     }

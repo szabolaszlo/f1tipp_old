@@ -1,52 +1,54 @@
 {% autoescape false %}
-<!DOCTYPE html>
-<html lang="hu">
+    <!DOCTYPE html>
+    <html lang="hu">
 
-{% include('application/head.tpl') %}
+    {% include('application/head.tpl') %}
 
-<body>
+    <body>
 
-{% include('application/navigation.tpl') %}
+    {% include('application/navigation.tpl') %}
 
-<!-- Page Content -->
-<div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
-    <div class="row">
+        <div class="row">
 
-        <!-- Content Column -->
-        <div class="col-md-8">
-            {{ page.content }}
+            <!-- Content Column -->
+            <div class="col-md-8">
+                {{ page.content }}
+            </div>
+
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-4">
+                {{ modules.countDown }}
+                <div id="user-championship-result-table">
+                    {{ modules.userChampionship }}
+                </div>
+                {% if page.id != 'actual' %}
+                    {{ modules.messageWall }}
+                {% endif %}
+                {{ modules.userActivity }}
+                {{ modules.tableRefresh }}
+            </div>
+
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-            {{modules.countDown}}
-            {{modules.userChampionship}}
-            {% if page.id != 'actual' %}
-            {{modules.messageWall}}
-            {% endif %}
-            {{modules.userActivity}}
-            {{modules.tableRefresh}}
-        </div>
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>{{ language.get('app_creator') }}</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
 
     </div>
+    <!-- /.container -->
 
-    <hr>
+    </body>
 
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>{{language.get('app_creator')}}</p>
-            </div>
-        </div>
-        <!-- /.row -->
-    </footer>
-
-</div>
-<!-- /.container -->
-
-</body>
-
-</html>
+    </html>
 {% endautoescape %}

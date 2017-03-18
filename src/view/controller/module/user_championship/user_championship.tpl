@@ -47,7 +47,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <input type="hidden" id="results-count" value="{{ resultsCount }}">
         </div>
-
     </div>
 {% endblock %}
