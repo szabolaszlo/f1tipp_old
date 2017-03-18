@@ -13,6 +13,7 @@ $_['nav_actual'] = "Aktuális";
 $_['nav_admin'] = "Admin";
 $_['nav_admin_result'] = "Eredmény Feltöltés";
 $_['nav_admin_information_editor'] = "Szövegek Szerkesztése";
+$_['nav_admin_cache'] = "Cache Törlés";
 
 //Error
 $_['error_not_found_page'] = "Az oldal nem található";
@@ -98,7 +99,11 @@ $_['admin_driver_editor_sync'] = 'Pontok Szinkronizálása';
 $_['admin_driver_editor_sync_success'] = 'Sikeres szinkron, új pontok elmentve, csekkold';
 $_['admin_driver_editor_enabeld_driver'] = 'Engedélyezett Pilóták:';
 
-
+//Admin Cache Clear
+$_['admin_cache_doctrine'] = 'Doctrine Cache Törlés';
+$_['admin_cache_twig'] = 'Twig Cache Törlés';
+$_['admin_cache_app'] = 'App Cache Törlés';
+$_['admin_cache_clear_success'] = 'Sikeres Cache Törlés';
 
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';
