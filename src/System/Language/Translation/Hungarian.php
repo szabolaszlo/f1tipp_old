@@ -104,6 +104,7 @@ $_['admin_cache_doctrine'] = 'Doctrine Cache Törlés';
 $_['admin_cache_twig'] = 'Twig Cache Törlés';
 $_['admin_cache_app'] = 'App Cache Törlés';
 $_['admin_cache_clear_success'] = 'Sikeres Cache Törlés';
+$_['admin_cache_all'] = 'Full Cache Törlés';
 
 // MessageWall
 $_['messageWall_title'] = 'Üzenőfal';
