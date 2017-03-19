@@ -18,12 +18,18 @@ use Entity\Result;
  */
 class Actual extends Controller
 {
+    const ACTUAL_IMAGE_RELATIVE_URL = '/src/view/image/aktual.jpg';
+
     /**
      * @return mixed
      */
     public function indexAction()
     {
-        $this->data['domain'] = $this->registry->getServer()->getDomain();
+        $this->data['image'] = self::ACTUAL_IMAGE_RELATIVE_URL;
+
+        $this->data['imageModifyTime'] = filemtime(
+            $this->registry->getServer()->getDocumentRoot() . $this->data['image']
+        );
 
         $events = array(
             $this->entityManager->getRepository('Entity\Qualify')->getNextEvent(),

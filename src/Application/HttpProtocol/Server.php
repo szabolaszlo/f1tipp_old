@@ -44,4 +44,12 @@ class Server
     {
         return $this->domain;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDocumentRoot()
+    {
+        return $_SERVER['DOCUMENT_ROOT'];
+    }
 }
