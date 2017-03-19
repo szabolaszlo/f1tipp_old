@@ -26,7 +26,7 @@
             <tr>
                 <td>{{ event.getType() == 'race' ? language.get('general_race') : language.get('general_qualify') }}</td>
                 <td>{{ event.getName() }}</td>
-                <td>{{ event.getDateTime()|date("Y. M. d.") }}</td>
+                <td>{{ event.getDateTime()|date("Y. M. d. - H:i") }}</td>
             </tr>
         {% endfor %}
         </tbody>
