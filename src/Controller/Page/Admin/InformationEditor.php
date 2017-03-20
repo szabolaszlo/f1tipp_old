@@ -69,6 +69,21 @@ class InformationEditor extends Controller
     /**
      * @return string
      */
+    public function insertAction()
+    {
+        if (!$this->registry->getUserAuth()->isAdmin()) {
+            $this->data['error'] = $this->registry->getLanguage()->get('admin_no_permisson_or_data_error');
+            return $this->render();
+        }
+
+        $this->data['information'] = new Information();
+
+        return $this->render();
+    }
+    
+    /**
+     * @return string
+     */
     public function removeNewsAction()
     {
         return $this->saveNews(false);

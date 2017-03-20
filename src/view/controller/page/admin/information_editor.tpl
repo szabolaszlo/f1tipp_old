@@ -71,7 +71,7 @@
             </form>
         {% else %}
             <div class="center-block" style="padding: 15px;">
-                <a href="?page=admin/information_editor/update" style="text-decoration: none">
+                <a href="?page=admin/information_editor/insert" style="text-decoration: none">
                     <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
                             class="btn btn-danger center-block submit">
                         {{ language.get('admin_information_editor_new') }}
