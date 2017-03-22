@@ -67,10 +67,11 @@ class UserChampionship extends Controller
 
         /** @var User $user */
         foreach ($this->data['users'] as $key => $user) {
-            $user->setPointDifference(
-                '(' . (isset($sortMap[max(0, $key - 1)]) ? $sortMap[max(0, $key - 1)] - $user->getPoint() : 0) . ' / '
-                . (isset($sortMap[0]) ? $sortMap[0] - $user->getPoint() : 0) . ')'
-            );
+            $userHandyCap = (isset($sortMap[0]) && $sortMap[0] - $user->getPoint())
+                ? '+ ' . (string)($sortMap[0] - $user->getPoint())
+                : '';
+
+            $user->setPointDifference($userHandyCap);
         }
 
         $this->data['recordTypes'] = array(

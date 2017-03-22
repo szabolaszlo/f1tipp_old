@@ -22,7 +22,7 @@
                             {% endfor %}
                         </td>
                         <td><strong>{{ user.getPoint() }}</strong></td>
-                        <td>{{ user.getPointDifference() }}</td>
+                        <td><span class="small">{{ user.getPointDifference() }}</span></td>
                     </tr>
                 {% endfor %}
                 </tbody>
