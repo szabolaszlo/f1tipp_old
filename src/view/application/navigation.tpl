@@ -30,7 +30,7 @@
                     <a href="?page=calendar/index">{{language.get('nav_calendar')}}</a>
                 </li>
                 <li>
-                    <a href="?page=information/index&information_id=1">{{language.get('nav_rules')}}</a>
+                    <a href="?page=information/index&information_title=szabalyzat">{{language.get('nav_rules')}}</a>
                 </li>
                 {% if isAdmin %}
                 <li class="dropdown {{page.id == 'admin' ? 'active ' : ''}}">
