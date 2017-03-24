@@ -133,7 +133,7 @@ class InformationEditor extends Controller
             ->getRepository('Entity\Information')
             ->find($informationId);
 
-        if (!$information) {
+        if (!$information || !$informationId) {
             $information = new Information();
         }
 
