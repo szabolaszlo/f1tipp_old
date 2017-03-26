@@ -27,6 +27,7 @@
                 {% if page.id != 'actual' %}
                     {{ modules.messageWall }}
                 {% endif %}
+                {{ modules.resultsOfChampionship }}
                 {{ modules.userActivity }}
                 {{ modules.tableRefresh }}
             </div>

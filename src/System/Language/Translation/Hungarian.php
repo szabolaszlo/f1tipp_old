@@ -72,6 +72,14 @@ $_['userChampionship_title'] = 'Egyéni Pontverseny';
 $_['userChampionship_best_of_race'] = 'Futamok Legjobbja:';
 $_['userChampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
 
+// Results Championship
+$_['resultsOfChampionship_title'] = 'VB Állás';
+$_['resultsOfChampionship_construct'] = 'Csapat';
+$_['resultsOfChampionship_driver'] = 'Homár';
+$_['resultsOfChampionship_point'] = 'Pont';
+$_['resultsOfChampionship_wins'] = 'Nyert';
+
+
 // Admin
 $_['admin_result_upload_success'] = 'Sikeres eredmény feltöltés !';
 $_['admin_no_permisson_or_data_error'] = 'Nincs jogosultságod az oldalhoz, vagy hibás adatok!';
