@@ -32,29 +32,30 @@ class RecordCollector
     {
         $type = $result->getEvent()->getType();
         $userName = $bet->getUser()->getName();
+        $userId = $bet->getUser()->getId();
         $point = $bet->getPoint();
 
         if (!isset($this->records[$type]) || empty($this->records[$type])) {
-            $this->records[$type][] = new Record($userName, $point);
+            $this->records[$type][$userId] = new Record($userName, $point);
             return;
         }
 
         /** @var Record $record */
-        foreach ($this->records[$type] as $key => $record) {
+        foreach ($this->records[$type] as $record) {
             if ($record->getPoint() < $point) {
                 $record->setPoint($point);
                 $record->setUserName($userName);
-                $this->records[$type] = array($record);
+                $this->records[$type] = array($userId => $record);
                 continue;
             }
             if ($record->getPoint() == $point && $userName != $record->getUserName()) {
                 $new = new Record($userName, $point);
-                $this->records[$type][] = $new;
+                $this->records[$type][$userId] = $new;
                 continue;
             }
             if ($record->getPoint() == $point && $userName == $record->getUserName()) {
                 $record->addTimes();
-                $this->records[$type][$key] = $record;
+                $this->records[$type][$userId] = $record;
                 continue;
             }
         }
