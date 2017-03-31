@@ -9,6 +9,7 @@
 namespace System\Calculator;
 
 use Entity\Bet;
+use Entity\Race;
 use Entity\Result;
 use Entity\User;
 
@@ -34,4 +35,10 @@ interface ICalculator
      * @return array|mixed
      */
     public function getRecordsByType($type);
+
+    /**
+     * @param Race $race
+     * @return array
+     */
+    public function calculateUserPointsByCompleteWeekend(Race $race);
 }

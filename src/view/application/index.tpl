@@ -21,6 +21,9 @@
             <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
                 {{ modules.countDown }}
+                <div id="trophies-result-table">
+                    {{ modules.trophies }}
+                </div>
                 <div id="user-championship-result-table">
                     {{ modules.userChampionship }}
                 </div>

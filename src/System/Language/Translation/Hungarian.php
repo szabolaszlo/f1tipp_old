@@ -121,7 +121,7 @@ $_['messageWall_not_logged_in'] = 'Nem vagy bejelentkezve!';
 $_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
 
 // Trophy
-$_['trophy_type_gold'] = 'VB Arany - Első Hely';
-$_['trophy_type_silver'] = 'VB Ezüst - Második Hely';
-$_['trophy_type_bronze'] = 'VB Bronz - Harmadik Hely';
+$_['trophy_type_gold'] = 'Arany Serleg - Hétvégi Első Hely';
+$_['trophy_type_silver'] = 'Ezüst Serleg - Hétvégi Második Hely';
+$_['trophy_type_bronze'] = 'Bronz Serleg - Hétvégi Harmadik Hely';
 ?>

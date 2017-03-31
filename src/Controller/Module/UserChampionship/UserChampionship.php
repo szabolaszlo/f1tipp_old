@@ -53,6 +53,8 @@ class UserChampionship extends Controller
             return $cachedContent;
         }
 
+        $this->registry->getTrophyHandler()->collect();
+
         $this->data['users'] = $this->entityManager->getRepository('Entity\User')->findAll();
 
         $sortMap = array();
@@ -78,7 +80,7 @@ class UserChampionship extends Controller
             'qualify' => $this->calculator->getRecordsByType('qualify'),
             'race' => $this->calculator->getRecordsByType('race')
         );
-        
+
         $this->data['resultsCount'] = count($this->entityManager->getRepository('Entity\Result')->findAll());
 
         $renderedContent = $this->render();

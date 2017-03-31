@@ -4,7 +4,7 @@
             <table class="table table-condensed">
                 <tbody>
                 {% for user in users %}
-                    {% set trophies = user.getTrophies %}
+                    {% set podiumTrophies = user.getPodiumTrophies() %}
                     <tr>
                         <td class="user-activity user-{{ user.getName() }}">
                             <span class="glyphicon glyphicon-eye-open"
@@ -14,11 +14,17 @@
                         </td>
                         <td><strong>{{ user.getName() }}</strong></td>
                         <td>
-                            {% for trophy in trophies %}
-                                <span title="{{ language.get('trophy_type_' ~ trophy.getType()) }}">
+                            {% for type, trophies in podiumTrophies %}
+                                {% set trophy = trophies|first %}
+                                {% if trophy.getType() %}
+                                    <span title="{{ language.get('trophy_type_' ~ trophy.getType()) }}">
                                     <img src="{{ domain }}/src/view/image/trophy_{{ trophy.getType() }}.png"
                                          height="18">
                                 </span>
+                                    {% if trophies|length > 1 %}
+                                        <span class="small">x{{ trophies|length }}</span>
+                                    {% endif %}
+                                {% endif %}
                             {% endfor %}
                         </td>
                         <td><strong>{{ user.getPoint() }}</strong></td>

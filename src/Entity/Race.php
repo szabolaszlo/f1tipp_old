@@ -8,6 +8,7 @@
 
 namespace Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,5 +17,31 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Race extends Event
 {
+    /**
+     * @ORM\OneToMany(targetEntity="Trophy", mappedBy="event", cascade={"persist","remove"})
+     */
+    protected $trophies;
 
+    /**
+     * Race constructor.
+     */
+    public function __construct()
+    {
+        $this->trophies = new ArrayCollection();
+    }
+    /**
+     * @return mixed
+     */
+    public function getTrophies()
+    {
+        return $this->trophies;
+    }
+
+    /**
+     * @param mixed $trophies
+     */
+    public function setTrophies($trophies)
+    {
+        $this->trophies = $trophies;
+    }
 }

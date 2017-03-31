@@ -29,11 +29,22 @@ class Trophy
      * @ORM\JoinColumn(name="user", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
-
+    
     /**
-     * @ORM\Column(name="type", type="string", length=45, nullable=false)
+     * @ORM\ManyToOne(targetEntity="Race", inversedBy="trophies")
+     * @ORM\JoinColumn(name="event", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $event;
+    
+    /**
+     * @ORM\Column(name="type", type="string", columnDefinition="ENUM('gold', 'silver', 'bronze')")
      */
     protected $type;
+
+    /**
+     * @ORM\Column(name="point", type="integer", length=11, nullable=false)
+     */
+    protected $point;
 
     /**
      * @return mixed
@@ -81,5 +92,37 @@ class Trophy
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * @param mixed $point
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param mixed $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
     }
 }

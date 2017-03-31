@@ -19,6 +19,7 @@ use System\FormHelper\FormHelper;
 use System\Language\Language;
 use System\ResultTable\ResultTable;
 use System\Rule\Rule;
+use System\TrophyHandler\TrophyHandler;
 use System\UserAuthentication\Authentication;
 
 /**
@@ -90,4 +91,9 @@ interface IRegistry
      * @return Cache
      */
     public function getCache();
+
+    /**
+     * @return TrophyHandler
+     */
+    public function getTrophyHandler();
 }

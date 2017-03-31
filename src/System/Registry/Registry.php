@@ -30,6 +30,7 @@ use System\ResultTable\Type\OnlyUsers;
 use System\Rule\Rule;
 use System\Rule\RuleType\Qualify as QualifyRule;
 use System\Rule\RuleType\Race as RaceRule;
+use System\TrophyHandler\TrophyHandler;
 use System\UserAuthentication\Authentication;
 
 /**
@@ -102,6 +103,12 @@ class Registry implements IRegistry
      * @var Cache
      */
     protected $cache;
+
+    /**
+     * @var TrophyHandler
+     */
+    protected $trophyHandler;
+
     /**
      * Registry constructor.
      * @param IRequest $request
@@ -223,7 +230,7 @@ class Registry implements IRegistry
         if (!$this->language) {
             $this->language = new Language('Hungarian');
         }
-        
+
         return $this->language;
     }
 
@@ -246,7 +253,7 @@ class Registry implements IRegistry
     {
         if (!$this->resultTable) {
             $decorator = new BetDecorator($this);
-            
+
             $tableTypes = array(
                 'full' => new Full($this, $this->getCalculator(), $decorator),
                 'only_users' => new OnlyUsers($this),
@@ -270,5 +277,17 @@ class Registry implements IRegistry
         }
 
         return $this->cache;
+    }
+
+    /**
+     * @return TrophyHandler
+     */
+    public function getTrophyHandler()
+    {
+        if (!$this->trophyHandler) {
+            $this->trophyHandler = new TrophyHandler($this);
+        }
+
+        return $this->trophyHandler;
     }
 }

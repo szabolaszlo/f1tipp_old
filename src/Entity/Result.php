@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Entity\Repository\Result")
  * @ORM\Table(name="`result`")
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */
@@ -61,7 +61,7 @@ class Result
     }
 
     /**
-     * @return mixed
+     * @return Event
      */
     public function getEvent()
     {

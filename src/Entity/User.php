@@ -185,6 +185,21 @@ class User
     }
 
     /**
+     * @return array
+     */
+    public function getPodiumTrophies()
+    {
+        $trophies = array();
+
+        /** @var Trophy $trophy */
+        foreach ($this->trophies as $trophy) {
+            $trophies[$trophy->getType()][] = $trophy;
+        }
+
+        return array_replace(array_flip(array('gold', 'silver', 'bronze')), $trophies);
+    }
+
+    /**
      * @return mixed
      */
     public function getSkippedNews()

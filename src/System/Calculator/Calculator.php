@@ -11,6 +11,8 @@ namespace System\Calculator;
 use Doctrine\ORM\EntityManagerInterface;
 use Entity\Bet;
 use Entity\BetAttribute;
+use Entity\Event;
+use Entity\Race;
 use Entity\Result;
 use Entity\User;
 use System\Calculator\RecordCollector\RecordCollector;
@@ -142,6 +144,51 @@ class Calculator implements ICalculator
         }
 
         $user->setPoint($userPoints);
+    }
+
+    /**
+     * @param Race $race
+     * @return array
+     */
+    public function calculateUserPointsByCompleteWeekend(Race $race)
+    {
+        $qualify = $this->entityManager->getRepository('Entity\Qualify')
+            ->findOneBy(array('eventOrder' => $race->getEventOrder()));
+
+        $results = array(
+            $this->entityManager->getRepository('Entity\Result')->findOneBy(array('event' => $qualify)),
+            $this->entityManager->getRepository('Entity\Result')->findOneBy(array('event' => $race))
+        );
+
+        $users = $this->entityManager->getRepository('Entity\User')->findAll();
+
+        /** @var User $user */
+        foreach ($users as $user) {
+            $userPoints = 0;
+
+            foreach ($results as $result) {
+                $bets = $this->entityManager
+                    ->getRepository('Entity\Bet')
+                    ->findBy(
+                        array(
+                            'event_id' => $result->getEvent(),
+                            'user_id' => $user
+                        )
+                    );
+
+                /** @var Bet $bet */
+                foreach ($bets as $bet) {
+                    if (!$bet->getPoint()) {
+                        $this->calculateBetPoints($bet, $result);
+                    }
+                    $userPoints += $bet->getPoint();
+                }
+            }
+
+            $user->setPoint($userPoints);
+        }
+
+        return $users;
     }
 
     /**
