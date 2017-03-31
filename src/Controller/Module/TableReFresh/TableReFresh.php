@@ -45,6 +45,15 @@ class TableRefresh extends Controller
         }
     }
 
+    public function isNeedRefreshTrophiesAction()
+    {
+        $trophyResultId = (int)$this->request->getPost('trophyResultId', 0);
+
+        if (count($this->entityManager->getRepository('Entity\Result')->findAll()) > $trophyResultId) {
+            echo true;
+        }
+    }
+    
     /**
      * @return \System\ResultTable\Type\ITableType
      */
