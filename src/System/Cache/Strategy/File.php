@@ -37,7 +37,7 @@ class File implements IStrategy
     {
         $file = $this->cacheDir . '/' . $id;
         if (is_file($file)) {
-            return file_get_contents($file);
+            return @gzuncompress(file_get_contents($file));
         }
 
         return false;
@@ -50,6 +50,6 @@ class File implements IStrategy
     public function setCache($id, $content)
     {
         $file = $this->cacheDir . '/' . $id;
-        file_put_contents($file, $content);
+        file_put_contents($file, @gzcompress($content, 1));
     }
 }
