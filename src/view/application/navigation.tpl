@@ -32,6 +32,9 @@
                 <li>
                     <a href="?page=information/index&information_title=szabalyzat">{{language.get('nav_rules')}}</a>
                 </li>
+                <li {{page.id == 'statistics' ? 'class="active"' : ''}}>
+                    <a href="?page=statistics/index">{{language.get('nav_statistics')}}</a>
+                </li>
                 {% if isAdmin %}
                 <li class="dropdown {{page.id == 'admin' ? 'active ' : ''}}">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">{{language.get('nav_admin')}}<span class="caret"></span></a>
