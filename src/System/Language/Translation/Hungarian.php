@@ -14,6 +14,7 @@ $_['nav_admin'] = "Admin";
 $_['nav_admin_result'] = "Eredmény Feltöltés";
 $_['nav_admin_information_editor'] = "Szövegek Szerkesztése";
 $_['nav_admin_cache'] = "Cache Törlés";
+$_['nav_statistics'] = "Statisztika";
 
 //Error
 $_['error_not_found_page'] = "Az oldal nem található";
@@ -79,7 +80,6 @@ $_['resultsOfChampionship_driver'] = 'Homár';
 $_['resultsOfChampionship_point'] = 'Pont';
 $_['resultsOfChampionship_wins'] = 'Nyert';
 
-
 // Admin
 $_['admin_result_upload_success'] = 'Sikeres eredmény feltöltés !';
 $_['admin_no_permisson_or_data_error'] = 'Nincs jogosultságod az oldalhoz, vagy hibás adatok!';
@@ -124,4 +124,10 @@ $_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
 $_['trophy_type_gold'] = 'Arany Serleg - Hétvégi Első Hely';
 $_['trophy_type_silver'] = 'Ezüst Serleg - Hétvégi Második Hely';
 $_['trophy_type_bronze'] = 'Bronz Serleg - Hétvégi Harmadik Hely';
+
+//Statistics
+$_['bets_qualify_stat'] = 'Időmérő Tippek Statisztikája';
+$_['bets_race_stat'] = 'Futam Tippek Statisztikája';
+$_['results_qualify_stat'] = 'Időmérő Eredmények Statisztikája';
+$_['results_race_stat'] = 'Futam Eredmények Statisztikája';
 ?>

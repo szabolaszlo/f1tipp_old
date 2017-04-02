@@ -88,7 +88,7 @@ class Bet
     }
 
     /**
-     * @return mixed
+     * @return Event
      */
     public function getEvent()
     {
