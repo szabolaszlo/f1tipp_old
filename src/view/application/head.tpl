@@ -8,6 +8,8 @@
 
     <title>{{language.get('app_title')}}</title>
 
+    <link rel="shortcut icon" type="image/png" href="/src/view/image/favicon.ico"/>
+
     <!-- Bootstrap Core CSS -->
     <link href="{{domain}}/src/view/vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
