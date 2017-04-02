@@ -32,6 +32,12 @@ class Statistics extends Controller
      */
     public function indexAction()
     {
+        $cachedContent = $this->registry->getCache()->getCache($this->getCacheId());
+
+        if ($cachedContent) {
+            return $cachedContent;
+        }
+
         $this->sorter = new ObjectSorter();
         $this->calculator = new StatisticsCalculator();
 
@@ -41,7 +47,11 @@ class Statistics extends Controller
         $this->data['statistics']['bets'] = $this->getStatistics($bets);
         $this->data['statistics']['results'] = $this->getStatistics($results);
 
-        return $this->render();
+        $renderedContent = $this->render();
+
+        $this->registry->getCache()->setCache($this->getCacheId(), $renderedContent);
+
+        return $renderedContent;
     }
 
     /**
@@ -62,5 +72,13 @@ class Statistics extends Controller
         $statistics['race'] = $this->calculator->getStatistics($race);
 
         return $statistics;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCacheId()
+    {
+        return 'statistics.' . count($this->entityManager->getRepository('Entity\Result')->findAll());
     }
 }
