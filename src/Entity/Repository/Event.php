@@ -69,7 +69,7 @@ class Event extends EntityRepository
         $remainEvents = $this->createQueryBuilder('e')
             ->where('e.date_time > :time')
             ->setParameter('time', $date)
-            ->getQuery()
+            ->getQuery() 
             ->getResult();
 
         if (!empty($remainEvents)) {
