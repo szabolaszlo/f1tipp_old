@@ -76,7 +76,7 @@ class Event extends EntityRepository
             $resultCache->save(
                 $cacheKey,
                 $remainEvents,
-                strtotime('+2 hours', $remainEvents[0]->getDateTime()->getTimeStamp())
+                strtotime('+2 hours', $remainEvents[0]->getDateTime()->getTimeStamp()) - time()
             );
         }
         return $remainEvents;
