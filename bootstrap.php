@@ -38,9 +38,10 @@ function getEntityManager()
             1002 => 'SET NAMES utf8'
         )
     );
-    $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-    $driver = new AnnotationDriver(new AnnotationReader(), $paths);
     $cache = new \Doctrine\Common\Cache\FilesystemCache('cache/doctrine');
+    $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, __DIR__ . '/cache/doctrine', $cache);
+    $driver = new AnnotationDriver(new AnnotationReader(), $paths);
+
     $config->setProxyDir(__DIR__ . '/cache/doctrine');
     $config->setHydrationCacheImpl($cache);
     $config->setMetadataCacheImpl($cache);
