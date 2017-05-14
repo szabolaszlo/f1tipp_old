@@ -80,6 +80,11 @@ class Record
         return $this->times;
     }
 
+    public function setTimes($times)
+    {
+        $this->times = $times;
+    }
+
     public function addTimes()
     {
         $this->times++;

@@ -45,6 +45,7 @@ class RecordCollector
             if ($record->getPoint() < $point) {
                 $record->setPoint($point);
                 $record->setUserName($userName);
+                $record->setTimes(1);
                 $this->records[$type] = array($userId => $record);
                 continue;
             }
