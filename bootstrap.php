@@ -35,7 +35,7 @@ function getEntityManager()
         'dbname' => ' ',
         'charset' => 'UTF8',
         'driverOptions' => array(
-            1002 => 'SET NAMES utf8'
+            1002 => 'SET NAMES utf8mb4'
         )
     );
     $cache = new \Doctrine\Common\Cache\FilesystemCache('cache/doctrine');
