@@ -5,24 +5,16 @@
 {% block body_content %}
     <div class="table-responsive">
         <table class="table table-condensed">
-            <thead>
             <tr>
-                <th>{{ bets|length ? language.get('result_betting_user') : language.get('result_betting_nobody') }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
+                <strong>
+                    {{ bets|length ? language.get('result_betting_user') : language.get('result_betting_nobody') }}
+                </strong>
                 {% if bets|length %}
-                    <td class="text-left bg-grey">
-                        <strong>
-                            {% for bet in bets %}
-                                {{ bet.getUser().getName() }} {{ loop.last ? '' : ', ' }}
-                            {% endfor %}
-                        </strong>
-                    </td>
+                    {% for bet in bets %}
+                        {{ bet.getUser().getName() }}{{ loop.last ? '' : ', ' }}
+                    {% endfor %}
                 {% endif %}
             </tr>
-            </tbody>
         </table>
     </div>
     <input type="hidden" id="event-table-bet-numbers" value="{{ bets|length }}">
