@@ -2,7 +2,7 @@
 {% set bet_counter %}
     {% if (usersCount/2 < bets|length) %}
         <div class="pull-right" style="margin-right: 10px">
-            <strong>{{ language.get('result_bets') ~ bets|length ~ '/' ~ usersCount }}</strong>
+            {{ language.get('result_bets') ~ bets|length ~ '/' ~ usersCount }}
         </div>
     {% endif %}
 {% endset %}
@@ -20,7 +20,7 @@
         {% if no_betting_users %}
             <div class="row">
                 <div class="pull-left" style="margin-left: 10px">
-                    <strong>{{ language.get('result_no_betting_users') ~ noBettingUsers|join(', ') }}</strong>
+                    {{ language.get('result_no_betting_users') ~ noBettingUsers|join(', ') }}
                 </div>
                 {{ bet_counter }}
             </div>
