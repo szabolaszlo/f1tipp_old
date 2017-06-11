@@ -1,7 +1,8 @@
-<div class="panel panel-danger text-center">
-    <div class="panel-heading text-center">
-        <strong>{{ event.getName() }} - {{ language.get('general_' ~ event.getType) }}</strong>
-    </div>
+{% extends 'system/resulttable/type/full.tpl' %}
+{% block heading_title %}
+    <strong>{{ event.getName() }} - {{ language.get('general_' ~ event.getType) }}</strong>
+{% endblock %}
+{% block body_content %}
     <div class="table-responsive">
         <table class="table table-condensed">
             <thead>
@@ -26,4 +27,4 @@
     </div>
     <input type="hidden" id="event-table-bet-numbers" value="{{ bets|length }}">
     <input type="hidden" id="event-table-event-id" value="{{ event.getId() }}">
-</div>
+{% endblock %}

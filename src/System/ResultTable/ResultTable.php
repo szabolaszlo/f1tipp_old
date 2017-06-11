@@ -63,7 +63,7 @@ class ResultTable
     /**
      * @param $user
      * @param Event $event
-     * @return ITableType
+     * @return string
      */
     public function getTable($user, Event $event)
     {

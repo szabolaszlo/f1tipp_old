@@ -67,6 +67,8 @@ $_['result_p6'] = '6.';
 $_['result_sc'] = 'SC';
 $_['result_betting_user'] = 'Ők már leadták a tippjüket:';
 $_['result_betting_nobody'] = 'Még senki sem tippelt.';
+$_['result_bets'] = "Tippek: ";
+$_['result_no_betting_users'] = "Tippnélküliek: ";
 
 // User Championship
 $_['userChampionship_title'] = 'Egyéni Pontverseny';

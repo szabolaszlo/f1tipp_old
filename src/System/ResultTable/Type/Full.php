@@ -76,6 +76,12 @@ class Full extends ATableType
 
         $this->data['bets'] = $bets;
 
+        $this->data['usersCount'] = count(
+            $this->entityManager->getRepository('Entity\User')->findAll()
+        );
+
+        $this->data['noBettingUsers'] = $this->getNoBettingUsers($bets);
+
         return $this->render();
     }
 }

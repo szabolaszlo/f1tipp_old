@@ -1,8 +1,30 @@
+{% set no_betting_users = (usersCount/2 < bets|length) and not (usersCount == bets|length) %}
+{% set bet_counter %}
+    <div class="pull-right" style="margin-right: 10px">
+        <strong>{{ language.get('result_bets') ~ bets|length ~ '/' ~ usersCount }}</strong>
+    </div>
+{% endset %}
 <div class="panel panel-danger">
     <div class="panel-heading text-center">
-        <strong>{{ result.getEvent().getName() }}
-            - {{ language.get('general_' ~ result.getEvent().getType) }}</strong>
+        <div class="row">
+            {% block heading_title %}
+                {% set titletext = language.get('general_' ~ result.getEvent().getType) %}
+                <strong>{{ result.getEvent().getName() ~ ' - ' ~ titletext }}</strong>
+            {% endblock %}
+            {% if not no_betting_users %}
+                {{ bet_counter }}
+            {% endif %}
+        </div>
+        {% if no_betting_users %}
+            <div class="row">
+                <div class="pull-left" style="margin-left: 10px">
+                    <strong>{{ language.get('result_no_betting_users') ~ noBettingUsers|join(', ') }}</strong>
+                </div>
+                {{ bet_counter }}
+            </div>
+        {% endif %}
     </div>
+    {% block body_content %}
     <div class="table-responsive">
         <table class="table table-condensed">
             <thead>
@@ -34,4 +56,5 @@
             </tbody>
         </table>
     </div>
+    {% endblock %}
 </div>
