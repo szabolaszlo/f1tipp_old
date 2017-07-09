@@ -107,11 +107,10 @@ class TrophyHandler
         }
 
         foreach ($podium as $key => $value) {
-            $podium[$key] = array_keys($userPoints, max($userPoints));
-            foreach ($podium[$key] as $pKey => $userId) {
+            $podium[$key] = array_flip(array_keys($userPoints, max($userPoints)));
+            foreach ($podium[$key] as $userId => $pValue) {
                 $podium[$key][$userId] = $userPoints[$userId];
                 unset($userPoints[$userId]);
-                unset($podium[$key][$pKey]);
             }
         }
 
