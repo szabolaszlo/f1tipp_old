@@ -1,5 +1,5 @@
 {% set visibilityIcon = visibility == 'none' ? 'glyphicon-plus-sign' : 'glyphicon-minus-sign' %}
-<div class="panel panel-danger remove-able-{{id}}">
+<div class="panel panel-default remove-able-{{id}}">
     <div class="panel-heading text-center">
         {% block heading_title %}
         <strong>{{language.get(id ~ '_title')}}</strong>

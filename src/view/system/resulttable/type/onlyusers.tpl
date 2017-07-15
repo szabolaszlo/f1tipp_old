@@ -4,8 +4,8 @@
 {% endblock %}
 {% block body_content %}
     <div class="table-responsive">
-        <table class="table table-condensed">
-            <tr>
+        <table class="table table-condensed" style="padding: 15px">
+            <tr style="margin: 15px">
                 <strong>
                     {{ bets|length ? language.get('result_betting_user') : language.get('result_betting_nobody') }}
                 </strong>

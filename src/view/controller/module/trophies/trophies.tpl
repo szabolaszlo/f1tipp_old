@@ -5,7 +5,7 @@
 {% block body_content %}
     <div class="panel-body center-block">
         <div class="table-responsive center-block">
-            <table class="table table-condensed">
+            <table class="table table-stripped">
                 <tbody>
                 {% for type, trophies in podiumTrophies %}
                     <tr>

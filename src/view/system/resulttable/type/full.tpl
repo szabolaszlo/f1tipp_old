@@ -6,7 +6,7 @@
         </div>
     {% endif %}
 {% endset %}
-<div class="panel panel-danger">
+<div class="panel panel-default">
     <div class="panel-heading text-center">
         <div class="row">
             {% block heading_title %}
@@ -28,7 +28,7 @@
     </div>
     {% block body_content %}
         <div class="table-responsive">
-            <table class="table table-condensed">
+            <table class="table table-stripped">
                 <thead>
                 <tr>
                     <th>{{ language.get('result_name') }}</th>
