@@ -6,12 +6,12 @@
 
 {% block body_content %}
     <div class="panel-body">
-        <table class="table small" style="margin-bottom: 0;">
+        <table class="table small table-striped" style="margin-bottom: 0;">
             {% for event in events %}
                 <tr>
                     <td><strong>{{ language.get('general_' ~ event.id) }}</strong></td>
                     <td><strong>{{ event.date }}</strong></td>
-                    <td><strong><span id="{{ event.id }}_counter" style="color: red"></span></strong></td>
+                    <td><strong><span id="{{ event.id }}_counter" class="color-one"></span></strong></td>
                 </tr>
             {% endfor %}
         </table>

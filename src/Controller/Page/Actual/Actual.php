@@ -11,6 +11,7 @@ namespace Controller\Page\Actual;
 use Controller\Controller;
 use Entity\Event;
 use Entity\Result;
+use System\CountDownScript\CountDownScript;
 
 /**
  * Class Actual
@@ -46,10 +47,25 @@ class Actual extends Controller
         foreach ($events as $event) {
             $id = abs($now->getTimestamp() - $event->getDateTime()->getTimeStamp());
 
+            $titleEvents[$id] = $event;
+
             $this->data['tables'][$id] = $this->registry->getResultTable()->getTable($user, $event);
         }
 
         ksort($this->data['tables']);
+
+        ksort($titleEvents);
+
+        $titleEvent = reset($titleEvents);
+
+        $countDownTitleEvent = new CountDownScript('title_' . $titleEvent->getType(), $titleEvent->getDateTime(), $this->renderer);
+
+        $this->data['titleEvent'] = array(
+                'id' => 'title_' . $titleEvent->getType(),
+                'name' => $titleEvent->getName(),
+                'date' => $titleEvent->getDateTime()->format('M.d H:i'),
+                'countDown' => $countDownTitleEvent->render()
+        );
 
         return $this->render();
     }

@@ -1,7 +1,12 @@
-<form id="signin" class="navbar-form navbar-right" role="form" method="post" action="?module=login/logout&{{actualPage}}">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input class="form-control" id="disabledInput" type="text" value="{{name}}" disabled>
-    </div>
-    <button type="submit" class="btn btn-default">{{language.get('user_logout')}}</button>
+<form id="signin" class="navbar-form navbar-right" role="form" method="post"
+      action="?module=login/logout&{{ actualPage }}">
+    <input class="form-control" id="disabledInput" type="hidden" value="{{ name }}" disabled>
+    <button class="btn btn-new color-one">
+        <i class="glyphicon glyphicon-user color-one"></i>
+        <span class="color-one">{{ name }}</span>
+    </button>
+    <button type="submit" class="btn btn-new">
+        <i class="glyphicon glyphicon-log-out color-one"></i>
+        <span class="color-one">{{ language.get('user_logout') }}</span>
+    </button>
 </form>

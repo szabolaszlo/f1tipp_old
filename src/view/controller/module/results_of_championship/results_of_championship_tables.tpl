@@ -1,6 +1,6 @@
 <div class="panel-body center-block">
-    <div class="table-responsive center-block">
-        <table class="table small table-condensed">
+    <div class="table-responsive table-striped center-block">
+        <table class="table small table-striped">
             <thead>
             <th>{{ language.get(id ~ '_driver') }}</th>
             <th>{{ language.get(id ~ '_point') }}</th>
@@ -16,7 +16,7 @@
             {% endfor %}
             </tbody>
         </table>
-        <table class="table small table-condensed">
+        <table class="table small table-striped">
             <thead>
             <th>{{ language.get(id ~ '_construct') }}</th>
             <th>{{ language.get(id ~ '_point') }}</th>

@@ -27,8 +27,8 @@
                                 {% endif %}
                             {% endfor %}
                         </td>
-                        <td><strong>{{ user.getPoint() }}</strong></td>
-                        <td><span class="small">{{ user.getPointDifference() }}</span></td>
+                        <td><strong class="color-one">{{ user.getPoint() }}</strong></td>
+                        <td><span class="small color-two">{{ user.getPointDifference() }}</span></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -38,15 +38,15 @@
                 {% for typeKey, recordType in recordTypes %}
                     {% if recordType is not empty %}
                         <tr>
-                            <td class="text-center bg-danger" colspan="3">
-                                <strong>{{ language.get(id ~ '_best_of_' ~ typeKey) }}</strong>
+                            <td class="text-center bg-one" colspan="3" style="border-top: 1px; border-top-color: white;">
+                                <strong class="color-two">{{ language.get(id ~ '_best_of_' ~ typeKey) }}</strong>
                             </td>
                         </tr>
                         {% for record in recordType %}
                             <tr>
                                 <td><strong>{{ record.getUserName() }}</strong></td>
-                                <td><strong>{{ record.getPoint() }}</strong></td>
-                                <td><strong>{{ record.getTimes() > 1 ? ' X' ~ record.getTimes() : '' }}</strong></td>
+                                <td><strong class="color-one">{{ record.getPoint() }}</strong></td>
+                                <td><strong class="color-two">{{ record.getTimes() > 1 ? ' X' ~ record.getTimes() : '' }}</strong></td>
                             </tr>
                         {% endfor %}
                     {% endif %}

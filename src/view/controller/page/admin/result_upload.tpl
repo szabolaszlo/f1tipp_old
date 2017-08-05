@@ -1,4 +1,4 @@
-<div class="panel panel-danger">
+<div class="panel panel-default">
     <div class="panel-heading text-center">
         <strong>{{ language.get('nav_admin_result') }}</strong>
     </div>
@@ -49,7 +49,7 @@
                         <!-- Button -->
                         <div class="center-block" style="padding: 15px">
                             <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                                    class="btn btn-danger center-block submit" disabled="disabled">
+                                    class="btn btn-new center-block submit" disabled="disabled">
                                 {{ language.get('admin_result_upload_submit_' ~ event.getType()) }}
                             </button>
                         </div>

@@ -1,4 +1,4 @@
-<div class="panel panel-danger">
+<div class="panel panel-default">
     <div class="panel-heading text-center">
         <strong>{{ language.get('admin_driver_editor') }}</strong>
     </div>
@@ -19,7 +19,7 @@
             <div class="pull-left" style="padding: 15px">
                 <a href="?page=admin/driver_editor/syncPoints" style="text-decoration: none">
                     <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                            class="btn btn-danger center-block submit">
+                            class="btn btn-new center-block submit">
                         {{ language.get('admin_driver_editor_sync') }}
                     </button>
                 </a>
@@ -31,7 +31,7 @@
             <form class="form-horizontal" style="padding: 30px;" method="post"
                   action="?page=admin/driver_editor/update">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th class="text-center">{{ language.get('admin_driver_editor_driver_name') }}</th>
@@ -42,21 +42,21 @@
                         </thead>
                         {% for driver in drivers %}
                             <tr>
-                                <td><input name="driver[{{ loop.index }}][id]" type="hidden"
+                                <td><input class="form-input" name="driver[{{ loop.index }}][id]" type="hidden"
                                            value="{{ driver.getId() }}">
-                                    <input name="driver[{{ loop.index }}][name]" type="text"
+                                    <input class="form-input" name="driver[{{ loop.index }}][name]" type="text"
                                            value="{{ driver.getName() }}">
                                 </td>
                                 <td class="text-center">
-                                    <input name="driver[{{ loop.index }}][short]" type="text"
+                                    <input class="form-input" name="driver[{{ loop.index }}][short]" type="text"
                                            value="{{ driver.getShort() }}">
                                 </td>
                                 <td class="text-center">
-                                    <input name="driver[{{ loop.index }}][point]" type="text"
+                                    <input class="form-input" name="driver[{{ loop.index }}][point]" type="text"
                                            value="{{ driver.getPoint() }}">
                                 </td>
                                 <td class="text-center">
-                                    <input name="driver[{{ loop.index }}][status]" type="checkbox"
+                                    <input class="form-input" name="driver[{{ loop.index }}][status]" type="checkbox"
                                             {{ driver.getStatus() ? 'checked="checked"' : '' }} value="1">
                                 </td>
                             </tr>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="center-block">
                     <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                            class="btn btn-danger center-block submit">
+                            class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_save') }}
                     </button>
                 </div>
@@ -73,7 +73,7 @@
             <div class="center-block" style="padding: 15px;">
                 <a href="?page=admin/driver_editor/insert" style="text-decoration: none">
                     <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                            class="btn btn-danger center-block submit">
+                            class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_new') }}
                     </button>
                 </a>

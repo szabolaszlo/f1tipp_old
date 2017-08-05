@@ -14,40 +14,41 @@
     <div class="row">
         {% for event in events %}
             <div class="col-sm-6">
-                <div class="panel panel-danger text-center">
+                <div class="panel panel-default text-center">
                     <div class="panel-heading text-center">
                         <strong>{{ event.event.getName() }}
                             - {{ language.get('general_' ~ event.event.getType) }}</strong>
                     </div>
                     <form class="form-horizontal" method="post" action="?page=betting/save">
-                        <fieldset>
-
-                            <!-- Form Name -->
-                            <legend></legend>
+                        <fieldset style="margin-top: 10px;">
 
                             {% if event.inTime or event.bet %}
+                                <table class="table table-responsive table-striped">
+                                    <!-- Select Basic -->
+                                    {% for eventAttribute in event.eventAttributes %}
+                                        <tr>
+                                            <td>
 
-                                <!-- Select Basic -->
-                                {% for eventAttribute in event.eventAttributes %}
+                                                {% set attrId = eventAttribute.getId() %}
+                                                {% set attrType = eventAttribute.getType() %}
+                                                {% set betAttrValue = event.bet ? event.bet.getAttributeValueByKey(attrId) : '' %}
 
-                                    {% set attrId = eventAttribute.getId() %}
-                                    {% set attrType = eventAttribute.getType() %}
-                                    {% set betAttrValue = event.bet ? event.bet.getAttributeValueByKey(attrId) : '' %}
-
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label"
-                                               for="selectbasic">{{ language.get('betting_' ~ attrId) }}</label>
-                                        <div class="col-md-7">
-                                            <select id="selectbasic" name="bet_attr[{{ attrId }}]"
-                                                    class="form-control event-{{ event.event.getId() }}"
-                                                    {{ event.bet ? ' disabled="disabled"' : '' }}>
-                                                <option value="">{{ language.get('betting_default_option') }}</option>
-                                                {{ formHelper.getSelectOption(attrType).getOptions(betAttrValue)|raw }}
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                {% endfor %}
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label"
+                                                           for="selectbasic">{{ language.get('betting_' ~ attrId) }}</label>
+                                                    <div class="col-md-7">
+                                                        <select id="selectbasic" name="bet_attr[{{ attrId }}]"
+                                                                class="form-control event-{{ event.event.getId() }}"
+                                                                {{ event.bet ? ' disabled="disabled"' : '' }}>
+                                                            <option value="">{{ language.get('betting_default_option') }}</option>
+                                                            {{ formHelper.getSelectOption(attrType).getOptions(betAttrValue)|raw }}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
 
                                 <input type="hidden" name="user-token" value="{{ userToken }}">
                                 <input type="hidden" name="event-id" value="{{ event.event.getId }}">
@@ -57,14 +58,15 @@
                                 {% if not event.bet %}
                                     <div class="center-block" style="padding: 15px">
                                         <button id="event-bet-submit-{{ event.event.getId() }}" name="singlebutton"
-                                                class="btn btn-danger center-block" disabled="disabled">
+                                                class="btn btn-new center-block" disabled="disabled">
                                             {{ language.get('betting_submit_' ~ event.event.getType()) }}
                                         </button>
                                     </div>
                                 {% endif %}
 
                             {% else %}
-                              <div class="text-center text-danger"><h4>{{ language.get('betting_time_out') }}</h4></div>
+                                <div class="text-center text-danger"><h4>{{ language.get('betting_time_out') }}</h4>
+                                </div>
                             {% endif %}
                         </fieldset>
                     </form>

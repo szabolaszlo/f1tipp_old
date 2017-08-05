@@ -1,4 +1,4 @@
-<div class="panel panel-danger">
+<div class="panel panel-default">
     <div class="panel-heading text-center">
         <strong>{{ information.getTitle() }}</strong>
     </div>

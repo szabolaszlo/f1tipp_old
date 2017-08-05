@@ -28,7 +28,7 @@
     </div>
     {% block body_content %}
         <div class="table-responsive">
-            <table class="table table-stripped">
+            <table class="table result-striped">
                 <thead>
                 <tr>
                     <th>{{ language.get('result_name') }}</th>
@@ -41,18 +41,20 @@
                 <tbody>
                 {% for bet in bets %}
                     <tr>
-                        <td class="text-left bg-grey"><strong>{{ bet.getUser().getName() }}</strong></td>
-                        <td class="text-center bg-grey"><strong>{{ bet.getPoint() }}</strong></td>
+                        <td class="text-left"><strong class="color-one">{{ bet.getUser().getName() }}</strong></td>
+                        <td class="text-center"><strong class="color-one">{{ bet.getPoint() }}</strong></td>
                         {% for betAttribute in bet.getAttributes() %}
-                            <td class="text-center {{ betAttribute.getClass() ? betAttribute.getClass() : 'bg-white' }}">{{ betAttribute.getValue() }}</td>
+                            <td class="text-center {{ betAttribute.getClass() ? betAttribute.getClass() : 'bet-empty' }}">
+                                <span class="{{ betAttribute.getClass() ? betAttribute.getClass() ~ '-font' : 'bet-empty-font' }}">{{ betAttribute.getValue() }}</span>
+                            </td>
                         {% endfor %}
                     </tr>
                 {% endfor %}
-                <tr class="bg-grey">
-                    <td><strong>{{ language.get('general_result') }}</strong></td>
+                <tr>
+                    <td><strong class="color-two">{{ language.get('general_result') }}</strong></td>
                     <td></td>
                     {% for resultAttribute in result.getAttributes() %}
-                        <td class="text-center"><strong>{{ resultAttribute.getValue() }}</strong></td>
+                        <td class="text-center"><strong class="color-two">{{ resultAttribute.getValue() }}</strong></td>
                     {% endfor %}
                 </tr>
                 </tbody>
