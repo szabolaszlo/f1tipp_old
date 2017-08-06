@@ -7,6 +7,8 @@ $_['app_creator'] = "Készítette: Szabó László 2016";
 //Navigation
 $_['nav_bet'] = "Tippelek";
 $_['nav_results'] = "Eredmények";
+$_['nav_results_points'] = "Hétvégék részeredményei";
+$_['nav_results_trophies'] = "Kupák";
 $_['nav_calendar'] = "Naptár";
 $_['nav_rules'] = "Szabályzat";
 $_['nav_actual'] = "Aktuális";
@@ -130,6 +132,10 @@ $_['trophy_type_gold'] = 'Arany Serleg - Hétvégi Első Hely';
 $_['trophy_type_silver'] = 'Ezüst Serleg - Hétvégi Második Hely';
 $_['trophy_type_bronze'] = 'Bronz Serleg - Hétvégi Harmadik Hely';
 $_['trophy_trophies'] = 'KUPÁK';
+$_['trophies_name'] = 'Név';
+$_['trophies_trophies'] = 'Begyűjtött Kupák';
+$_['trophies_virtual_point'] = 'Virtuális Pont';
+$_['trophies_description'] = 'A kupák virtuális pontokat érnek. A neve is direkt azért virtuális, mert NEM számít bele a pontrendszerbe! Csak muszály pontozni, hogy sorrendet tudjunk felállítani. Egyébként a Forma 1 szerinti pontozást alkalmazzuk a kupákra is, azaz:';
 
 //Statistics
 $_['bets_qualify_stat'] = 'Időmérő Tippek Statisztikája';

@@ -23,8 +23,12 @@
                 <li {{page.id == 'actual' ? 'class="active"' : ''}}>
                     <a href="?page=actual/index">{{language.get('nav_actual')}}</a>
                 </li>
-                <li {{page.id == 'results' ? 'class="active"' : ''}}>
-                    <a href="?page=results/index">{{language.get('nav_results')}}</a>
+                <li class="dropdown {{page.id == 'results' or page.id == 'trophies' ? 'active ' : ''}}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">{{language.get('nav_results')}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?page=results/index">{{language.get('nav_results_points')}}</a></li>
+                        <li><a href="?page=trophies/index">{{language.get('nav_results_trophies')}}</a></li>
+                    </ul>
                 </li>
                 <li {{page.id == 'calendar' ? 'class="active"' : ''}}>
                     <a href="?page=calendar/index">{{language.get('nav_calendar')}}</a>
