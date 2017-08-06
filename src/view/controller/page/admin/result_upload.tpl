@@ -19,7 +19,7 @@
                     <fieldset>
 
                         <!-- Form Name -->
-                        <legend>{{ event.getName() }} - {{ language.get('general_' ~ event.getType) }}</legend>
+                        <legend class="color-two">{{ event.getName() }} - {{ language.get('general_' ~ event.getType) }}</legend>
 
                         <!-- Select Basic -->
                         {% for eventAttribute in attributes %}

@@ -8,7 +8,7 @@
             <table class="table table-striped">
                 {% for type, trophies in podiumTrophies %}
                     <tr>
-                        <td>
+                        <td class="text-center">
                         <span title="{{ language.get('trophy_type_' ~ type) }}">
                             <img src="/src/view/image/trophy_{{ type }}.png" height="18">
                         </span>

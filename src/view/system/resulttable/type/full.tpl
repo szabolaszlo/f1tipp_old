@@ -31,10 +31,10 @@
             <table class="table result-striped">
                 <thead>
                 <tr>
-                    <th>{{ language.get('result_name') }}</th>
-                    <th class="text-center">{{ language.get('result_point') }}</th>
+                    <th><strong class="color-two">{{ language.get('result_name') }}</strong></th>
+                    <th class="text-center"><strong class="color-two">{{ language.get('result_point') }}</strong></th>
                     {% for resultAttribute in result.getAttributes() %}
-                        <th class="text-center">{{ language.get('result_' ~ resultAttribute.getKey()) }}</th>
+                        <th class="text-center"><strong class="color-two">{{ language.get('result_' ~ resultAttribute.getKey()) }}</strong></th>
                     {% endfor %}
                 </tr>
                 </thead>
@@ -50,7 +50,7 @@
                         {% endfor %}
                     </tr>
                 {% endfor %}
-                <tr>
+                <tr class="result-table-result-row">
                     <td><strong class="color-two">{{ language.get('general_result') }}</strong></td>
                     <td></td>
                     {% for resultAttribute in result.getAttributes() %}

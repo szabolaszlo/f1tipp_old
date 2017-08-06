@@ -6,7 +6,7 @@
                 {% for user in users %}
                     {% set podiumTrophies = user.getPodiumTrophies() %}
                     <tr>
-                        <td class="user-activity user-{{ user.getName() }}">
+                        <td class="text-center user-activity user-{{ user.getName() }}">
                             <span class="glyphicon glyphicon-eye-open"
                                   aria-hidden="true" title="Online"
                                   style="color: transparent; font-size: 1.1em;">

@@ -37,7 +37,7 @@ table caption {
 }
 
 .bg-success {
-    background-color: rgba(223, 240, 216, .3);
+    background-color: rgba(223, 240, 216, .1);
 }
 
 .bet-empty {
@@ -135,7 +135,7 @@ fieldset[disabled] .btn-new.active {
 }
 
 .panel-default > .panel-heading {
-    color: rgba(255, 255, 255, .75);;
+    color: rgba(255, 255, 255, .75);
     background-color: rgb(140, 5, 1);
     border-radius: 0px;
     border: 0px;
@@ -161,18 +161,21 @@ fieldset[disabled] .btn-new.active {
     border-top: 0px;
 }
 
-.result-striped > tbody > tr:nth-of-type(odd) > td:nth-of-type(1){
+.result-striped > tbody > tr:nth-of-type(odd):not(:last-child) > td:nth-of-type(1) {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.result-striped > tbody > tr:nth-of-type(odd) > td:nth-of-type(2){
+.result-striped > tbody > tr:nth-of-type(odd):not(:last-child) > td:nth-of-type(2) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.result-table-result-row {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 
 .table {
     margin-bottom: 0;
@@ -188,18 +191,22 @@ fieldset[disabled] .btn-new.active {
     border-color: rgba(184, 33, 29, .9);
 }
 
-.dropdown-menu > li > a{
+.dropdown-menu > li > a {
     color: white;
     font-weight: bold;
     background-color: rgba(184, 33, 29, .9);
     border-color: rgba(184, 33, 29, .9);
 }
 
-.dropdown-menu > li > a:hover{
+.dropdown-menu > li > a:hover {
     color: yellow;
     font-weight: bold;
     background-color: rgba(0, 0, 0, .2);
     border-color: rgba(0, 0, 0, .2);
+}
+
+.scroll {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .table > thead > tr > th,
@@ -245,7 +252,7 @@ fieldset[disabled] .btn-new.active {
 }
 
 .navbar .navbar-text {
-    color:white;
+    color: white;
 }
 
 .navbar .navbar-nav > li > a {
@@ -317,7 +324,7 @@ fieldset[disabled] .btn-new.active {
     .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
     .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
         color: yellow;
-        background-color: rgba(1, 1, 1, .65);;
+        background-color: rgba(1, 1, 1, .65);
     }
 
     .table-responsive {
@@ -342,4 +349,36 @@ a.glyphicon {
 a:hover.glyphicon {
     color: white;
     cursor: pointer;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.custom-scrollbar::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgb(140, 5, 1);
+}
+
+.form-control{
+    font-weight: bold;
+    color: white;
+    background-color: #303030;
+}
+
+.form-control:disabled{
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 255, 255, .2);
 }

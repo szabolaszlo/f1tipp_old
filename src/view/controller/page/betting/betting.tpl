@@ -65,7 +65,7 @@
                                 {% endif %}
 
                             {% else %}
-                                <div class="text-center text-danger"><h4>{{ language.get('betting_time_out') }}</h4>
+                                <div class="text-center text-danger"><h4 class="color-two">{{ language.get('betting_time_out') }}</h4>
                                 </div>
                             {% endif %}
                         </fieldset>
@@ -75,7 +75,7 @@
         {% endfor %}
     </div>
 {% else %}
-    <h3>{{ language.get('betting_no_login') }}</h3>
+    <h3 class="color-two">{{ language.get('betting_no_login') }}</h3>
 {% endif %}
 
 <script type="text/javascript">

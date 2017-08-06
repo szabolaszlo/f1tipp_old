@@ -4,7 +4,7 @@
             <div class="panel-heading text-center">
                 <strong>{{ language.get(typeName~'_'~name~'_'~'stat') }}</strong>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive custom-scrollbar">
                 <table class="table table-striped">
                     <tbody>
                     {% for attrName, attributes in statistic %}
