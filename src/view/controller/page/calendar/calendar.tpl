@@ -4,7 +4,7 @@
     </div>
     <div style="text-align: center; margin-top: 15px;">
         <a href="?page=calendar/qualify" class="btn btn-new {{ type == 'Qualify' ? 'active' : '' }}" role="button">
-            {{ language.get('general_qualify') }}
+            {{ language.get('general_qualifies') }}
         </a>
         <a href="?page=calendar/race" class="btn btn-new {{ type == 'Race' ? 'active' : '' }}" role="button">
             {{ language.get('general_races') }}
