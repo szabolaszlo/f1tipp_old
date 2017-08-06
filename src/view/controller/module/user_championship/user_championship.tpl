@@ -18,7 +18,7 @@
                                 {% set trophy = trophies|first %}
                                 {% if trophy.getType() %}
                                     <span title="{{ language.get('trophy_type_' ~ trophy.getType()) }}">
-                                    <img src="{{ domain }}/src/view/image/trophy_{{ trophy.getType() }}.png"
+                                    <img src="{{ domain }}/src/view/image/trophy_{{ trophy.getType() }}.png?v=1502019288"
                                          height="18">
                                 </span>
                                     {% if trophies|length > 1 %}
