@@ -43,7 +43,7 @@
                             </td>
                         </tr>
                         {% for record in recordType %}
-                            <tr>
+                            <tr class="text-center">
                                 <td><strong>{{ record.getUserName() }}</strong></td>
                                 <td><strong class="color-one">{{ record.getPoint() }}</strong></td>
                                 <td><strong class="color-two">{{ record.getTimes() > 1 ? ' X' ~ record.getTimes() : '' }}</strong></td>

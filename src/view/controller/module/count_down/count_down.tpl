@@ -8,7 +8,7 @@
     <div class="panel-body">
         <table class="table small table-striped" style="margin-bottom: 0;">
             {% for event in events %}
-                <tr>
+                <tr class="text-center">
                     <td><strong>{{ language.get('general_' ~ event.id) }}</strong></td>
                     <td><strong>{{ event.date }}</strong></td>
                     <td><strong><span id="{{ event.id }}_counter" class="color-one"></span></strong></td>
