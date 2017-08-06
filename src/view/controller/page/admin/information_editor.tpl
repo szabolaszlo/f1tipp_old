@@ -1,4 +1,4 @@
-<div class="panel panel-danger">
+<div class="panel panel-default">
     <div class="panel-heading text-center">
         <strong>{{ language.get('nav_admin_information_editor') }}</strong>
     </div>
@@ -63,7 +63,7 @@
                     <p></p>
                     <div class="center-block">
                         <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                                class="btn btn-danger center-block submit">
+                                class="btn btn-new center-block submit">
                             {{ language.get('admin_information_editor_save') }}
                         </button>
                     </div>
@@ -73,7 +73,7 @@
             <div class="center-block" style="padding: 15px;">
                 <a href="?page=admin/information_editor/insert" style="text-decoration: none">
                     <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
-                            class="btn btn-danger center-block submit">
+                            class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_new') }}
                     </button>
                 </a>

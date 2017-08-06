@@ -20,9 +20,9 @@ use System\Rule\RuleType\IRuleType;
  */
 class BetDecorator implements IDecorator
 {
-    const HIGH_CLASS = 'bg-danger';
+    const HIGH_CLASS = 'bet-high';
     
-    const LOW_CLASS = 'bg-success';
+    const LOW_CLASS = 'bet-low';
     
     /**
      * @var IRegistry

@@ -12,6 +12,7 @@ $_['nav_rules'] = "Szabályzat";
 $_['nav_actual'] = "Aktuális";
 $_['nav_admin'] = "Admin";
 $_['nav_admin_result'] = "Eredmény Feltöltés";
+$_['nav_admin_bet'] = "Tipp Feltöltés";
 $_['nav_admin_information_editor'] = "Szövegek Szerkesztése";
 $_['nav_admin_cache'] = "Cache Törlés";
 $_['nav_statistics'] = "Statisztika";
@@ -27,12 +28,14 @@ $_['user_password'] = "Jelszó";
 $_['user_fail'] = "Hibás";
 
 //General
-$_['general_race'] = "Futam";
+$_['general_race'] = "FUTAM";
+$_['general_title_race'] = "FUTAM";
 $_['general_races'] = "Futamok";
-$_['general_qualify'] = "Időmérő";
+$_['general_qualify'] = "IDŐMÉRŐ";
+$_['general_title_qualify'] = "IDŐMÉRŐ";
 $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
-$_['general_result'] = "Eredmény";
+$_['general_result'] = "EREDMÉNY";
 
 //Calendar
 $_['calendar_type'] = "Típus";
@@ -71,12 +74,12 @@ $_['result_bets'] = "Tippek: ";
 $_['result_no_betting_users'] = "Tippnélküliek: ";
 
 // User Championship
-$_['userChampionship_title'] = 'Egyéni Pontverseny';
+$_['userChampionship_title'] = 'EGYÉNI PONTVERSENY';
 $_['userChampionship_best_of_race'] = 'Futamok Legjobbja:';
 $_['userChampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
 
 // Results Championship
-$_['resultsOfChampionship_title'] = 'VB Állás';
+$_['resultsOfChampionship_title'] = 'VB ÁLLÁS';
 $_['resultsOfChampionship_construct'] = 'Csapat';
 $_['resultsOfChampionship_driver'] = 'Homár';
 $_['resultsOfChampionship_point'] = 'Pont';
@@ -117,7 +120,7 @@ $_['admin_cache_clear_success'] = 'Sikeres Cache Törlés';
 $_['admin_cache_all'] = 'Full Cache Törlés';
 
 // MessageWall
-$_['messageWall_title'] = 'Üzenőfal';
+$_['messageWall_title'] = 'ÜZENŐFAL';
 $_['messageWall_submit'] = 'Beleugatok';
 $_['messageWall_not_logged_in'] = 'Nem vagy bejelentkezve!';
 $_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
@@ -126,6 +129,7 @@ $_['messageWall_empty_message'] = 'Ne küldözgess üres üzenetet!';
 $_['trophy_type_gold'] = 'Arany Serleg - Hétvégi Első Hely';
 $_['trophy_type_silver'] = 'Ezüst Serleg - Hétvégi Második Hely';
 $_['trophy_type_bronze'] = 'Bronz Serleg - Hétvégi Harmadik Hely';
+$_['trophy_trophies'] = 'KUPÁK';
 
 //Statistics
 $_['bets_qualify_stat'] = 'Időmérő Tippek Statisztikája';

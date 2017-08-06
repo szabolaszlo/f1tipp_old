@@ -6,7 +6,7 @@
                 $(this).empty();
             });
             $.each(data, function (key, val) {
-                $('.user-' + val).append('<span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="Online" style="color: green; font-size: 1.1em;"></span>');
+                $('.user-' + val).append('<span class="glyphicon glyphicon-eye-open" aria-hidden="true" title="Online" style="color: yellow; font-size: 1.1em;"></span>');
             });
         });
     }

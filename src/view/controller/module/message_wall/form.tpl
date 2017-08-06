@@ -1,8 +1,8 @@
 <form id="message-send" class="form-inline" method="post" action="?module=message_wall/save&ajax=true">
-    <input type="text" class="form-group smile-replaceable" name="message" placeholder="{{ placeholder }}"
+    <input type="text" class="form-group smile-replaceable form-input" name="message" placeholder="{{ placeholder }}"
            style="width: 65%">
     <button id="message-submit" type="submit"
-            class="btn btn-danger form-group">{{ language.get(id ~ '_submit') }}
+            class="btn btn-new form-group">{{ language.get(id ~ '_submit') }}
     </button>
     <img id="loading" src="/src/view/image/ajax-loader.gif" height="34" style="display: none;">
     <input type="hidden" name="user-token" value="{{ userToken }}">

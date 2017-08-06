@@ -1,5 +1,17 @@
-<img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt=""
-     style="margin-bottom: 10px; border-radius: 4px; border: solid 1px; border-color: #ffbbbc" border="1">
+<div class="panel panel-default remove-able-{{ id }}">
+    <div class="panel-heading text-center">
+        <table class="table table-responsive" style="margin-bottom: 0;">
+            <tr>
+                <td><strong class="color-one">{{ titleEvent.name }}</strong></td>
+                <td><strong class="color-one">{{ language.get('general_' ~ titleEvent.id) }}</strong></td>
+                <td><strong class="color-one">{{ titleEvent.date }}</strong></td>
+                <td><strong><span id="{{ titleEvent.id }}_counter" class="color-one"></span></strong></td>
+            </tr>
+        </table>
+    </div>
+    <img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">
+    {{ titleEvent.countDown|raw }}
+</div>
 {{ modules.messageWall|raw }}
 {{ modules.news|raw }}
 {% for key, table in tables %}

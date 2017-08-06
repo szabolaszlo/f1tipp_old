@@ -1,15 +1,14 @@
 {% extends 'controller/module/base_module.tpl' %}
 {% block heading_title %}
-    <strong>{{ title }}</strong>
+    <strong>{{ title }} - {{ language.get('trophy_trophies') }}</strong>
 {% endblock %}
 {% block body_content %}
     <div class="panel-body center-block">
-        <div class="table-responsive center-block">
-            <table class="table table-condensed">
-                <tbody>
+        <div class="table-responsive table-striped center-block">
+            <table class="table table-striped">
                 {% for type, trophies in podiumTrophies %}
                     <tr>
-                        <td>
+                        <td class="text-center">
                         <span title="{{ language.get('trophy_type_' ~ type) }}">
                             <img src="/src/view/image/trophy_{{ type }}.png" height="18">
                         </span>
@@ -24,7 +23,6 @@
                         <td><strong>{{ trophies|first.getPoint() }}</strong></td>
                     </tr>
                 {% endfor %}
-                </tbody>
             </table>
             <input type="hidden" id="trophy-result-id" value="{{ eventId + 1 }}">
         </div>
