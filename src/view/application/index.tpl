@@ -43,7 +43,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>{{ language.get('app_creator') }}</p>
+                    <p class="color-two">{{ language.get('app_creator') }}</p>
                 </div>
             </div>
             <!-- /.row -->
