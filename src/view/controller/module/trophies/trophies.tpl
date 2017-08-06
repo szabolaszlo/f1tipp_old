@@ -10,7 +10,7 @@
                     <tr>
                         <td class="text-center">
                         <span title="{{ language.get('trophy_type_' ~ type) }}">
-                            <img src="/src/view/image/trophy_{{ type }}.png" height="18">
+                            <img src="/src/view/image/trophy_{{ type }}.png?v=1502019288" height="18">
                         </span>
                         </td>
                         <td>
