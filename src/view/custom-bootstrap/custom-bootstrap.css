@@ -328,7 +328,7 @@ fieldset[disabled] .btn-new.active {
     }
 
     .table-responsive {
-        padding: 8px;
+        padding: 0px;
         line-height: 1.42857143;
         vertical-align: top;
         border: 0px;
