@@ -135,7 +135,7 @@ $_['trophy_trophies'] = 'KUPÁK';
 $_['trophies_name'] = 'Név';
 $_['trophies_trophies'] = 'Begyűjtött Kupák';
 $_['trophies_virtual_point'] = 'Virtuális Pont';
-$_['trophies_description'] = 'A kupák virtuális pontokat érnek. A neve is direkt azért virtuális, mert NEM számít bele a pontrendszerbe! Csak muszály pontozni, hogy sorrendet tudjunk felállítani. Egyébként a Forma 1 szerinti pontozást alkalmazzuk a kupákra is, azaz:';
+$_['trophies_description'] = 'A kupák virtuális pontokat érnek. A neve is direkt azért virtuális, mert NEM számít bele a pontrendszerbe! Csak muszály pontozni, hogy sorrendet tudjunk felállítani. Egyébként a Forma 1 szerinti pontozást alkalmazzuk a kupákra, azaz:';
 
 //Statistics
 $_['bets_qualify_stat'] = 'Időmérő Tippek Statisztikája';
