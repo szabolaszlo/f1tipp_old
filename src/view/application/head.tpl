@@ -14,7 +14,7 @@
     <link href="{{domain}}/src/view/vendor/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS-->
-    <link href="{{domain}}/src/view/custom-bootstrap/custom-bootstrap.css?v=1502019288" rel="stylesheet">
+    <link href="{{domain}}/src/view/custom-bootstrap/custom-bootstrap.css?v=1502020232" rel="stylesheet">
 
     <!-- jQuery -->
     <script language="JavaScript" type="text/javascript" src="{{domain}}/src/view/vendor/jquery/jquery-3.1.1.min.js"></script>

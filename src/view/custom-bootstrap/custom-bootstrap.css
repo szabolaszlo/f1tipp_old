@@ -1,6 +1,6 @@
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-image: url('/../../../src/view/image/background.jpg');
+    background-image: url('/../../../src/view/image/background.jpg?v=1502020232');
     background-size: contain;
     background-attachment: fixed;
 }
