@@ -5,10 +5,10 @@
 {% endblock %}
 {% extends 'controller/module/base_module.tpl' %} {% block body_content %}
     {% for information in informations %}
-        <div style="padding: 15px">
+        <div style="padding: 15px 15px 0px 15px">
             {{ information.getContent()|raw }}
         </div>
-        <form class="form skip-this-news" style="padding: 15px" method="post"
+        <form class="form skip-this-news" style="padding: 0px 15px 15px 15px" method="post"
               action="?module=news/addSkippedNews&ajax=true">
             <button type="submit"
                     class="btn btn-new form-group center-block submit-skip-news">{{ language.get('news_submit') }}</button>
