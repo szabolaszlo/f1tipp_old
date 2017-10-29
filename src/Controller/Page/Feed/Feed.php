@@ -40,9 +40,6 @@ class Feed extends Controller
         $this->cache = $this->registry->getCache();
     }
 
-    /**
-     * @return mixed
-     */
     public function collectAction()
     {
         $feedsEntity = $this->entityManager
@@ -64,7 +61,7 @@ class Feed extends Controller
             $this->cache->removeCache(TopFeed::CACHE_ID);
         }
 
-        return $this->render();
+        $this->registry->getServer()->redirect();
     }
 
     /**
