@@ -24,4 +24,3 @@
         {{ table|raw }}
     {% endif %}
 {% endfor %}
-{{ modules.feed|raw }}

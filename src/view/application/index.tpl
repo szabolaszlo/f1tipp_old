@@ -16,6 +16,9 @@
             <!-- Content Column -->
             <div class="col-md-8">
                 {{ page.content }}
+                <div class="visible-lg visible-md visible-sm">
+                    {{ modules.feed }}
+                </div>
             </div>
 
             <!-- Sidebar Widgets Column -->
@@ -27,6 +30,9 @@
                 <div id="user-championship-result-table">
                     {{ modules.userChampionship }}
                 </div>
+                <div class="visible-xs">
+                    {{ modules.feed }}
+                </div>
                 {% if page.id != 'actual' %}
                     {{ modules.messageWall }}
                 {% endif %}
@@ -34,9 +40,7 @@
                 {{ modules.userActivity }}
                 {{ modules.tableRefresh }}
             </div>
-
         </div>
-
         <hr>
 
         <!-- Footer -->

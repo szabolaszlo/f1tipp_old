@@ -12,7 +12,7 @@
                     <span class="color-two small">{{ feed.publishDate|date }}</span>
                 </td>
                 <td>
-                    <div><strong class="color-one">{{ feed.title }}</strong></div>
+                    <div class="text-center"><strong class="color-one">{{ feed.title }}</strong></div>
                     <div class="visible-xs text-center"><img class="img-responsive" src="{{ feed.image|raw }}" style="padding: 5px">
                         <span class="color-two small">{{ feed.publishDate|date }}</span>
                     </div>
