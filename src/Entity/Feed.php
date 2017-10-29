@@ -18,9 +18,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Feed
 {
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="id", type="string")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      */
     private $id;
@@ -49,7 +49,7 @@ class Feed
     /**
      * @var string
      *
-     * @ORM\Column(name="publishDate", type="text")
+     * @ORM\Column(name="publishDate", type="datetime")
      */
     private $publishDate;
 
@@ -66,6 +66,8 @@ class Feed
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -151,13 +153,10 @@ class Feed
     }
 
     /**
-     * Set publishDate
-     *
-     * @param string $publishDate
-     *
-     * @return Feed
+     * @param \DateTime $publishDate
+     * @return $this
      */
-    public function setPublishDate($publishDate)
+    public function setPublishDate(\DateTime $publishDate)
     {
         $this->publishDate = $publishDate;
 

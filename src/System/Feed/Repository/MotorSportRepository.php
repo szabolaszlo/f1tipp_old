@@ -76,7 +76,7 @@ class MotorSportRepository implements IRepository
         foreach ($this->data['channel']['item'] as $item) {
             $itemObj = new Item();
 
-            $itemObj->setId(base64_encode($item[self::PUBLISH_DATE]));
+            $itemObj->setId(strtotime($item[self::PUBLISH_DATE]));
             $itemObj->setTitle($item[self::TITLE]);
             $itemObj->setDescription($item[self::DESCRIPTION]);
             $itemObj->setLink($item[self::LINK]);

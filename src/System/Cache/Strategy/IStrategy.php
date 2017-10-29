@@ -25,4 +25,9 @@ interface IStrategy
      * @param $content
      */
     public function setCache($id, $content);
+
+    /**
+     * @param $id
+     */
+    public function removeCache($id);
 }

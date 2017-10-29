@@ -12,6 +12,7 @@
     <img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">
     {{ titleEvent.countDown|raw }}
 </div>
+{{ modules.topFeed|raw }}
 {{ modules.messageWall|raw }}
 {{ modules.news|raw }}
 {% for key, table in tables %}
@@ -23,3 +24,4 @@
         {{ table|raw }}
     {% endif %}
 {% endfor %}
+{{ modules.feed|raw }}

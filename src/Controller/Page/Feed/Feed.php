@@ -9,9 +9,14 @@
 namespace Controller\Page\Feed;
 
 use Controller\Controller;
+use Controller\Module\Feed\Feed as FeedModule;
+use Controller\Module\TopFeed\TopFeed;
+use Entity\Feed as FeedEntity;
+use System\Cache\Cache;
 use System\Feed\Handler;
 use System\Feed\Repository\MotorSportRepository;
 use System\Feed\Storage\Doctrine;
+use System\Registry\IRegistry;
 
 /**
  * Class Feed
@@ -20,10 +25,29 @@ use System\Feed\Storage\Doctrine;
 class Feed extends Controller
 {
     /**
+     * @var Cache
+     */
+    protected $cache;
+
+    /**
+     * Feed constructor.
+     * @param IRegistry $registry
+     */
+    public function __construct(IRegistry $registry)
+    {
+        parent::__construct($registry);
+
+        $this->cache = $this->registry->getCache();
+    }
+
+    /**
      * @return mixed
      */
-    public function index2Action()
+    public function collectAction()
     {
+        $feedsEntity = $this->entityManager
+            ->getRepository(FeedEntity::class)
+            ->findBy(array(), array('id' => 'DESC'), 1);
 
         $repositories = array(new MotorSportRepository());
 
@@ -33,8 +57,29 @@ class Feed extends Controller
 
         $feeds = $handler->getItems();
 
-        $handler->saveItems($feeds);
+        if ($this->getLastFeedId($feedsEntity) != $this->getLastFeedId($feeds)) {
+            $handler->saveItems($feeds);
+
+            $this->cache->removeCache(FeedModule::CACHE_ID);
+            $this->cache->removeCache(TopFeed::CACHE_ID);
+        }
 
         return $this->render();
+    }
+
+    /**
+     * @param $feeds
+     * @return null
+     */
+    protected function getLastFeedId($feeds)
+    {
+        $lastStoredFeedId = null;
+
+        if (is_array($feeds) && isset($feeds[0])) {
+            $feed = $feeds[0];
+            $lastStoredFeedId = $feed->getId();
+        }
+
+        return $lastStoredFeedId;
     }
 }

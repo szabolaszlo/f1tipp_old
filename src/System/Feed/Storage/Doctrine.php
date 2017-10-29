@@ -48,12 +48,13 @@ class Doctrine implements IStorage
 
         $feed = new Feed();
 
-        $feed->setId($item->getId());
-        $feed->setTitle($item->getTitle());
-        $feed->setDescription($item->getDescription());
-        $feed->setLink($item->getLink());
-        $feed->setImage($item->getImage());
-        $feed->setPublishDate($item->getPublishDate());
+        $feed
+            ->setId($item->getId())
+            ->setTitle($item->getTitle())
+            ->setDescription($item->getDescription())
+            ->setLink($item->getLink())
+            ->setImage($item->getImage())
+            ->setPublishDate(new \DateTime($item->getPublishDate()));
 
         $this->entityManager->persist($feed);
     }
