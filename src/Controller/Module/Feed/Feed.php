@@ -19,7 +19,7 @@ use System\Registry\IRegistry;
  */
 class Feed extends Controller
 {
-    const FEED_LIMIT = 31;
+    const FEED_LIMIT = 51;
 
     const CACHE_ID = 'feeds';
 
