@@ -52,7 +52,7 @@ class TopFeed extends Controller
             ->getRepository(FeedEntity::class)
             ->findBy(array(), array('id' => 'DESC'), 1);
 
-        $this->data['feed'] = $feeds[0];
+        $this->data['feed'] = is_array($feeds) && isset($feeds[0]) ? $feeds[0] : array();
 
         $renderedContent = $this->render();
 

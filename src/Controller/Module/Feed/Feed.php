@@ -54,7 +54,9 @@ class Feed extends Controller
             ->getRepository(FeedEntity::class)
             ->findBy(array(), array('id' => 'DESC'), self::FEED_LIMIT);
 
-        unset($this->data['feeds'][0]);
+        if (is_array($this->data['feeds']) && isset($this->data['feeds'][0])) {
+            unset($this->data['feeds'][0]);
+        }
 
         $renderedContent = $this->render();
 
