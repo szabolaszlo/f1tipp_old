@@ -48,4 +48,12 @@ class Cache
     {
         $this->strategy->setCache($id, $content);
     }
+
+    /**
+     * @param $id
+     */
+    public function removeCache($id)
+    {
+        $this->strategy->removeCache($id);
+    }
 }

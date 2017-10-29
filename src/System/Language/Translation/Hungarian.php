@@ -38,6 +38,8 @@ $_['general_title_qualify'] = "IDŐMÉRŐ";
 $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
 $_['general_result'] = "EREDMÉNY";
+$_['general_feeds'] = "HÍREK";
+$_['general_top_feed'] = "LEGFRISSEBB";
 
 //Calendar
 $_['calendar_type'] = "Típus";

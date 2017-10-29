@@ -52,4 +52,15 @@ class File implements IStrategy
         $file = $this->cacheDir . '/' . $id;
         file_put_contents($file, @gzcompress($content, 1));
     }
+
+    /**
+     * @param $id
+     */
+    public function removeCache($id)
+    {
+        $file = $this->cacheDir . '/' . $id;
+        if (is_file($file)) {
+            unlink($file);
+        }
+    }
 }
