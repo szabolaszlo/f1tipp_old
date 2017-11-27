@@ -38,8 +38,8 @@ class Event extends EntityRepository
             ->getQuery()
             ->getResult();
 
-        if (empty($nextEvent)) {
-            $nextEvent = array(parent::findBy(array(), array('eventOrder' => 'DESC'), 1));
+        if (empty($nextEvent) || !$nextEvent) {
+            $nextEvent = parent::findBy(array(), array('eventOrder' => 'DESC'), 1);
         }
 
         $nextEvent = reset($nextEvent);
