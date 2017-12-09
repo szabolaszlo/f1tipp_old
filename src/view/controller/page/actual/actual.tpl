@@ -9,7 +9,11 @@
             </tr>
         </table>
     </div>
-    <img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">
+    {#<img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">#}
+    <div class="container-yt">
+        <iframe src="https://www.youtube.com/embed/jRlSV512lAo?autoplay=1"
+                frameborder="0" allowfullscreen class="video-yt"></iframe>
+    </div>
     {{ titleEvent.countDown|raw }}
 </div>
 {{ modules.topFeed|raw }}
