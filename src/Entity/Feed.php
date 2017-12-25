@@ -11,7 +11,7 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Entity\Repository\Feed")
  * @ORM\Table(name="`feed`")
  * @ORM\Cache(usage="NONSTRICT_READ_WRITE")
  */

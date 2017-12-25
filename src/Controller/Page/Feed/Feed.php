@@ -12,6 +12,7 @@ use Controller\Controller;
 use Controller\Module\Feed\Feed as FeedModule;
 use Controller\Module\TopFeed\TopFeed;
 use Entity\Feed as FeedEntity;
+use Entity\Repository\Feed as FeedRepo;
 use System\Cache\Cache;
 use System\Feed\Handler;
 use System\Feed\Repository\MotorSportRepository;
@@ -62,6 +63,13 @@ class Feed extends Controller
         }
 
         $this->registry->getServer()->redirect();
+    }
+
+    public function cleanAction()
+    {
+        /** @var FeedRepo $repo */
+        $repo = $this->entityManager->getRepository(FeedEntity::class);
+        $repo->deleteOldFeeds();
     }
 
     /**
