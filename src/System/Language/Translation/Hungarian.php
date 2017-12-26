@@ -60,6 +60,10 @@ $_['betting_p3'] = '3. :';
 $_['betting_p4'] = '4. :';
 $_['betting_p5'] = '5. :';
 $_['betting_p6'] = '6. :';
+$_['betting_p7'] = '7. :';
+$_['betting_p8'] = '8. :';
+$_['betting_p9'] = '9. :';
+$_['betting_p10'] = '10. :';
 $_['betting_sc'] = 'Bejön-e a Safety Car?:';
 
 // Result
@@ -71,6 +75,10 @@ $_['result_p3'] = '3.';
 $_['result_p4'] = '4.';
 $_['result_p5'] = '5.';
 $_['result_p6'] = '6.';
+$_['result_p7'] = '7.';
+$_['result_p8'] = '8.';
+$_['result_p9'] = '9.';
+$_['result_p10'] = '10.';
 $_['result_sc'] = 'SC';
 $_['result_betting_user'] = 'Tippesek: ';
 $_['result_betting_nobody'] = 'Még senki sem tippelt.';

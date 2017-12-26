@@ -38,7 +38,7 @@ class Trophies extends Controller
         /** @var Result $result */
         $result = array_pop($results);
 
-        if (!$results) {
+        if (!$result) {
             return false;
         }
 
