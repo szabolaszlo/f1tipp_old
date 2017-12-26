@@ -1,17 +1,22 @@
+{% set resultYears = [2014, 2015, 2016, 2017] %}
+{% macro resultButton(year) %}
+    <button onclick="$('#results').load('?page=information/index&information_title={{ year }}&ajax=true');"
+            class="btn btn-new" role="button">
+        {{ year }}
+    </button>
+{% endmacro %}
+
+{% import _self as button %}
+
 <div style="text-align: center; padding: 15px;">
-    <button onclick="$('#results').load('?page=information/index&information_title=2014&ajax=true');"  class="btn btn-new" role="button">
-        2014
-    </button>
-    <button onclick="$('#results').load('?page=information/index&information_title=2015&ajax=true');" class="btn btn-new" role="button">
-        2015
-    </button>
-    <button onclick="$('#results').load('?page=information/index&information_title=2016&ajax=true');" class="btn btn-new" role="button">
-        2016
-    </button>
+    {% for year in resultYears %}
+        {{ button.resultButton(year) }}
+    {% endfor %}
     <a href="?page=results/index" class="btn btn-new" role="button">
-        2017
+        2018
     </a>
 </div>
+
 <div id="results">
     {% for table in tables %}
         {{ table|raw }}
