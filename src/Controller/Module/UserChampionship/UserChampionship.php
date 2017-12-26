@@ -55,18 +55,22 @@ class UserChampionship extends Controller
 
         $this->registry->getTrophyHandler()->collect();
 
-        $this->data['users'] = $this->entityManager->getRepository('Entity\User')->findAll();
+        $this->data['users'] = $this->entityManager->getRepository('Entity\User')->findBy(array(), array('name' => 'ASC'));
 
-        $sortMap = array();
+        $this->data['resultsCount'] = count($this->entityManager->getRepository('Entity\Result')->findAll());
 
-        /** @var User $user */
-        foreach ($this->data['users'] as $user) {
-            $this->calculator->calculateUserPoints($user);
-            $sortMap[] = $user->getPoint();
+        if ($this->data['resultsCount']) {
+            $sortMap = array();
+
+            /** @var User $user */
+            foreach ($this->data['users'] as $user) {
+                $this->calculator->calculateUserPoints($user);
+                $sortMap[] = $user->getPoint();
+            }
+
+            array_multisort($sortMap, SORT_DESC, $this->data['users'], SORT_DESC);
         }
-
-        array_multisort($sortMap, SORT_DESC, $this->data['users'], SORT_DESC);
-
+        
         /** @var User $user */
         foreach ($this->data['users'] as $key => $user) {
             $userHandyCap = (isset($sortMap[0]) && $sortMap[0] - $user->getPoint())
@@ -80,8 +84,6 @@ class UserChampionship extends Controller
             'qualify' => $this->calculator->getRecordsByType('qualify'),
             'race' => $this->calculator->getRecordsByType('race')
         );
-
-        $this->data['resultsCount'] = count($this->entityManager->getRepository('Entity\Result')->findAll());
 
         $renderedContent = $this->render();
 

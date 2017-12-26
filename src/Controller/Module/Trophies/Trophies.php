@@ -5,6 +5,7 @@
  * Date: 2017. 03. 31.
  * Time: 21:18
  */
+
 namespace Controller\Module\Trophies;
 
 use Controller\Controller;
@@ -36,6 +37,10 @@ class Trophies extends Controller
 
         /** @var Result $result */
         $result = array_pop($results);
+
+        if (!$results) {
+            return false;
+        }
 
         $trophies = $this->entityManager->getRepository('Entity\Trophy')->findBy(
             array('event' => $result->getEvent())

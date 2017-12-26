@@ -85,7 +85,7 @@ class Event
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getDateTime()
     {
