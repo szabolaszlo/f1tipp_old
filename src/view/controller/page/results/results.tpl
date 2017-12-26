@@ -16,7 +16,7 @@
     {% for year in resultYears %}
         {{ button.resultButton(year) }}
     {% endfor %}
-    <a href="?page=results/index" class="btn btn-new" role="button">
+    <a href="?page=results/index" class="btn btn-new" role="button" onclick="$(this).css({'background-image' : 'url(/src/view/image/ajax-loader.gif)', 'background-repeat': 'no-repeat', 'background-position' : 'center'});">
         2018
     </a>
 </div>
