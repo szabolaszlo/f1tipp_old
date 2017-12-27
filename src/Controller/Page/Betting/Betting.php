@@ -117,7 +117,7 @@ class Betting extends Controller
 
         //FormHelper
         $this->formHelper = $this->registry->getFormHelper();
-        
+
         //Now
         $this->now = new \DateTime();
     }
@@ -137,13 +137,13 @@ class Betting extends Controller
         $this->session->set('BettingToken', $this->data['token']);
 
         $this->data['events'] = array(
-            'qualify' => array(
+            $this->getTimeDiff($this->qualify->getDateTime()) => array(
                 'event' => $this->qualify,
                 'eventAttributes' => $this->qualifyAttributes,
                 'bet' => $this->qualifyBet,
                 'inTime' => (bool)($this->now < $this->qualify->getDateTime())
             ),
-            'race' => array(
+            $this->getTimeDiff($this->race->getDateTime()) => array(
                 'event' => $this->race,
                 'eventAttributes' => $this->raceAttributes,
                 'bet' => $this->raceBet,
@@ -151,9 +151,16 @@ class Betting extends Controller
             )
         );
 
+        ksort($this->data['events']);
+
         $this->data['formHelper'] = $this->formHelper;
 
         return $this->render();
+    }
+
+    protected function getTimeDiff(\DateTime $time)
+    {
+        return abs(time() - $time->getTimestamp());
     }
 
     public function saveAction()
