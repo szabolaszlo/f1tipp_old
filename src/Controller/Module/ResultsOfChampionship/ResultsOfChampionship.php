@@ -21,6 +21,13 @@ class ResultsOfChampionship extends Controller
 
     const CONSTRUCT_JSON_PATH = "http://ergast.com/api/f1/current/constructorStandings.json";
 
+    public function indexAction()
+    {
+        return $this->registry->getCache()->getCache($this->id)
+            ? $this->registry->getCache()->getCache($this->id)
+            : $this->getResultsAction();
+    }
+
     /**
      * @return string
      */
@@ -44,8 +51,10 @@ class ResultsOfChampionship extends Controller
         $this->data['constructStandings'] =
             $constructResponse['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings'];
 
-        $this->setTemplate('controller/module/results_of_championship/results_of_championship_tables.tpl');
+        $this->setTemplate('controller/module/results_of_championship/results_of_championship.tpl');
 
-        return $this->render();
+        $this->registry->getCache()->setCache($this->id, $this->render());
+
+        return $this->registry->getCache()->getCache($this->id);
     }
 }
