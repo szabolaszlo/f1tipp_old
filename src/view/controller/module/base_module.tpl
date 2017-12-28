@@ -4,11 +4,13 @@
         {% block heading_title %}
         <strong>{{language.get(id ~ '_title')}}</strong>
         {% endblock %}
+        {% block button_group %}
         <div class="btn-group pull-right" style="margin-top: -2px">
             <a id="{{id}}" class="text-right glyphicon {{visibilityIcon}} toggle" aria-hidden=true></a>
             <span style="margin-left: .5em"></span>
             <a id="{{id}}" class="text-right glyphicon glyphicon-remove-sign remove" aria-hidden=true></a>
         </div>
+        {% endblock %}
     </div>
     <div class="toggle-able-{{id}}" style="display: {{visibility ? visibility : 'block'}};">
         {% block body_content %}{% endblock %}

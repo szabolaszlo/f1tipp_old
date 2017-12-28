@@ -39,7 +39,11 @@ $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
 $_['general_result'] = "EREDMÉNY";
 $_['general_feeds'] = "HÍREK";
-$_['general_top_feed'] = "LEGFRISSEBB";
+
+//Feed
+$_['topFeed_title'] = "LEGFRISSEBB";
+$_['feed_title'] = "HÍREK";
+$_['feed_source'] = "Forrás: https://hu.motorsport.com/f1";
 
 //Calendar
 $_['calendar_type'] = "Típus";
