@@ -56,7 +56,10 @@ class Trophies extends Controller
             return $cachedContent;
         }
 
-        $users = $this->entityManager->getRepository('Entity\User')->findAll();
+        $users = $this
+            ->entityManager
+            ->getRepository('Entity\User')
+            ->findBy(array(), array('name' => 'ASC'));
 
         $userTrophies = array();
 
@@ -79,7 +82,9 @@ class Trophies extends Controller
             $userTrophies[$user]['point'] = $point;
         }
 
-        array_multisort($sortMap, SORT_DESC, $userTrophies, SORT_DESC);
+        if (!empty(array_filter($sortMap))) {
+            array_multisort($sortMap, SORT_DESC, $userTrophies, SORT_DESC);
+        }
 
         $this->data['userTrophies'] = $userTrophies;
         $this->data['trophyAttributes'] = $this->trophyAttributes;

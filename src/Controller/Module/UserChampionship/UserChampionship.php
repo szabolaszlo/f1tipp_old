@@ -55,7 +55,10 @@ class UserChampionship extends Controller
 
         $this->registry->getTrophyHandler()->collect();
 
-        $this->data['users'] = $this->entityManager->getRepository('Entity\User')->findBy(array(), array('name' => 'ASC'));
+        $this->data['users'] = $this
+            ->entityManager
+            ->getRepository('Entity\User')
+            ->findBy(array(), array('name' => 'ASC'));
 
         $this->data['resultsCount'] = count($this->entityManager->getRepository('Entity\Result')->findAll());
 
