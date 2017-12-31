@@ -24,6 +24,10 @@ table caption {
     color: cyan;
 }
 
+.color-three {
+    color: red;
+}
+
 .bg-grey {
     background-color: rgba(1, 1, 1, .8);
 }

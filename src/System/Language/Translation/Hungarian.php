@@ -8,6 +8,8 @@ $_['app_creator'] = "Készítette: Szabó László 2016";
 $_['nav_bet'] = "Tippelek";
 $_['nav_results'] = "Eredmények";
 $_['nav_results_points'] = "Hétvégék részeredményei";
+$_['nav_results_alternative_2017'] = "Alternatív Pontrendszer 2017";
+$_['nav_results_alternative'] = "Alternatív Pontrendszer";
 $_['nav_results_trophies'] = "Kupák";
 $_['nav_calendar'] = "Naptár";
 $_['nav_rules'] = "Szabályzat";
@@ -156,4 +158,18 @@ $_['bets_qualify_stat'] = 'Időmérő Tippek Statisztikája';
 $_['bets_race_stat'] = 'Futam Tippek Statisztikája';
 $_['results_qualify_stat'] = 'Időmérő Eredmények Statisztikája';
 $_['results_race_stat'] = 'Futam Eredmények Statisztikája';
+
+//Alternative Points
+$_['weekendPoints_title'] = 'Alternatív Pontverseny';
+$_['weekendPoints_name'] = 'Név';
+$_['weekendPoints_points'] = 'F1 Pont';
+$_['weekendPoints_collected_points'] = 'Pont';
+$_['weekendPoints_converted_points'] = 'F1 Pont';
+$_['weekendPoints_description'] = 'Az alternatív pontverseny lényege, hogy az adott hétvége alatt összegyűjtött pontokat összeadjuk. Tehát az időmérőn és a futamon szerzett pontok összege szerint felállítunk egy sorrendet és ez alapján az eredeti F1 pontozása szerint megkapjuk az F1 pontokat. Azonos pontok esetén, az azonos pontot szerzők az annak megfelelő F1 pontot kapják, viszont így a mögöttük lévő helyezések értelemszerűen tolódnak és az annak megfelelő F1 pontot kapják. Például ha a 2. helyen két azonos pont lesz, akkor nincs 3. hely, hanem a 4. hely fogja követni őket, mert igazából a 2. és 3. helyen van holtverseny.';
+$_['weekendPoints_goal'] = 'Ezzel a pontrendszerrel talán megszűnnének a helyben toporgások, illetve talán jobban tudnánk egymást oda vissza előzni.';
+$_['weekendPoints_test'] = 'Egyenlőre CSAK TESZT jelleggel üzemel az alternatív pontozás majd meglátjuk hogyan fog tetszeni.';
+$_['weekendPoints_lag'] = 'Lemaradás';
+$_['weekendPoints_no_results'] = 'Még nincsenek eredmények, nézz vissza az első futam után!';
+$_['weekendPoints_place'] = 'Helyezés';
+$_['weekendPoints_point_calculating'] = 'Pontszámítás';
 ?>
