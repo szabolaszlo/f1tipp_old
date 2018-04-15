@@ -44,6 +44,10 @@ class ResultCollector
      */
     protected $entityManager;
 
+    protected $disabledUsers = array(
+        4, 5, 9, 11, 13
+    );
+
     /**
      * ResultCollector constructor.
      * @param EntityManagerInterface $entityManager
@@ -83,6 +87,9 @@ class ResultCollector
 
         /** @var User $user */
         foreach ($users as $user) {
+            if (in_array($user->getId(), $this->disabledUsers)) {
+                continue;
+            }
             $userCollectedPoints[$user->getId()] = $user->getPoint();
         }
 

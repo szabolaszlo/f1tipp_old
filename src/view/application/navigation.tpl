@@ -28,7 +28,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="?page=results/index">{{language.get('nav_results_points')}}</a></li>
                         <li><a href="?page=trophies/index">{{language.get('nav_results_trophies')}}</a></li>
-                        <li><a href="?page=information/index&information_title=Alternatív%20Pontrendszer%202017">{{language.get('nav_results_alternative_2017')}}</a></li>
                         <li><a href="?page=weekendPoints/index">{{language.get('nav_results_alternative')}}</a></li>
                     </ul>
                 </li>
