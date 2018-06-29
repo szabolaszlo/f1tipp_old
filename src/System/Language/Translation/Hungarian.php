@@ -161,6 +161,7 @@ $_['results_race_stat'] = 'Futam Eredmények Statisztikája';
 
 //Alternative Points
 $_['weekendPoints_title'] = 'Alternatív Pontverseny';
+$_['alternativeChampionship_title'] = 'ALTERNATÍV PONTVERSENY';
 $_['weekendPoints_name'] = 'Név';
 $_['weekendPoints_points'] = 'F1 Pont';
 $_['weekendPoints_collected_points'] = 'Pont';

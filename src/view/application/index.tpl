@@ -30,6 +30,7 @@
                 <div id="user-championship-result-table">
                     {{ modules.userChampionship }}
                 </div>
+                {{ modules.alternativeChampionship }}
                 <div class="visible-xs">
                     {{ modules.feed }}
                 </div>
