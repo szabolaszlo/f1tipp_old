@@ -41,6 +41,7 @@ $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
 $_['general_result'] = "EREDMÉNY";
 $_['general_feeds'] = "HÍREK";
+$_['module_details'] = "Részletek";
 
 //Feed
 $_['topFeed_title'] = "LEGFRISSEBB";

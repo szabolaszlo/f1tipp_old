@@ -55,6 +55,8 @@ class Trophies extends Controller
 
         $this->data['eventId'] = $result->getEvent()->getId();
 
+        $this->data['detailsLink'] = '/?page=trophies/index';
+
         $renderedContent = $this->render();
 
         $cache->setCache($this->getCacheId(), $renderedContent);

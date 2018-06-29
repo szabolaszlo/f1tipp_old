@@ -88,6 +88,8 @@ class UserChampionship extends Controller
             'race' => $this->calculator->getRecordsByType('race')
         );
 
+        $this->data['detailsLink'] = '/?page=results/index';
+
         $renderedContent = $this->render();
 
         $this->cache->setCache($this->getCacheId(), $renderedContent);

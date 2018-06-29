@@ -55,6 +55,8 @@ class CountDown extends Controller
                 'countDown' => $countDownRace->render()
             ),
         );
+
+        $this->data['detailsLink'] = '/?page=calendar/index';
         
         return $this->render();
     }
