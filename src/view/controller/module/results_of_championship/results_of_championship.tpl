@@ -1,6 +1,7 @@
 {% extends 'controller/module/base_module.tpl' %}
 {% block heading_title %}
-    <strong id="result-title">{{ language.get(id ~ '_title') }}</strong>
+    {% set title = event.getName|length > 20 ? event.getName|split(' - ').0 : event.getName %}
+    <strong >{{ title }} - {{ language.get(id ~ '_title') }}</strong>
 {% endblock %}
 {% block body_content %}
     <div class="panel-body center-block">
@@ -39,9 +40,4 @@
             </table>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#result-title').before('<strong>' + '{{ event.getName }} - ' + '</strong>');
-        });
-    </script>
 {% endblock %}

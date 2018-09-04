@@ -1,6 +1,7 @@
 {% extends 'controller/module/base_module.tpl' %}
 {% block heading_title %}
-    <strong>{{ title }} - {{ language.get('trophy_trophies') }}</strong>
+    {% set event = title|length > 20 ? title|split(' - ').0 : title %}
+    <strong>{{ event }} - {{ language.get('trophy_trophies') }}</strong>
 {% endblock %}
 {% block body_content %}
     <div class="panel-body center-block">
