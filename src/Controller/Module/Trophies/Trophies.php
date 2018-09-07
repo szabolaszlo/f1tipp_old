@@ -11,6 +11,7 @@ namespace Controller\Module\Trophies;
 use Controller\Controller;
 use Entity\Result;
 use Entity\Trophy;
+use System\Lock\Lock;
 
 /**
  * Class Trophies
@@ -23,13 +24,22 @@ class Trophies extends Controller
      */
     public function indexAction()
     {
+        $locker = new Lock();
+
         $cache = $this->registry->getCache();
 
         $cachedContent = $cache->getCache($this->getCacheId());
 
+        if ($locker->isLocked($this->id)) {
+            $this->data['processing'] = true;
+            return $this->render();
+        }
+
         if ($cachedContent) {
             return $cachedContent;
         }
+
+        $locker->lock($this->id);
 
         $this->registry->getTrophyHandler()->collect();
 
@@ -39,6 +49,7 @@ class Trophies extends Controller
         $result = array_pop($results);
 
         if (!$result) {
+            $locker->unlock($this->id);
             return false;
         }
 
@@ -61,6 +72,8 @@ class Trophies extends Controller
 
         $cache->setCache($this->getCacheId(), $renderedContent);
 
+//        $locker->unlock($this->id);
+
         return $renderedContent;
     }
 
@@ -71,7 +84,7 @@ class Trophies extends Controller
     {
         return
             'trophies.'
-            . count($this->entityManager->getRepository('Entity\Result')->findAll()) . '.'
+            . count($this->entityManager->getRepository(Result::class)->findByType('race')) . '.'
             . $this->data['visibility'];
     }
 }
