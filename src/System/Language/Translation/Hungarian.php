@@ -41,6 +41,7 @@ $_['general_qualifies'] = "Időmérők";
 $_['general_all'] = "Összes";
 $_['general_result'] = "EREDMÉNY";
 $_['general_feeds'] = "HÍREK";
+$_['general_processing'] = "Már csak pár másodperc ...";
 $_['module_details'] = "Részletek";
 
 //Feed

@@ -9,7 +9,8 @@
             {% if processing %}
                 <table class="table table-striped">
                     <tr>
-                        <td class="text-center">Számítás alatt ...</td>
+                        <td class="text-center">{{ language.get('general_processing') }}</td>
+                        <td class="text-center"><img src="/src/view/image/15.gif"></td>
                     </tr>
                 </table>
             {% else %}
