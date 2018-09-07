@@ -72,7 +72,7 @@ class Trophies extends Controller
 
         $cache->setCache($this->getCacheId(), $renderedContent);
 
-//        $locker->unlock($this->id);
+        $locker->unlock($this->id);
 
         return $renderedContent;
     }
