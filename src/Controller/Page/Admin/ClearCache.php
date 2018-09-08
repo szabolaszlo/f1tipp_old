@@ -29,6 +29,11 @@ class ClearCache extends Controller
         ''
     );
 
+    protected $protectedCaches = array(
+        'feeds',
+        'topFeed',
+    );
+
     /**
      * ClearCache constructor.
      * @param IRegistry $registry
@@ -86,7 +91,7 @@ class ClearCache extends Controller
         if (is_dir($dir)) {
             $objects = scandir($dir);
             foreach ($objects as $object) {
-                if ($object != "." && $object != "..") {
+                if ($object != "." && $object != ".." && !$this->isProtectedFile($object)) {
                     if (is_dir($dir . "/" . $object)) {
                         $this->rrmdir($dir . "/" . $object);
                     } else {
@@ -96,5 +101,16 @@ class ClearCache extends Controller
             }
             rmdir($dir);
         }
+    }
+
+    protected function isProtectedFile($object)
+    {
+        foreach ($this->protectedCaches as $fileName) {
+            if (strpos($object, $fileName) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
