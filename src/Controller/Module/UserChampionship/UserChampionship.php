@@ -12,6 +12,7 @@ use Controller\Controller;
 use Entity\User;
 use System\Cache\Cache;
 use System\Calculator\ICalculator;
+use System\Lock\Lock;
 use System\Registry\IRegistry;
 
 /**
@@ -47,11 +48,20 @@ class UserChampionship extends Controller
      */
     public function indexAction()
     {
+        $locker = new Lock();
+
+        if ($locker->isLocked($this->id)) {
+            $this->data['processing'] = true;
+            return $this->render();
+        }
+
         $cachedContent = $this->cache->getCache($this->getCacheId());
 
         if ($cachedContent) {
             return $cachedContent;
         }
+
+        $locker->lock($this->id);
 
         $this->registry->getTrophyHandler()->collect();
 
@@ -93,6 +103,8 @@ class UserChampionship extends Controller
         $renderedContent = $this->render();
 
         $this->cache->setCache($this->getCacheId(), $renderedContent);
+
+        $locker->unlock($this->id);
 
         return $renderedContent;
     }

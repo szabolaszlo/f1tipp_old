@@ -54,6 +54,6 @@
     }
 
     $(document).ready(function () {
-        setInterval(refreshTables, 30000);
+        setInterval(refreshTables, 10000);
     });
 </script>

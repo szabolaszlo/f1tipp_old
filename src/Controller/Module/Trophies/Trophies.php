@@ -26,14 +26,14 @@ class Trophies extends Controller
     {
         $locker = new Lock();
 
-        $cache = $this->registry->getCache();
-
-        $cachedContent = $cache->getCache($this->getCacheId());
-
         if ($locker->isLocked($this->id)) {
             $this->data['processing'] = true;
             return $this->render();
         }
+
+        $cache = $this->registry->getCache();
+
+        $cachedContent = $cache->getCache($this->getCacheId());
 
         if ($cachedContent) {
             return $cachedContent;
