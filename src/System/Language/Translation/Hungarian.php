@@ -173,6 +173,7 @@ $_['weekendPoints_goal'] = 'Ezzel a pontrendszerrel talán megszűnnének a hely
 $_['weekendPoints_test'] = 'Egyenlőre CSAK TESZT jelleggel üzemel az alternatív pontozás majd meglátjuk hogyan fog tetszeni.';
 $_['weekendPoints_lag'] = 'Lemaradás';
 $_['weekendPoints_no_results'] = 'Még nincsenek eredmények, nézz vissza az első futam után!';
+$_['alternativeChampionship_no_results'] = 'Még nincsenek eredmények, nézz vissza az első futam után!';
 $_['weekendPoints_place'] = 'Helyezés';
 $_['weekendPoints_point_calculating'] = 'Pontszámítás';
 ?>
