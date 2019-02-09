@@ -124,6 +124,14 @@ class Calculator implements ICalculator
 
         /** @var Result $result */
         foreach ($results as $result) {
+
+            file_put_contents('teszt.txt', '\''.$result->getEvent()->getName() . '\',', FILE_APPEND);
+        }
+
+        file_put_contents('teszt.txt', PHP_EOL . $user->getName(). ':', FILE_APPEND);
+
+        /** @var Result $result */
+        foreach ($results as $result) {
             $bets = $this->entityManager
                 ->getRepository('Entity\Bet')
                 ->findBy(
@@ -141,6 +149,7 @@ class Calculator implements ICalculator
                 $this->recordCollector->addRecord($bet, $result);
                 $userPoints += $bet->getPoint();
             }
+            file_put_contents('teszt.txt', $userPoints . ',', FILE_APPEND);
         }
 
         $user->setPoint($userPoints);

@@ -97,6 +97,8 @@ $_['result_no_betting_users'] = "Tippnélküliek: ";
 $_['userChampionship_title'] = 'EGYÉNI PONTVERSENY';
 $_['userChampionship_best_of_race'] = 'Futamok Legjobbja:';
 $_['userChampionship_best_of_qualify'] = 'Időmérők Legjobbja:';
+$_['userChampionship_no_results'] = 'Még nincsenek eredmények, nézz vissza az első időmérő után!';
+
 
 // Results Championship
 $_['resultsOfChampionship_title'] = 'VB ÁLLÁS';
