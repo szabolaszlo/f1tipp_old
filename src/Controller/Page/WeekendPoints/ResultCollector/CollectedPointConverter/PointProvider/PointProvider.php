@@ -14,16 +14,16 @@ namespace Controller\Page\WeekendPoints\ResultCollector\CollectedPointConverter\
  */
 class PointProvider
 {
-    const PLACE_1 = 25;
-    const PLACE_2 = 18;
-    const PLACE_3 = 15;
-    const PLACE_4 = 12;
-    const PLACE_5 = 10;
-    const PLACE_6 = 8;
-    const PLACE_7 = 6;
-    const PLACE_8 = 4;
-    const PLACE_9 = 2;
-    const PLACE_10 = 1;
+    const PLACE_1 = 15;
+    const PLACE_2 = 10;
+    const PLACE_3 = 5;
+    const PLACE_4 = 0;
+    const PLACE_5 = 0;
+    const PLACE_6 = 0;
+    const PLACE_7 = 0;
+    const PLACE_8 = 0;
+    const PLACE_9 = 0;
+    const PLACE_10 = 0;
 
     const AWARDED_PLACES = 10;
 

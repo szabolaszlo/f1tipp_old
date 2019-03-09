@@ -45,7 +45,7 @@ class ResultCollector
     protected $entityManager;
 
     protected $disabledUsers = array(
-        4, 5, 9, 11, 13
+        4, 5, 7, 8, 9, 10, 11, 12, 13
     );
 
     /**
