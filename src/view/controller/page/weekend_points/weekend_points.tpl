@@ -47,7 +47,7 @@
         <div class="panel-heading text-center">
             <strong>{{ language.get(id ~ '_point_calculating') }}</strong>
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive">
             <thead>
             <tr>
                 <th><strong class="color-two">{{ language.get(id ~ '_place') }}</strong></th>

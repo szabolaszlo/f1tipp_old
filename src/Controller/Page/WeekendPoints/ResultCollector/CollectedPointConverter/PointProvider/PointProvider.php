@@ -31,14 +31,7 @@ class PointProvider
         1 => self::PLACE_1,
         2 => self::PLACE_2,
         3 => self::PLACE_3,
-        4 => self::PLACE_4,
-        5 => self::PLACE_5,
-        6 => self::PLACE_6,
-        7 => self::PLACE_7,
-        8 => self::PLACE_8,
-        9 => self::PLACE_9,
-        10 => self::PLACE_10,
-
+        4 => self::PLACE_4
     );
 
     /**
