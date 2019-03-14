@@ -14,10 +14,10 @@ namespace Controller\Page\WeekendPoints\ResultCollector\CollectedPointConverter\
  */
 class PointProvider
 {
-    const PLACE_1 = 15;
-    const PLACE_2 = 10;
-    const PLACE_3 = 5;
-    const PLACE_4 = 0;
+    const PLACE_1 = 20;
+    const PLACE_2 = 15;
+    const PLACE_3 = 10;
+    const PLACE_4 = 5;
     const PLACE_5 = 0;
     const PLACE_6 = 0;
     const PLACE_7 = 0;
@@ -25,13 +25,12 @@ class PointProvider
     const PLACE_9 = 0;
     const PLACE_10 = 0;
 
-    const AWARDED_PLACES = 10;
-
     protected $placePoints = array(
         1 => self::PLACE_1,
         2 => self::PLACE_2,
         3 => self::PLACE_3,
-        4 => self::PLACE_4
+        4 => self::PLACE_4,
+        5 => self::PLACE_5
     );
 
     /**
