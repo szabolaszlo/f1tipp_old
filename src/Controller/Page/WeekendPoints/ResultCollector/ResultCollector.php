@@ -44,8 +44,8 @@ class ResultCollector
      */
     protected $entityManager;
 
-    protected $disabledUsers = array(
-        4, 5, 8, 9, 10, 11, 12, 13
+    protected $acceptedUsers = array(
+        1, 2, 3, 6, 7
     );
 
     /**
@@ -87,10 +87,9 @@ class ResultCollector
 
         /** @var User $user */
         foreach ($users as $user) {
-            if (in_array($user->getId(), $this->disabledUsers)) {
-                continue;
+            if (in_array($user->getId(), $this->acceptedUsers)) {
+                $userCollectedPoints[$user->getId()] = $user->getPoint();
             }
-            $userCollectedPoints[$user->getId()] = $user->getPoint();
         }
 
         $userConvertedPoints = $this->pointConverter->convert($userCollectedPoints);
