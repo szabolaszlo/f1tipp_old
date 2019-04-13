@@ -62,7 +62,7 @@ class Feed extends Controller
             $this->cache->removeCache(TopFeed::CACHE_ID);
         }
 
-        $this->registry->getServer()->redirect();
+//        $this->registry->getServer()->redirect();
     }
 
     public function cleanAction()
