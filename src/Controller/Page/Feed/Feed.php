@@ -62,7 +62,8 @@ class Feed extends Controller
             $this->cache->removeCache(TopFeed::CACHE_ID);
         }
 
-//        $this->registry->getServer()->redirect();
+        echo 'Done';
+        exit(200);
     }
 
     public function cleanAction()
@@ -70,6 +71,8 @@ class Feed extends Controller
         /** @var FeedRepo $repo */
         $repo = $this->entityManager->getRepository(FeedEntity::class);
         $repo->deleteOldFeeds();
+        echo 'Done';
+        exit(200);
     }
 
     /**
