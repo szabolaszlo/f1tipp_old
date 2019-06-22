@@ -18,7 +18,7 @@
         {% if drivers %}
             <div class="pull-left" style="padding: 15px">
                 <a href="?page=admin/driver_editor/syncPoints" style="text-decoration: none">
-                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                    <button id="event-bet-submit-{{ event.getId() }}"
                             class="btn btn-new center-block submit">
                         {{ language.get('admin_driver_editor_sync') }}
                     </button>
@@ -64,7 +64,7 @@
                     </table>
                 </div>
                 <div class="center-block">
-                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                    <button id="event-bet-submit-{{ event.getId() }}"
                             class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_save') }}
                     </button>
@@ -72,7 +72,7 @@
             </form>
             <div class="center-block" style="padding: 15px;">
                 <a href="?page=admin/driver_editor/insert" style="text-decoration: none">
-                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                    <button id="event-bet-submit-{{ event.getId() }}"
                             class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_new') }}
                     </button>

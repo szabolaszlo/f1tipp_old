@@ -62,7 +62,7 @@
                     <textarea name="information_content" id="ck-editor">{{ information.getContent() }}</textarea>
                     <p></p>
                     <div class="center-block">
-                        <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                        <button id="event-bet-submit-{{ event.getId() }}"
                                 class="btn btn-new center-block submit">
                             {{ language.get('admin_information_editor_save') }}
                         </button>
@@ -72,7 +72,7 @@
         {% else %}
             <div class="center-block" style="padding: 15px;">
                 <a href="?page=admin/information_editor/insert" style="text-decoration: none">
-                    <button id="event-bet-submit-{{ event.getId() }}" name="singlebutton"
+                    <button id="event-bet-submit-{{ event.getId() }}"
                             class="btn btn-new center-block submit">
                         {{ language.get('admin_information_editor_new') }}
                     </button>
