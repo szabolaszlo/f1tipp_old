@@ -78,7 +78,7 @@ class MessageWall extends Controller
             && $this->request->getPost('message')
         ) {
             $message = new Message();
-            $message->setContent($this->request->getPost('message'));
+            $message->setContent($this->turnUrlIntoHyperlink($this->request->getPost('message')));
             $message->setUser($user);
             $message->setDateTime(new \DateTime());
 
@@ -93,5 +93,32 @@ class MessageWall extends Controller
         }
 
         $this->session->remove('token');
+    }
+
+    protected function turnUrlIntoHyperlink($string){
+
+        //The Regular Expression filter
+        $reg_exUrl = "/(?i)\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))/";
+
+        // Check if there is a url in the text
+        if(preg_match_all($reg_exUrl, $string, $url)) {
+
+            // Loop through all matches
+            foreach($url[0] as $newLinks){
+                if(strstr( $newLinks, ":" ) === false){
+                    $link = 'http://'.$newLinks;
+                }else{
+                    $link = $newLinks;
+                }
+
+                // Create Search and Replace strings
+                $search  = $newLinks;
+                $replace = '<a href="'.$link.'" title="'.$newLinks.'" target="_blank">'.$link.'</a>';
+                $string = str_replace($search, $replace, $string);
+            }
+        }
+
+        //Return result
+        return $string;
     }
 }
