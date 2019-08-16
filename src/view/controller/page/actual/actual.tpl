@@ -2,14 +2,20 @@
     <div class="panel-heading text-center">
         <table class="table table-responsive" style="margin-bottom: 0;">
             <tr>
-                <td class="visible-lg visible-md visible-sm"><strong class="color-one">{{ titleEvent.name }}</strong></td>
+                <td class="visible-lg visible-md visible-sm"><strong class="color-one">{{ titleEvent.name }}</strong>
+                </td>
                 <td><strong class="color-one">{{ language.get('general_' ~ titleEvent.id) }}</strong></td>
-                <td class="visible-lg visible-md visible-sm"><strong class="color-one">{{ titleEvent.date }}</strong></td>
+                <td class="visible-lg visible-md visible-sm"><strong class="color-one">{{ titleEvent.date }}</strong>
+                </td>
                 <td><strong><span id="{{ titleEvent.id }}_counter" class="color-one"></span></strong></td>
             </tr>
         </table>
     </div>
-    <img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">
+    {% if faceCoverImage %}
+        <img class="img-responsive" src="{{ faceCoverImage }}" alt="">
+    {% else %}
+        <img class="img-responsive" src="{{ image }}?v={{ imageModifyTime }}" alt="">
+    {% endif %}
     {{ titleEvent.countDown|raw }}
 </div>
 {{ modules.topFeed|raw }}

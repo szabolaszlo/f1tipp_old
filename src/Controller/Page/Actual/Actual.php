@@ -11,6 +11,7 @@ namespace Controller\Page\Actual;
 use Controller\Controller;
 use Entity\Event;
 use Entity\Result;
+use Entity\Setting;
 use System\CountDownScript\CountDownScript;
 
 /**
@@ -26,11 +27,16 @@ class Actual extends Controller
      */
     public function indexAction()
     {
-        $this->data['image'] = self::ACTUAL_IMAGE_RELATIVE_URL;
+        $this->data['faceCoverImage'] = $this->entityManager
+            ->getRepository(Setting::class)
+            ->getValueByKey('faceCoverImage');
 
-        $this->data['imageModifyTime'] = filemtime(
-            $this->registry->getServer()->getDocumentRoot() . $this->data['image']
-        );
+        if (!$this->data['faceCoverImage']) {
+            $this->data['image'] = self::ACTUAL_IMAGE_RELATIVE_URL;
+            $this->data['imageModifyTime'] = filemtime(
+                $this->registry->getServer()->getDocumentRoot() . $this->data['image']
+            );
+        }
 
         $events = array(
             $this->entityManager->getRepository('Entity\Qualify')->getNextEvent(),
