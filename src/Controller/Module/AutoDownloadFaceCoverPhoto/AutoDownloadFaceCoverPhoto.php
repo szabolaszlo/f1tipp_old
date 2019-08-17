@@ -28,12 +28,12 @@ class AutoDownloadFaceCoverPhoto extends Controller
         foreach ($matches as $match) {
             if(isset($match[1])){
                 $img = str_replace('/', '', $match[1]);
+                echo $img . PHP_EOL;
                 $this->entityManager
                     ->getRepository(Setting::class)
                     ->setKeyValue('faceCoverImage', $img);
             }
         }
-
         echo 'OK';
         exit;
     }
