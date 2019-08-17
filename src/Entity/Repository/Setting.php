@@ -53,5 +53,13 @@ class Setting extends EntityRepository
                 }
             }
         }
+
+        if (empty($results)) {
+            $setting = new \Entity\Setting();
+            $setting->setKey($key);
+            $setting->setValue($value);
+            $this->_em->persist($setting);
+            $this->_em->flush();
+        }
     }
 }
