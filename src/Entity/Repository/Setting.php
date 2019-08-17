@@ -46,8 +46,11 @@ class Setting extends EntityRepository
          */
         foreach ($results as $setting) {
             if ($setting->getKey() === $key) {
-                $setting->setValue($value);
-                $this->_em->flush();
+                if ($setting->getValue() !== $value) {
+                    $setting->setValue($value);
+                    $this->_em->persist($setting);
+                    $this->_em->flush();
+                }
             }
         }
     }
